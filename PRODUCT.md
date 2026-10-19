@@ -1,6 +1,18 @@
 # Product
 
-This file tracks what Doppelhood does today, where its matches are known to go wrong, and what is planned next.
+This file tracks what Doppelhood is meant to be, what it does today, where its matches are known to go wrong, and what is planned next.
+
+## Vision
+
+Doppelhood is a free iOS app that tells a traveler which neighborhood in a city they are visiting feels like a neighborhood they already know, from any city to any other.
+
+| Decision | Choice | Consequence |
+|---|---|---|
+| Audience | Travelers | Matches weight food, nightlife, sights, and atmosphere over rent, schools, or commute |
+| Granularity | Neighborhoods | Wikivoyage districts are too coarse, so matching moves to Wikipedia neighborhood articles and OpenStreetMap features on Who's On First boundaries |
+| Base city | Any city | San Francisco can no longer serve as the only check on quality, so the validation set needs expected matches from several cities |
+| Platform | iOS app | The Python pipeline stays as the data builder, and the app ships its output; the web page remains as a preview |
+| Pricing | Free | No payments or accounts to build, and pricing can be revisited once people use it |
 
 ## Features
 
@@ -41,6 +53,5 @@ These come from checking matches against first-hand knowledge of San Francisco, 
 | Who's On First boundaries | Finer neighborhood shapes to attach Wikipedia and OpenStreetMap data to, and the basis for a map view |
 | Extracted tags | Labels such as "gritty," "touristy," or "late-night" pulled from the text would explain a match in words a reader recognizes |
 | Adjustable weights | A reader who cares about food and nightlife could weight those sections up and get different matches than a family would |
-| Any city as the base | Comparing from New York to Chicago, not only from San Francisco |
 | International cities | The Wikivoyage format is the same worldwide, so the pipeline should carry over with little change |
 | Map view | Showing the matched districts side by side on maps of both cities |
