@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Doppelhood</title>
-<meta name="description" content="Find a San Francisco neighborhood's closest equivalent in other US cities.">
+<meta name="description" content="Find a neighborhood's closest equivalent in another city.">
 <style>
   :root {
     --bg: #fbfaf7;
@@ -48,7 +48,7 @@
   main { max-width: 860px; margin: 0 auto; padding: 40px 16px 64px; }
   h1 { font-size: 2rem; margin: 0 0 4px; letter-spacing: -0.02em; }
   .tagline { color: var(--muted); margin: 0 0 32px; }
-  .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .controls { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 16px; margin-bottom: 24px; }
   label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--muted);
           text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
   select {
@@ -75,7 +75,7 @@
   footer { font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--border);
            margin-top: 40px; padding-top: 16px; }
   footer a, .explainer a { color: inherit; }
-  @media (max-width: 560px) {
+  @media (max-width: 700px) {
     .controls { grid-template-columns: 1fr; }
     h1 { font-size: 1.6rem; }
   }
@@ -84,11 +84,15 @@
 <body>
 <main>
   <h1>Doppelhood</h1>
-  <p class="tagline">Pick a San Francisco neighborhood and see its closest equivalents in another city.</p>
+  <p class="tagline">Pick a neighborhood you know and see what feels like it in another city.</p>
 
   <div class="controls">
     <div>
-      <label for="district">San Francisco neighborhood</label>
+      <label for="from">From</label>
+      <select id="from"></select>
+    </div>
+    <div>
+      <label for="district">Neighborhood</label>
       <select id="district"></select>
     </div>
     <div>
@@ -102,25 +106,30 @@
 
   <p class="explainer">
     Scores are percentiles. A score of 90 means the pairing is more similar than 90% of all
-    pairings between a San Francisco district and a district in another city. Similarity is
-    measured section by section on each district's Wikivoyage article, after removing what all
-    districts in the same city have in common, so a match means two districts play the same
-    role in their own cities.
+    pairings between neighborhoods in different cities. Each neighborhood is compared on its
+    Wikipedia article (character), the Wikivoyage listings located in it (food, nightlife, sights,
+    activities, shopping), and the mix of restaurants, bars, shops, and parks mapped in
+    OpenStreetMap within 500 meters (street life). Every signal is measured against the rest of
+    its own city first, so a match means two neighborhoods play the same role in their cities.
   </p>
 
   <footer>
-    District text and summaries are from <a href="https://www.wikivoyage.org/">Wikivoyage</a>,
-    used under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
-    Each district name links to its article and author history. Scores are derived from that
-    text and shared under the same license.
+    Summaries and text-based scores come from <a href="https://www.wikipedia.org/">Wikipedia</a> and
+    <a href="https://www.wikivoyage.org/">Wikivoyage</a> under
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>; each neighborhood
+    name links to its article and author history. Street-life scores use map data
+    © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, available
+    under the ODbL. Neighborhood lists and locations come from
+    <a href="https://www.wikidata.org/">Wikidata</a> (CC0).
     <a href="https://github.com/adityasinghhh/doppelhood">Source on GitHub</a>.
   </footer>
 </main>
 
 <script>
-const SECTION_LABELS = { understand: "Character", see: "Sights", do: "Activities",
-                         buy: "Shopping", eat: "Food", drink: "Nightlife" };
+const PART_LABELS = { character: "Character", street: "Street life", eat: "Food",
+                      drink: "Nightlife", see: "Sights", do: "Activities", buy: "Shopping" };
 
+const fromSelect = document.getElementById("from");
 const districtSelect = document.getElementById("district");
 const citySelect = document.getElementById("city");
 const matchesEl = document.getElementById("matches");
@@ -139,53 +148,69 @@ function readPrefs() {
 
 function savePrefs() {
   try {
-    localStorage.setItem("doppelhood",
-      JSON.stringify({ district: districtSelect.value, city: citySelect.value }));
+    localStorage.setItem("doppelhood", JSON.stringify(
+      { from: fromSelect.value, hood: districtSelect.value, to: citySelect.value }));
   } catch {}
+}
+
+function fill(select, items, preferred) {
+  select.replaceChildren(...items.map(([value, text]) => el("option", { value, textContent: text })));
+  if (items.some(([value]) => value === preferred)) select.value = preferred;
 }
 
 fetch("data/matches.json")
   .then(r => r.json())
   .then(data => {
-    const byTitle = Object.fromEntries(data.districts.map(d => [d.title, d]));
-    const base = data.districts.filter(d => d.city === data.base);
-    const others = data.cities.filter(c => c.slug !== data.base);
+    const byId = Object.fromEntries(data.neighborhoods.map(n => [n.id, n]));
+    const cityLabel = c => `${c.name}, ${c.state}`;
     const prefs = readPrefs();
 
-    for (const d of base) districtSelect.append(el("option", { value: d.title, textContent: d.name }));
-    for (const c of others) citySelect.append(el("option", { value: c.slug, textContent: `${c.name}, ${c.state}` }));
-    districtSelect.value = byTitle[prefs.district] ? prefs.district : "San Francisco/Mission";
-    if (others.some(c => c.slug === prefs.city)) citySelect.value = prefs.city;
+    fill(fromSelect, data.cities.map(c => [c.slug, cityLabel(c)]), prefs.from || "san-francisco");
+
+    function fillHoods(preferred) {
+      const hoods = data.neighborhoods.filter(n => n.city === fromSelect.value);
+      fill(districtSelect, hoods.map(n => [n.id, n.name]), preferred);
+    }
+
+    function fillTargets(preferred) {
+      const others = data.cities.filter(c => c.slug !== fromSelect.value);
+      fill(citySelect, others.map(c => [c.slug, cityLabel(c)]), preferred);
+    }
 
     function render() {
       savePrefs();
-      const source = byTitle[districtSelect.value];
+      const source = byId[districtSelect.value];
       sourceEl.textContent = source.summary;
       matchesEl.replaceChildren();
 
-      for (const m of data.matches[source.title][citySelect.value]) {
-        const d = byTitle[m.title];
-        const sections = el("div", { className: "sections" });
-        for (const [key, label] of Object.entries(SECTION_LABELS)) {
-          if (!(key in m.sections)) continue;
-          const value = m.sections[key];
-          const fill = el("div", { className: "fill" });
-          fill.style.width = value + "%";
-          sections.append(el("div", {},
+      for (const m of data.matches[source.id][citySelect.value] || []) {
+        const n = byId[m.id];
+        const parts = el("div", { className: "sections" });
+        for (const [key, label] of Object.entries(PART_LABELS)) {
+          if (!(key in m.parts)) continue;
+          const value = m.parts[key];
+          const bar = el("div", { className: "fill" });
+          bar.style.width = value + "%";
+          parts.append(el("div", {},
             el("div", { className: "section-name" }, el("span", { textContent: label }), el("span", { textContent: value })),
-            el("div", { className: "track" }, fill)));
+            el("div", { className: "track" }, bar)));
         }
         matchesEl.append(el("article", { className: "match" },
           el("div", { className: "match-head" },
-            el("h2", {}, el("a", { href: d.source_url, target: "_blank", rel: "noopener", textContent: d.name })),
+            el("h2", {}, el("a", { href: n.source_url, target: "_blank", rel: "noopener", textContent: n.name })),
             el("div", { className: "score" }, String(m.score), el("small", { textContent: " / 100" }))),
-          d.summary ? el("p", { className: "summary", textContent: d.summary }) : el("div", { className: "summary" }),
-          sections));
+          n.summary ? el("p", { className: "summary", textContent: n.summary }) : el("div", { className: "summary" }),
+          parts));
       }
     }
 
+    fromSelect.addEventListener("change", () => { fillHoods(); fillTargets(citySelect.value); render(); });
     districtSelect.addEventListener("change", render);
     citySelect.addEventListener("change", render);
+
+    const mission = data.neighborhoods.find(n => n.name === "Mission District");
+    fillHoods(prefs.hood || (mission && mission.id));
+    fillTargets(prefs.to);
     render();
   })
   .catch(() => {

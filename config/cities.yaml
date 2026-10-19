@@ -1,17 +1,21 @@
-# San Francisco is the base city that every other city is compared against.
-# The rest are the ten largest US cities by the Census Bureau's Vintage 2025
-# population estimates (July 1, 2025).
+# San Francisco plus the ten largest US cities by the Census Bureau's Vintage
+# 2025 population estimates (July 1, 2025). Any city can be the starting point.
+#
+# geofabrik names the OpenStreetMap extract that contains the city, from
+# https://download.geofabrik.de/.
+#
+# exclude_labels lists OpenStreetMap place labels that name an area larger
+# than a neighborhood, such as New York's boroughs.
 #
 # wikivoyage_districts records whether Wikivoyage splits the city into district
 # articles. Cities without them rely on Wikipedia and OpenStreetMap alone.
-
-base: san-francisco
 
 cities:
   - slug: san-francisco
     name: San Francisco
     state: CA
     wikidata: Q62
+    geofabrik: north-america/us/california/norcal
     wikivoyage: San Francisco
     wikipedia: San Francisco
     wikivoyage_districts: true
@@ -20,6 +24,8 @@ cities:
     name: New York
     state: NY
     wikidata: Q60
+    exclude_labels: [Manhattan, Brooklyn, Queens, The Bronx, Bronx, Staten Island]
+    geofabrik: north-america/us/new-york
     population_rank: 1
     wikivoyage: New York City
     wikipedia: New York City
@@ -29,6 +35,7 @@ cities:
     name: Los Angeles
     state: CA
     wikidata: Q65
+    geofabrik: north-america/us/california/socal
     population_rank: 2
     wikivoyage: Los Angeles
     wikipedia: Los Angeles
@@ -38,6 +45,7 @@ cities:
     name: Chicago
     state: IL
     wikidata: Q1297
+    geofabrik: north-america/us/illinois
     population_rank: 3
     wikivoyage: Chicago
     wikipedia: Chicago
@@ -47,6 +55,7 @@ cities:
     name: Houston
     state: TX
     wikidata: Q16555
+    geofabrik: north-america/us/texas
     population_rank: 4
     wikivoyage: Houston
     wikipedia: Houston
@@ -56,6 +65,7 @@ cities:
     name: Phoenix
     state: AZ
     wikidata: Q16556
+    geofabrik: north-america/us/arizona
     population_rank: 5
     wikivoyage: Phoenix
     wikipedia: Phoenix, Arizona
@@ -65,6 +75,7 @@ cities:
     name: Philadelphia
     state: PA
     wikidata: Q1345
+    geofabrik: north-america/us/pennsylvania
     population_rank: 6
     wikivoyage: Philadelphia
     wikipedia: Philadelphia
@@ -74,6 +85,7 @@ cities:
     name: San Antonio
     state: TX
     wikidata: Q975
+    geofabrik: north-america/us/texas
     population_rank: 7
     wikivoyage: San Antonio
     wikipedia: San Antonio
@@ -83,6 +95,7 @@ cities:
     name: San Diego
     state: CA
     wikidata: Q16552
+    geofabrik: north-america/us/california/socal
     population_rank: 8
     wikivoyage: San Diego
     wikipedia: San Diego
@@ -92,6 +105,7 @@ cities:
     name: Dallas
     state: TX
     wikidata: Q16557
+    geofabrik: north-america/us/texas
     population_rank: 9
     wikivoyage: Dallas
     wikipedia: Dallas
@@ -101,6 +115,7 @@ cities:
     name: Fort Worth
     state: TX
     wikidata: Q16558
+    geofabrik: north-america/us/texas
     population_rank: 10
     wikivoyage: Fort Worth
     wikipedia: Fort Worth, Texas

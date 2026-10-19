@@ -16,40 +16,40 @@ Doppelhood is a free iOS app that tells a traveler which neighborhood in a city 
 
 ## Features
 
-- **District matching** ranks the five closest districts in each comparison city for every San Francisco district, using the Wikivoyage articles for 104 districts across eight cities.
-- **Section breakdown** scores each match separately on Character, Sights, Activities, Shopping, Food, and Nightlife, so a reader can see which parts of the experience line up.
-- **City-relative scoring** removes what all of a city's districts share before comparing, so a match means two districts play the same role in their own cities.
-- **Percentile scores** report each match against every other cross-city pairing, which keeps the numbers readable and comparable.
-- **Web app** at [adityasinghhh.github.io/doppelhood](https://adityasinghhh.github.io/doppelhood/) lets a reader pick a San Francisco district and a city, and links every district to its Wikivoyage source.
+- **Current neighborhoods** come from the place labels OpenStreetMap mappers maintain inside each city's boundary, so former names such as the Barbary Coast and single streets such as Belden Place are left out. Historic-district and housing-development labels are excluded, as are labels for areas larger than a neighborhood, such as New York's boroughs.
+- **Character matching** embeds each neighborhood's Wikipedia article without its demographics, government, and transport sections, and with the neighborhood's own name removed so matches cannot hinge on words like "Beach."
+- **Visitor listings** assign every geolocated Wikivoyage Eat, Drink, See, Do, and Buy listing to its nearest neighborhood and compare those listings section by section.
+- **Street life** compares the mix of restaurants, bars, cafes, shops, venues, and parks within 500 meters of each neighborhood, counted from a local OpenStreetMap extract.
+- **Any city as the starting point**, with every signal measured against the rest of its own city first, so a match means two neighborhoods play the same role in their cities.
+- **Percentile scores** report each match against every cross-city pairing, overall and per signal.
+- **iOS app** in `ios/` lists a city's neighborhoods with search, shows the top five matches in another city with a bar per signal, lets a reader tap through to any match's own matches, and credits every source on its About screen.
+- **Web preview** at [adityasinghhh.github.io/doppelhood](https://adityasinghhh.github.io/doppelhood/) shows the same data in a browser.
 
 ## Coverage
 
-| City | Districts | Notes |
+| City | Neighborhoods | Notes |
 |---|---|---|
-| San Francisco | 15 | Base city |
-| New York | 31 | Districts across Manhattan, Brooklyn, and Queens, plus the Bronx and Staten Island as single districts |
-| Chicago | 21 | |
-| Houston | 10 | |
-| San Diego | 9 | |
-| Philadelphia | 8 | |
-| Los Angeles | 7 | The Westside and San Fernando Valley are missing because Wikivoyage files them as county regions rather than city districts |
-| Dallas | 3 | Too coarse for useful matches |
-| Phoenix, San Antonio, Fort Worth | 0 | Wikivoyage has no district articles for them |
+| San Francisco | 61 | |
+| New York | 263 | |
+| Other eight cities | 0 | Their OpenStreetMap extracts are not downloaded yet |
+
+A neighborhood is included only when it has an English Wikipedia article within 3 kilometers of its label. OpenStreetMap's Wikidata links are checked against that rule too, since some point at a same-named town or a railroad station. Labels with no qualifying article, such as Cow Hollow, Presidio Heights, and Gramercy, drop out for now.
 
 ## Known Misses
 
 These come from checking matches against first-hand knowledge of San Francisco, and they are the test cases for any change to the scoring:
-- The Castro does not match Lakeview (Boystown) in Chicago or Chelsea in New York. Its Wikivoyage article is shared with Noe Valley and says little about LGBTQ nightlife.
-- The Mission's top New York match is Harlem and Upper Manhattan, ahead of the East Village. It does match Pilsen and Logan Square in Chicago, which is closer to expectations.
-- SoMa matches Bedford-Stuyvesant in New York, which has no clear basis.
+- Pacific Heights matches Tremont and Kensington rather than the Upper East Side.
+- The Castro matches Civic Center and Harlem rather than Chelsea or the West Village.
+- The Haight matches the Garment District, and Noe Valley matches Cambria Heights.
+- The Mission's top New York match is Fresh Pond, ahead of Williamsburg and the East Village, which follow closely.
 
 ## Wishlist
 
 | Item | Why |
 |---|---|
 | Labeled validation set | A list of expected matches from people who know both cities would turn the known misses into a score that every model change can be measured against |
-| OpenStreetMap features | Density and the mix of bars, cafes, restaurants, and parks would add a signal that does not depend on how well a Wikivoyage article is written |
-| Wikipedia neighborhood articles | Would cover Phoenix, San Antonio, and Fort Worth, and split coarse districts such as Castro-Noe Valley into real neighborhoods |
+| Remaining cities | Downloading the California, Illinois, Texas, Pennsylvania, and Arizona extracts would add the other eight cities |
+| Neighborhoods without articles | Labels such as Cow Hollow could be kept with street life and listings alone, with a summary written from those signals |
 | Who's On First boundaries | Finer neighborhood shapes to attach Wikipedia and OpenStreetMap data to, and the basis for a map view |
 | Extracted tags | Labels such as "gritty," "touristy," or "late-night" pulled from the text would explain a match in words a reader recognizes |
 | Adjustable weights | A reader who cares about food and nightlife could weight those sections up and get different matches than a family would |

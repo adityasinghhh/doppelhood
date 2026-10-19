@@ -12,33 +12,33 @@ Each neighborhood is normalized within its own city, so a match means the two ne
 
 | Source | Signal | Limitation |
 |---|---|---|
-| Wikivoyage | Visitor experience, split into sections such as See, Do, Eat, and Drink | Districts are coarser than neighborhoods |
-| Wikipedia | History, character, and reputation of individual neighborhoods | Skews toward demographic description |
-| OpenStreetMap | Density and mix of bars, cafes, restaurants, parks, and venues | Says nothing about atmosphere |
-| Who's On First | Neighborhood boundaries | Boundary quality varies by city |
+| OpenStreetMap | Current neighborhood names and locations, and the density and mix of restaurants, bars, cafes, shops, venues, and parks | Neighborhood boundaries are not mapped consistently, so each neighborhood is the area within 500 meters of its label |
+| Wikidata | Links from each OpenStreetMap label to its Wikipedia article | Some links are wrong and are checked by distance |
+| Wikipedia | Each neighborhood's character, from its article minus demographics, government, and transport | Coverage of small neighborhoods is uneven |
+| Wikivoyage | Eat, Drink, See, Do, and Buy listings with coordinates, assigned to the nearest neighborhood | Only neighborhoods visitors frequent have listings |
 
 ## Scoring
 
-Each district's Understand, See, Do, Buy, Eat, and Drink sections are embedded separately with [all-mpnet-base-v2](https://huggingface.co/sentence-transformers/all-mpnet-base-v2), so two districts are compared Eat to Eat and Drink to Drink. Before comparing, each city's average vector is subtracted from its districts' vectors, which removes what every district in the city shares and leaves how each one differs from the rest of its own city.
+Each signal is centered within its city before comparing, so two neighborhoods match when they differ from the rest of their own cities in the same way. Text is embedded with [all-mpnet-base-v2](https://huggingface.co/sentence-transformers/all-mpnet-base-v2), and street life is compared as within-city z-scores of log counts.
 
-Scores are percentiles. A score of 90 means the pairing is more similar than 90% of all pairings between a San Francisco district and a district in another city, and the same holds for each section's score. OpenStreetMap features are not yet blended in.
+Every signal's similarity is converted to a percentile over all cross-city pairs, the percentiles are blended (character 40%, listings 30%, street life 30%), and the blend is converted to a percentile again. A score of 90 means the pairing is more similar than 90% of all pairings between neighborhoods in different cities.
 
 ## Status
 
-The current release compares San Francisco against the ten largest US cities by the Census Bureau's Vintage 2025 population estimates, which are listed in [config/cities.yaml](config/cities.yaml). Phoenix, San Antonio, and Fort Worth have no Wikivoyage district articles and are not yet matched. [PRODUCT.md](PRODUCT.md) lists coverage per city, the known misses, and the wishlist.
-
-The app is live at [adityasinghhh.github.io/doppelhood](https://adityasinghhh.github.io/doppelhood/).
+San Francisco and New York are built, with 61 and 263 neighborhoods. [config/cities.yaml](config/cities.yaml) lists the ten other cities planned. [PRODUCT.md](PRODUCT.md) holds the product vision, coverage, known misses, and wishlist.
 
 ## Running Locally
 
 ```sh
+brew install osmium-tool xcodegen
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
-.venv/bin/python -m doppelhood.match
-cd web && python3 -m http.server 8765
+.venv/bin/python -m doppelhood.match san-francisco new-york
 ```
 
-The matcher caches Wikivoyage responses under `data/raw/` and writes `web/data/matches.json`, which the page at http://localhost:8765 reads.
+The matcher downloads each city's OpenStreetMap extract from Geofabrik on first use (several hundred megabytes per state), caches every source under `data/raw/`, and writes `web/data/matches.json`.
+
+The iOS app bundles that file. Generate the Xcode project with `cd ios && xcodegen`, then open `Doppelhood.xcodeproj` and run it on a simulator. The web preview reads the same file: `cd web && python3 -m http.server 8765`.
 
 ## Licensing
 

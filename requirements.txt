@@ -3,3 +3,4 @@ numpy==2.5.4
 PyYAML==6.0.3
 requests==2.34.2
 sentence-transformers==6.1.0
+shapely==2.2.0

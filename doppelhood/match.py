@@ -72,24 +72,56 @@ def passages(text):
     return chunks
 
 
-def load_city(city, fetch_osm=True):
-    """Neighborhoods for one city with article text, listings, and OSM counts."""
+def load_city(city):
+    """Current neighborhoods for one city with article text, listings, and OSM counts.
+
+    Neighborhoods without an English Wikipedia article are dropped, since the
+    article supplies both the character signal and the summary shown in the app.
+    """
+    labels = osm.neighborhoods(city)
+    titles = wikidata.sitelinks([n["wikidata"] for n in labels])
+    names = [n["name"] for n in labels]
+
     hoods = []
-    for n in wikidata.neighborhoods(city):
-        page = wikipedia.fetch(n["wikipedia"])
+    for n in labels:
+        title = wikidata.article_title(n, titles)
+        if not title or not wikipedia.plausible(title, n["lat"], n["lon"]):
+            title = wikipedia.search(n["name"], city, n["lat"], n["lon"])
+        page = wikipedia.fetch(title) if title else None
         if not page:
             continue
         lead, text = wikipedia.character(page["wikitext"])
         if len(text) < MIN_ARTICLE_CHARS:
             continue
-        n.update(summary=wikipedia.summary(lead), text=text, revid=page["revid"])
-        hoods.append(n)
+        name = n["name"] if names.count(n["name"]) == 1 else wikidata.display_name(page["title"], city)
+        # A neighborhood's own name would otherwise match on words like
+        # "Beach" or "Heights" rather than on what the place is like.
+        for alias in {n["name"], page["title"].split(",")[0].split(" (")[0]}:
+            text = re.sub(re.escape(alias), "the neighborhood", text, flags=re.IGNORECASE)
+        hoods.append({
+            "id": f"{city['slug']}:{n['name']}",
+            "city": city["slug"],
+            "name": name,
+            "lat": n["lat"],
+            "lon": n["lon"],
+            "summary": wikipedia.summary(lead),
+            "text": text,
+            "source_url": "https://en.wikipedia.org/wiki/" + page["title"].replace(" ", "_"),
+            "revid": page["revid"],
+        })
 
-    if fetch_osm or (osm.RAW_DIR / f"{city['slug']}.json").exists():
-        osm.attach_features(city["slug"], hoods)
-    else:
-        for n in hoods:
-            n["osm"] = None
+    # "Arverne By The Sea" and "Arverne View" are developments inside Arverne
+    # that share its article, so labels that extend another label's name and
+    # point at the same article are dropped. "Outer Sunset" and "Inner
+    # Sunset" survive, since neither starts with "Sunset District".
+    names_by_article = {}
+    for n in hoods:
+        names_by_article.setdefault(n["source_url"], set()).add(n["name"])
+    hoods = [n for n in hoods if not any(
+        other != n["name"] and n["name"].lower().startswith(other.lower() + " ")
+        for other in names_by_article[n["source_url"]])]
+
+    osm.attach_features(city, hoods)
 
     # Each listing goes to the nearest neighborhood within LISTING_RADIUS_M.
     coords = np.array([[n["lat"], n["lon"]] for n in hoods])
@@ -179,8 +211,6 @@ def score(hoods, embed):
 def main():
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument("cities", nargs="*", help="city slugs from config/cities.yaml (default: all)")
-    parser.add_argument("--skip-missing-osm", action="store_true",
-                        help="score cities whose OpenStreetMap data is not downloaded yet without street life")
     args = parser.parse_args()
 
     config = yaml.safe_load(Path("config/cities.yaml").read_text())
@@ -188,7 +218,7 @@ def main():
 
     hoods = []
     for city in cities:
-        loaded = load_city(city, fetch_osm=not args.skip_missing_osm)
+        loaded = load_city(city)
         print(f"{city['name']}: {len(loaded)} neighborhoods")
         hoods.extend(loaded)
 
@@ -218,8 +248,8 @@ def main():
                    "under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/); each "
                    "neighborhood's source_url links to its article and author history. Street-life "
                    "scores are produced from OpenStreetMap data, (c) OpenStreetMap contributors, "
-                   "ODbL 1.0 (https://www.openstreetmap.org/copyright). Neighborhood lists and "
-                   "coordinates come from Wikidata under CC0.",
+                   "ODbL 1.0 (https://www.openstreetmap.org/copyright), as are the neighborhood "
+                   "names and locations. Wikipedia articles are linked through Wikidata (CC0).",
         "cities": [{k: c[k] for k in ("slug", "name", "state")} for c in cities],
         "neighborhoods": [{k: n[k] for k in ("id", "city", "name", "summary", "source_url", "lat", "lon")}
                           for n in hoods],

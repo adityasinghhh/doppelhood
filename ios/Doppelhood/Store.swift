@@ -63,7 +63,9 @@ final class Store {
     }
 
     func neighborhoods(in city: String) -> [Neighborhood] {
-        neighborhoods.filter { $0.city == city }
+        neighborhoods
+            .filter { $0.city == city }
+            .sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
     }
 
     func matches(for neighborhood: Neighborhood, in city: String) -> [Match] {
