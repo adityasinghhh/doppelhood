@@ -11,6 +11,7 @@ cities:
   - slug: san-francisco
     name: San Francisco
     state: CA
+    wikidata: Q62
     wikivoyage: San Francisco
     wikipedia: San Francisco
     wikivoyage_districts: true
@@ -18,6 +19,7 @@ cities:
   - slug: new-york
     name: New York
     state: NY
+    wikidata: Q60
     population_rank: 1
     wikivoyage: New York City
     wikipedia: New York City
@@ -26,6 +28,7 @@ cities:
   - slug: los-angeles
     name: Los Angeles
     state: CA
+    wikidata: Q65
     population_rank: 2
     wikivoyage: Los Angeles
     wikipedia: Los Angeles
@@ -34,6 +37,7 @@ cities:
   - slug: chicago
     name: Chicago
     state: IL
+    wikidata: Q1297
     population_rank: 3
     wikivoyage: Chicago
     wikipedia: Chicago
@@ -42,6 +46,7 @@ cities:
   - slug: houston
     name: Houston
     state: TX
+    wikidata: Q16555
     population_rank: 4
     wikivoyage: Houston
     wikipedia: Houston
@@ -50,6 +55,7 @@ cities:
   - slug: phoenix
     name: Phoenix
     state: AZ
+    wikidata: Q16556
     population_rank: 5
     wikivoyage: Phoenix
     wikipedia: Phoenix, Arizona
@@ -58,6 +64,7 @@ cities:
   - slug: philadelphia
     name: Philadelphia
     state: PA
+    wikidata: Q1345
     population_rank: 6
     wikivoyage: Philadelphia
     wikipedia: Philadelphia
@@ -66,6 +73,7 @@ cities:
   - slug: san-antonio
     name: San Antonio
     state: TX
+    wikidata: Q975
     population_rank: 7
     wikivoyage: San Antonio
     wikipedia: San Antonio
@@ -74,6 +82,7 @@ cities:
   - slug: san-diego
     name: San Diego
     state: CA
+    wikidata: Q16552
     population_rank: 8
     wikivoyage: San Diego
     wikipedia: San Diego
@@ -82,6 +91,7 @@ cities:
   - slug: dallas
     name: Dallas
     state: TX
+    wikidata: Q16557
     population_rank: 9
     wikivoyage: Dallas
     wikipedia: Dallas
@@ -90,6 +100,7 @@ cities:
   - slug: fort-worth
     name: Fort Worth
     state: TX
+    wikidata: Q16558
     population_rank: 10
     wikivoyage: Fort Worth
     wikipedia: Fort Worth, Texas

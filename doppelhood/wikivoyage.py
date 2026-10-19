@@ -74,6 +74,18 @@ def region_links(wikitext):
 def plain_text(wikitext):
     """Flatten wikitext to prose, keeping the name and description of each listing."""
     code = mwparserfromhell.parse(wikitext)
+    for tag in code.filter_tags(recursive=False):
+        if tag.tag.strip().lower() in ("ref", "gallery"):
+            try:
+                code.remove(tag)
+            except ValueError:
+                pass
+    for link in code.filter_wikilinks(recursive=False):
+        if re.match(r"\s*(file|image|category):", str(link.title), re.I):
+            try:
+                code.remove(link)
+            except ValueError:
+                pass
     for template in code.filter_templates(recursive=False):
         name = template.name.strip().lower()
         if name in LISTING_TEMPLATES:
@@ -126,6 +138,44 @@ def districts(city_title, depth=0):
             child.setdefault("summary", description)
             leaves.setdefault(child["title"], child)
     return list(leaves.values())
+
+
+def coordinate(template, *keys):
+    for key in keys:
+        if template.has(key):
+            try:
+                return float(str(template.get(key).value).strip())
+            except ValueError:
+                return None
+    return None
+
+
+def listings(city):
+    """Return every listing with coordinates in a city's district articles.
+
+    Each listing keeps the section it appears under (Eat, Drink, and so on),
+    which is what lets listings be assigned to neighborhoods by location.
+    """
+    results = []
+    for page in districts(city["wikivoyage"]):
+        for section in mwparserfromhell.parse(page["wikitext"]).get_sections(levels=[2]):
+            heading = section.filter_headings()[0].title.strip().lower()
+            if heading not in SECTIONS:
+                continue
+            for template in section.filter_templates():
+                if template.name.strip().lower() not in LISTING_TEMPLATES:
+                    continue
+                lat = coordinate(template, "lat")
+                lon = coordinate(template, "long", "lon")
+                if lat is None or lon is None:
+                    continue
+                text = ". ".join(str(template.get(k).value).strip()
+                                 for k in ("name", "content") if template.has(k))
+                text = plain_text(text)
+                if text:
+                    results.append({"lat": lat, "lon": lon, "section": heading,
+                                    "text": text, "source": page["title"]})
+    return results
 
 
 def district_records(city):
