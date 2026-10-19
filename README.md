@@ -19,11 +19,26 @@ Each neighborhood is normalized within its own city, so a match means the two ne
 
 ## Scoring
 
-Each Wikivoyage section is embedded separately, so two districts are compared Eat to Eat and Drink to Drink, which produces the per-dimension breakdown directly. Structured features from OpenStreetMap are blended with the text similarity to produce the final score.
+Each district's Understand, See, Do, Buy, Eat, and Drink sections are embedded separately with [all-mpnet-base-v2](https://huggingface.co/sentence-transformers/all-mpnet-base-v2), so two districts are compared Eat to Eat and Drink to Drink. Before comparing, each city's average vector is subtracted from its districts' vectors, which removes what every district in the city shares and leaves how each one differs from the rest of its own city.
+
+Scores are percentiles. A score of 90 means the pairing is more similar than 90% of all pairings between a San Francisco district and a district in another city, and the same holds for each section's score. OpenStreetMap features are not yet blended in.
 
 ## Status
 
-The first release compares San Francisco against the ten largest US cities by the Census Bureau's Vintage 2025 population estimates, which are listed in [config/cities.yaml](config/cities.yaml). San Francisco is the validation set because its neighborhoods are the ones the matches can be checked against from experience. San Antonio and Fort Worth have no Wikivoyage district articles, so their matches rest on Wikipedia and OpenStreetMap alone and carry less visitor-experience signal.
+The current release compares San Francisco against the ten largest US cities by the Census Bureau's Vintage 2025 population estimates, which are listed in [config/cities.yaml](config/cities.yaml). Phoenix, San Antonio, and Fort Worth have no Wikivoyage district articles and are not yet matched. [PRODUCT.md](PRODUCT.md) lists coverage per city, the known misses, and the wishlist.
+
+The app is live at [adityasinghhh.github.io/doppelhood](https://adityasinghhh.github.io/doppelhood/).
+
+## Running Locally
+
+```sh
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/python -m doppelhood.match
+cd web && python3 -m http.server 8765
+```
+
+The matcher caches Wikivoyage responses under `data/raw/` and writes `web/data/matches.json`, which the page at http://localhost:8765 reads.
 
 ## Licensing
 

@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doppelhood</title>
+<meta name="description" content="Find a San Francisco neighborhood's closest equivalent in other US cities.">
+<style>
+  :root {
+    --bg: #fbfaf7;
+    --surface: #ffffff;
+    --text: #1f1d1a;
+    --muted: #6b665e;
+    --border: #e6e2da;
+    --accent: #c2410c;
+    --accent-soft: #fde6d8;
+    --bar: #ece8e0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161513;
+      --surface: #1f1e1b;
+      --text: #ece9e3;
+      --muted: #a39d93;
+      --border: #34322d;
+      --accent: #fb923c;
+      --accent-soft: #3a2416;
+      --bar: #2c2a26;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #161513;
+    --surface: #1f1e1b;
+    --text: #ece9e3;
+    --muted: #a39d93;
+    --border: #34322d;
+    --accent: #fb923c;
+    --accent-soft: #3a2416;
+    --bar: #2c2a26;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+  }
+  main { max-width: 860px; margin: 0 auto; padding: 40px 16px 64px; }
+  h1 { font-size: 2rem; margin: 0 0 4px; letter-spacing: -0.02em; }
+  .tagline { color: var(--muted); margin: 0 0 32px; }
+  .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--muted);
+          text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  select {
+    width: 100%; padding: 10px 12px; font: inherit; color: var(--text);
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  }
+  .source { color: var(--muted); font-size: 0.95rem; margin: 0 0 24px; min-height: 1.5em; }
+  .match {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px; margin-bottom: 12px;
+  }
+  .match-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .match h2 { font-size: 1.15rem; margin: 0; }
+  .match h2 a { color: inherit; text-decoration: none; }
+  .match h2 a:hover { text-decoration: underline; }
+  .score { font-size: 1.5rem; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .score small { font-size: 0.75rem; font-weight: 500; color: var(--muted); }
+  .summary { color: var(--muted); margin: 6px 0 14px; font-size: 0.95rem; }
+  .sections { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px 16px; }
+  .section-name { font-size: 0.8rem; color: var(--muted); display: flex; justify-content: space-between; }
+  .track { height: 6px; background: var(--bar); border-radius: 3px; overflow: hidden; margin-top: 3px; }
+  .fill { height: 100%; background: var(--accent); border-radius: 3px; }
+  .explainer { font-size: 0.85rem; color: var(--muted); margin-top: 32px; }
+  footer { font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--border);
+           margin-top: 40px; padding-top: 16px; }
+  footer a, .explainer a { color: inherit; }
+  @media (max-width: 560px) {
+    .controls { grid-template-columns: 1fr; }
+    h1 { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Doppelhood</h1>
+  <p class="tagline">Pick a San Francisco neighborhood and see its closest equivalents in another city.</p>
+
+  <div class="controls">
+    <div>
+      <label for="district">San Francisco neighborhood</label>
+      <select id="district"></select>
+    </div>
+    <div>
+      <label for="city">Compare with</label>
+      <select id="city"></select>
+    </div>
+  </div>
+
+  <p class="source" id="source"></p>
+  <div id="matches"></div>
+
+  <p class="explainer">
+    Scores are percentiles. A score of 90 means the pairing is more similar than 90% of all
+    pairings between a San Francisco district and a district in another city. Similarity is
+    measured section by section on each district's Wikivoyage article, after removing what all
+    districts in the same city have in common, so a match means two districts play the same
+    role in their own cities.
+  </p>
+
+  <footer>
+    District text and summaries are from <a href="https://www.wikivoyage.org/">Wikivoyage</a>,
+    used under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+    Each district name links to its article and author history. Scores are derived from that
+    text and shared under the same license.
+    <a href="https://github.com/adityasinghhh/doppelhood">Source on GitHub</a>.
+  </footer>
+</main>
+
+<script>
+const SECTION_LABELS = { understand: "Character", see: "Sights", do: "Activities",
+                         buy: "Shopping", eat: "Food", drink: "Nightlife" };
+
+const districtSelect = document.getElementById("district");
+const citySelect = document.getElementById("city");
+const matchesEl = document.getElementById("matches");
+const sourceEl = document.getElementById("source");
+
+function el(tag, attrs = {}, ...children) {
+  const node = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) node[k] = v;
+  node.append(...children);
+  return node;
+}
+
+function readPrefs() {
+  try { return JSON.parse(localStorage.getItem("doppelhood") || "{}"); } catch { return {}; }
+}
+
+function savePrefs() {
+  try {
+    localStorage.setItem("doppelhood",
+      JSON.stringify({ district: districtSelect.value, city: citySelect.value }));
+  } catch {}
+}
+
+fetch("data/matches.json")
+  .then(r => r.json())
+  .then(data => {
+    const byTitle = Object.fromEntries(data.districts.map(d => [d.title, d]));
+    const base = data.districts.filter(d => d.city === data.base);
+    const others = data.cities.filter(c => c.slug !== data.base);
+    const prefs = readPrefs();
+
+    for (const d of base) districtSelect.append(el("option", { value: d.title, textContent: d.name }));
+    for (const c of others) citySelect.append(el("option", { value: c.slug, textContent: `${c.name}, ${c.state}` }));
+    districtSelect.value = byTitle[prefs.district] ? prefs.district : "San Francisco/Mission";
+    if (others.some(c => c.slug === prefs.city)) citySelect.value = prefs.city;
+
+    function render() {
+      savePrefs();
+      const source = byTitle[districtSelect.value];
+      sourceEl.textContent = source.summary;
+      matchesEl.replaceChildren();
+
+      for (const m of data.matches[source.title][citySelect.value]) {
+        const d = byTitle[m.title];
+        const sections = el("div", { className: "sections" });
+        for (const [key, label] of Object.entries(SECTION_LABELS)) {
+          if (!(key in m.sections)) continue;
+          const value = m.sections[key];
+          const fill = el("div", { className: "fill" });
+          fill.style.width = value + "%";
+          sections.append(el("div", {},
+            el("div", { className: "section-name" }, el("span", { textContent: label }), el("span", { textContent: value })),
+            el("div", { className: "track" }, fill)));
+        }
+        matchesEl.append(el("article", { className: "match" },
+          el("div", { className: "match-head" },
+            el("h2", {}, el("a", { href: d.source_url, target: "_blank", rel: "noopener", textContent: d.name })),
+            el("div", { className: "score" }, String(m.score), el("small", { textContent: " / 100" }))),
+          d.summary ? el("p", { className: "summary", textContent: d.summary }) : el("div", { className: "summary" }),
+          sections));
+      }
+    }
+
+    districtSelect.addEventListener("change", render);
+    citySelect.addEventListener("change", render);
+    render();
+  })
+  .catch(() => {
+    matchesEl.textContent = "Could not load data/matches.json. Serve this folder over HTTP, for example with python3 -m http.server.";
+  });
+</script>
+</body>
+</html>

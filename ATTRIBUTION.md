@@ -11,6 +11,8 @@ Doppelhood's code is released under the MIT License in [LICENSE](LICENSE). The d
 | [OpenStreetMap](https://www.openstreetmap.org/) | [Open Database License (ODbL) 1.0](https://opendatacommons.org/licenses/odbl/1-0/) | "© OpenStreetMap contributors" with a link to [openstreetmap.org/copyright](https://www.openstreetmap.org/copyright) |
 | [Who's On First](https://whosonfirst.org/) | [CC0](https://creativecommons.org/publicdomain/zero/1.0/) for Who's On First's own work, with some underlying sources under CC BY | "Data from Who's On First" with a link to its [license](https://github.com/whosonfirst-data/whosonfirst-data-admin-us/blob/master/LICENSE.md), plus the credit each record's source requires |
 
+Matching uses the [all-mpnet-base-v2](https://huggingface.co/sentence-transformers/all-mpnet-base-v2) embedding model, released under the Apache License 2.0. The model is downloaded at run time and is not redistributed in this repository.
+
 The Wikimedia terms come from the [Wikimedia Terms of Use](https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use), and the OpenStreetMap terms from its [copyright page](https://www.openstreetmap.org/copyright) and [attribution guidelines](https://osmfoundation.org/wiki/Licence/Attribution_Guidelines).
 
 ## Share-Alike Obligations
