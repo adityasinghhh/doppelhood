@@ -12,7 +12,7 @@ Each neighborhood is normalized within its own city, so a match means the two ne
 
 | Source | Signal | Limitation |
 |---|---|---|
-| Wikivoyage | Visitor experience, split into See, Do, Eat, Drink, and Sleep sections | Districts are coarser than neighborhoods |
+| Wikivoyage | Visitor experience, split into sections such as See, Do, Eat, and Drink | Districts are coarser than neighborhoods |
 | Wikipedia | History, character, and reputation of individual neighborhoods | Skews toward demographic description |
 | OpenStreetMap | Density and mix of bars, cafes, restaurants, parks, and venues | Says nothing about atmosphere |
 | Who's On First | Neighborhood boundaries | Boundary quality varies by city |
