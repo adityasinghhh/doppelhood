@@ -23,4 +23,8 @@ Each Wikivoyage section is embedded separately, so two districts are compared Ea
 
 ## Status
 
-The first prototype covers San Francisco and New York, with San Francisco as the validation set because its neighborhoods are the ones the matches can be checked against from experience.
+The first release compares San Francisco against the ten largest US cities by the Census Bureau's Vintage 2025 population estimates, which are listed in [config/cities.yaml](config/cities.yaml). San Francisco is the validation set because its neighborhoods are the ones the matches can be checked against from experience. San Antonio and Fort Worth have no Wikivoyage district articles, so their matches rest on Wikipedia and OpenStreetMap alone and carry less visitor-experience signal.
+
+## Licensing
+
+The code is MIT licensed. Data from each source keeps that source's license, and [ATTRIBUTION.md](ATTRIBUTION.md) lists every source, its license, and the credit it requires.

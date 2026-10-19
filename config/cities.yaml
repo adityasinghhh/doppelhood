@@ -1,0 +1,96 @@
+# San Francisco is the base city that every other city is compared against.
+# The rest are the ten largest US cities by the Census Bureau's Vintage 2025
+# population estimates (July 1, 2025).
+#
+# wikivoyage_districts records whether Wikivoyage splits the city into district
+# articles. Cities without them rely on Wikipedia and OpenStreetMap alone.
+
+base: san-francisco
+
+cities:
+  - slug: san-francisco
+    name: San Francisco
+    state: CA
+    wikivoyage: San Francisco
+    wikipedia: San Francisco
+    wikivoyage_districts: true
+
+  - slug: new-york
+    name: New York
+    state: NY
+    population_rank: 1
+    wikivoyage: New York City
+    wikipedia: New York City
+    wikivoyage_districts: true
+
+  - slug: los-angeles
+    name: Los Angeles
+    state: CA
+    population_rank: 2
+    wikivoyage: Los Angeles
+    wikipedia: Los Angeles
+    wikivoyage_districts: true
+
+  - slug: chicago
+    name: Chicago
+    state: IL
+    population_rank: 3
+    wikivoyage: Chicago
+    wikipedia: Chicago
+    wikivoyage_districts: true
+
+  - slug: houston
+    name: Houston
+    state: TX
+    population_rank: 4
+    wikivoyage: Houston
+    wikipedia: Houston
+    wikivoyage_districts: true
+
+  - slug: phoenix
+    name: Phoenix
+    state: AZ
+    population_rank: 5
+    wikivoyage: Phoenix
+    wikipedia: Phoenix, Arizona
+    wikivoyage_districts: true
+
+  - slug: philadelphia
+    name: Philadelphia
+    state: PA
+    population_rank: 6
+    wikivoyage: Philadelphia
+    wikipedia: Philadelphia
+    wikivoyage_districts: true
+
+  - slug: san-antonio
+    name: San Antonio
+    state: TX
+    population_rank: 7
+    wikivoyage: San Antonio
+    wikipedia: San Antonio
+    wikivoyage_districts: false
+
+  - slug: san-diego
+    name: San Diego
+    state: CA
+    population_rank: 8
+    wikivoyage: San Diego
+    wikipedia: San Diego
+    wikivoyage_districts: true
+
+  - slug: dallas
+    name: Dallas
+    state: TX
+    population_rank: 9
+    wikivoyage: Dallas
+    wikipedia: Dallas
+    wikivoyage_districts: true
+
+  - slug: fort-worth
+    name: Fort Worth
+    state: TX
+    population_rank: 10
+    wikivoyage: Fort Worth
+    wikipedia: Fort Worth, Texas
+    wikivoyage_districts: false
