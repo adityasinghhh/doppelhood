@@ -53,7 +53,7 @@ cities:
     population_rank: 5
     wikivoyage: Phoenix
     wikipedia: Phoenix, Arizona
-    wikivoyage_districts: true
+    wikivoyage_districts: false
 
   - slug: philadelphia
     name: Philadelphia

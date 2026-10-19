@@ -1,0 +1,6817 @@
+{
+ "base": "san-francisco",
+ "model": "sentence-transformers/all-mpnet-base-v2",
+ "license": "District titles and summaries come from Wikivoyage under CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). Each district's source_url links to the article and its author history. Scores are derived from that text and are shared under the same license.",
+ "cities": [
+  {
+   "slug": "san-francisco",
+   "name": "San Francisco",
+   "state": "CA"
+  },
+  {
+   "slug": "new-york",
+   "name": "New York",
+   "state": "NY"
+  },
+  {
+   "slug": "los-angeles",
+   "name": "Los Angeles",
+   "state": "CA"
+  },
+  {
+   "slug": "chicago",
+   "name": "Chicago",
+   "state": "IL"
+  },
+  {
+   "slug": "houston",
+   "name": "Houston",
+   "state": "TX"
+  },
+  {
+   "slug": "philadelphia",
+   "name": "Philadelphia",
+   "state": "PA"
+  },
+  {
+   "slug": "san-diego",
+   "name": "San Diego",
+   "state": "CA"
+  },
+  {
+   "slug": "dallas",
+   "name": "Dallas",
+   "state": "TX"
+  }
+ ],
+ "districts": [
+  {
+   "city": "san-francisco",
+   "name": "Golden Gate",
+   "title": "San Francisco/Golden Gate",
+   "summary": "Fashionable neighborhoods, e.g., the Marina District, Cow Hollow, and Pacific Heights, with extensive views and historical landmarks – Fort Mason, The Presidio, and the iconic Golden Gate Bridge.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Francisco/Golden_Gate",
+   "revid": 5392433
+  },
+  {
+   "city": "san-francisco",
+   "name": "Fisherman's Wharf",
+   "title": "San Francisco/Fisherman's Wharf",
+   "summary": "A touristy waterfront neighborhood which encompasses Ghirardelli Square, Pier 39, and the ferry launch to Alcatraz Island, as well as a plethora of seafood restaurants and souvenir stores.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Francisco/Fisherman's_Wharf",
+   "revid": 5379356
+  },
+  {
+   "city": "san-francisco",
+   "name": "Nob Hill-Russian Hill",
+   "title": "San Francisco/Nob Hill-Russian Hill",
+   "summary": "Two ritzy neighborhoods with upscale hotels, cable cars, panoramic views and steep inclines.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Francisco/Nob_Hill-Russian_Hill",
+   "revid": 5386670
+  },
+  {
+   "city": "san-francisco",
+   "name": "Chinatown-North Beach",
+   "title": "San Francisco/Chinatown-North Beach",
+   "summary": "Two vibrant immigrant communities; the crowded and largest Chinatown outside of Asia next to the stylish, laid-back \"Little Italy\", as well as Telegraph Hill and Coit Tower.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Francisco/Chinatown-North_Beach",
+   "revid": 5386659
+  },
+  {
+   "city": "san-francisco",
+   "name": "Union Square-Financial District",
+   "title": "San Francisco/Union Square-Financial District",
+   "summary": "Union Square is the center of shopping, theater and art in the city, next to the many skyscrapers of downtown and Market Street.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Francisco/Union_Square-Financial_District",
+   "revid": 5379339
+  },
+  {
+   "city": "san-francisco",
+   "name": "Civic Center-Tenderloin",
+   "title": "San Francisco/Civic Center-Tenderloin",
+   "summary": "The neoclassical Civic Center next to the grit of the Tenderloin. While the \"Loin\" is grittier compared to its ritzier neighbors downtown, there is still plenty of interesting architecture and attractions to see here.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Francisco/Civic_Center-Tenderloin",
+   "revid": 5386663
+  },
+  {
+   "city": "san-francisco",
+   "name": "SoMa",
+   "title": "San Francisco/SoMa",
+   "summary": "A rapidly changing neighborhood of downtown that is the center of a lot of new construction, including new skyscrapers; some of the city's newest museums; Oracle Park, home of the San Francisco Giants; and Chase Center, home of the Golden State Warriors.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Francisco/SoMa",
+   "revid": 5386674
+  },
+  {
+   "city": "san-francisco",
+   "name": "Western Addition",
+   "title": "San Francisco/Western Addition",
+   "summary": "A historic neighborhood with many Victorian homes that was once a hotbed of African-American culture. Within the area is also Japantown, once the center of San Francisco's Japanese population, still populated with many Japanese stores and restaurants, and hotels that cater to Japanese travelers.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Francisco/Western_Addition",
+   "revid": 5381116
+  },
+  {
+   "city": "san-francisco",
+   "name": "Haight",
+   "title": "San Francisco/Haight",
+   "summary": "Famous for being the home of the Hippie movement, this once-bohemian area is still an eclectic treasure.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Francisco/Haight",
+   "revid": 5392434
+  },
+  {
+   "city": "san-francisco",
+   "name": "The Avenues",
+   "title": "San Francisco/The Avenues",
+   "summary": "Includes both the foggy Sunset and Richmond Districts, separated by the scenic and lush Golden Gate Park and bounded on the west by Ocean Beach.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Francisco/The_Avenues",
+   "revid": 5386677
+  },
+  {
+   "city": "san-francisco",
+   "name": "Twin Peaks-Lake Merced",
+   "title": "San Francisco/Twin Peaks-Lake Merced",
+   "summary": "Covering most of southwestern San Francisco, this area is home to many of the taller hills of San Francisco and the large Lake Merced park, which contains the San Francisco Zoo.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Francisco/Twin_Peaks-Lake_Merced",
+   "revid": 5379873
+  },
+  {
+   "city": "san-francisco",
+   "name": "Castro-Noe Valley",
+   "title": "San Francisco/Castro-Noe Valley",
+   "summary": "Colorful and cohesive, the Castro is historically known for being the cultural center of the city's LGBTQ community. Nearby Noe Valley offers excellent restaurants and shops along pleasantly walkable streets.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Francisco/Castro-Noe_Valley",
+   "revid": 5386658
+  },
+  {
+   "city": "san-francisco",
+   "name": "Mission",
+   "title": "San Francisco/Mission",
+   "summary": "This vibrant area is home to a large Hispanic community as well as new urban artisans, and is a center of San Francisco nightlife. For visitors wishing to get off the beaten tourist paths and catch some local flavor, this is the place to go.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Francisco/Mission",
+   "revid": 5379859
+  },
+  {
+   "city": "san-francisco",
+   "name": "Bernal Heights",
+   "title": "San Francisco/Bernal Heights",
+   "summary": "A charming neighborhood atop a hill on the southern side of the city and a cultural center for San Francisco's lesbian community.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Francisco/Bernal_Heights",
+   "revid": 5379871
+  },
+  {
+   "city": "san-francisco",
+   "name": "Southeast",
+   "title": "San Francisco/Southeast",
+   "summary": "A mostly lower-income residential area, this district contains several bay-side neighborhoods and many nice parks.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Francisco/Southeast",
+   "revid": 5379869
+  },
+  {
+   "city": "new-york",
+   "name": "Financial District, Manhattan",
+   "title": "Manhattan/Financial District",
+   "summary": "Long the center of the American economy, the Financial District is full of impressive turn-of-the-century buildings and is a hive of activity during the day. At night it clears out considerably, though it is becoming an increasingly residential area, giving it more flavor than it has had in the past. Wall Street, the World Trade Center site, South Street Seaport, and Battery Park — a departure point for ferries to the Statue of Liberty and Ellis Island, Staten Island, and Governors Island — are all in this neighborhood.",
+   "source_url": "https://en.wikivoyage.org/wiki/Manhattan/Financial_District",
+   "revid": 5384989
+  },
+  {
+   "city": "new-york",
+   "name": "TriBeCa, Manhattan",
+   "title": "Manhattan/TriBeCa",
+   "summary": "The \"Triangle Below Canal Street\". Home to Robert DeNiro's annual film festival, it is popular with the affluent crowd and replete with trendy restaurants. Unlike SoHo to the north, Tribeca is not over-filled with shoppers on weekends, and Greenwich Street could be mistaken for the main street of a beautifully preserved small town.",
+   "source_url": "https://en.wikivoyage.org/wiki/Manhattan/TriBeCa",
+   "revid": 5384994
+  },
+  {
+   "city": "new-york",
+   "name": "SoHo, Manhattan",
+   "title": "Manhattan/SoHo",
+   "summary": "\"South of Houston Street\" flows north from Canal Street between the Hudson River and Lafayette St. The ultimate urban gentrification story, SoHo was a rundown industrial area until the 1960s, when artists began inhabiting its spacious and then-cheap lofts. After the artists came the galleries, then the celebrities, then the shoppers, and now the visitors. Filled with gorgeous cast-iron architecture (on Greene Street especially), SoHo is a great shopping and dining destination, even if many of the artists have moved on.",
+   "source_url": "https://en.wikivoyage.org/wiki/Manhattan/SoHo",
+   "revid": 5353415
+  },
+  {
+   "city": "new-york",
+   "name": "Chinatown, Manhattan",
+   "title": "Manhattan/Chinatown",
+   "summary": "Chinatown retains its scruffy, exotic atmosphere, especially around Mott and Canal Streets. The diminishing Little Italy still exists on Mulberry Street (and comes out in full force for Italian festivals such as the Feast of San Gennaro in September), but the surrounding blocks are morphing into fashionable Nolita (\"North of Little Italy\") or have been annexed by Chinatown.",
+   "source_url": "https://en.wikivoyage.org/wiki/Manhattan/Chinatown",
+   "revid": 5353407
+  },
+  {
+   "city": "new-york",
+   "name": "Lower East Side, Manhattan",
+   "title": "Manhattan/Lower East Side",
+   "summary": "Famous as the Jewish immigrant ghetto of the early 20th century, the neighborhood today is enjoying a renaissance, with dozens of bars and restaurants.",
+   "source_url": "https://en.wikivoyage.org/wiki/Manhattan/Lower_East_Side",
+   "revid": 5384992
+  },
+  {
+   "city": "new-york",
+   "name": "Greenwich Village, Manhattan",
+   "title": "Manhattan/Greenwich Village",
+   "summary": "Coffee houses, wine bars, lowrise but high art and literary connections, all between Houston and 14th Streets. The bohemian center of yore, today's Village is strongly upmarket but retains its diverse flavor, with its historic community around Christopher Street and thousands of students who attend NYU.",
+   "source_url": "https://en.wikivoyage.org/wiki/Manhattan/Greenwich_Village",
+   "revid": 5384990
+  },
+  {
+   "city": "new-york",
+   "name": "East Village, Manhattan",
+   "title": "Manhattan/East Village",
+   "summary": "Diverse and gentrified but perhaps still hip, this area lies east of Broadway. Pockets of Ukrainians, Japanese, South Asians and young professionals make it one of the most vibrant Manhattan areas. The once-shabby area formerly known as Alphabet City, centered on Avenues A through D, is now considered part of the East Village.",
+   "source_url": "https://en.wikivoyage.org/wiki/Manhattan/East_Village",
+   "revid": 5392269
+  },
+  {
+   "city": "new-york",
+   "name": "Chelsea, Manhattan",
+   "title": "Manhattan/Chelsea",
+   "summary": "Having superseded Greenwich Village as the primary center of New York's gay community, this appealing district has a great mix of fashion, design, art, culture, bars and restaurants.",
+   "source_url": "https://en.wikivoyage.org/wiki/Manhattan/Chelsea",
+   "revid": 5353406
+  },
+  {
+   "city": "new-york",
+   "name": "Gramercy Flatiron, Manhattan",
+   "title": "Manhattan/Gramercy Flatiron",
+   "summary": "A chic, stylish district of stately residential areas, gardens and squares, trendy restaurants and bars.",
+   "source_url": "https://en.wikivoyage.org/wiki/Manhattan/Gramercy_Flatiron",
+   "revid": 5353410
+  },
+  {
+   "city": "new-york",
+   "name": "Theater District, Manhattan",
+   "title": "Manhattan/Theater District",
+   "summary": "The name says it all: Broadway, Times Square, 42nd Street, Hell's Kitchen, Columbus Circle; often overlapping in the area between Fifth and Sixth Avenues with Midtown East. The Intrepid Sea, Air & Space Museum is down on the Hudson River.",
+   "source_url": "https://en.wikivoyage.org/wiki/Manhattan/Theater_District",
+   "revid": 5384993
+  },
+  {
+   "city": "new-york",
+   "name": "Midtown East, Manhattan",
+   "title": "Manhattan/Midtown East",
+   "summary": "This extensive area east of Sixth Avenue includes a number of New York icons including the United Nations, Grand Central Terminal, Empire State Building and Chrysler Building.",
+   "source_url": "https://en.wikivoyage.org/wiki/Manhattan/Midtown_East",
+   "revid": 5353414
+  },
+  {
+   "city": "new-york",
+   "name": "Central Park, Manhattan",
+   "title": "Manhattan/Central Park",
+   "summary": "With its lawns, trees and lakes, it is popular for recreation and concerts and is home to the Metropolitan Museum of Art and Central Park Zoo.",
+   "source_url": "https://en.wikivoyage.org/wiki/Manhattan/Central_Park",
+   "revid": 5384987
+  },
+  {
+   "city": "new-york",
+   "name": "Upper East Side, Manhattan",
+   "title": "Manhattan/Upper East Side",
+   "summary": "Primarily a residential neighborhood, it remains New York City's wealthiest. Museums and restaurants abound.",
+   "source_url": "https://en.wikivoyage.org/wiki/Manhattan/Upper_East_Side",
+   "revid": 5360182
+  },
+  {
+   "city": "new-york",
+   "name": "Upper West Side, Manhattan",
+   "title": "Manhattan/Upper West Side",
+   "summary": "Often called the city's quintessential neighborhood and made famous by TV's Seinfeld, it includes delightful residential streets, the twin-towered facades of the old apartment hotels on Central Park West and Riverside Drive, Columbia University, large and impressive churches, two of the city's best-known markets (Zabar's and Fairway) and one of its major museums – the American Museum of Natural History.",
+   "source_url": "https://en.wikivoyage.org/wiki/Manhattan/Upper_West_Side",
+   "revid": 5392257
+  },
+  {
+   "city": "new-york",
+   "name": "Harlem and Upper Manhattan",
+   "title": "Manhattan/Harlem and Upper Manhattan",
+   "summary": "Harlem, America's most famous black community, is home to an increasingly diverse mix of cultures. East Harlem (aka Spanish Harlem), the traditional center of Latino culture in Manhattan, has been joined by the lively, predominantly Dominican neighborhoods of West Harlem and Washington Heights. Washington Heights, which is north of Harlem, is notable for Fort Tryon Park, the home of The Cloisters (the Medieval annex of the Metropolitan Museum). At the northern tip of Manhattan, Inwood's claim to fame is Inwood Hill Park, the last remaining virgin forest on the island.",
+   "source_url": "https://en.wikivoyage.org/wiki/Manhattan/Harlem_and_Upper_Manhattan",
+   "revid": 5384991
+  },
+  {
+   "city": "new-york",
+   "name": "Williamsburg, Brooklyn",
+   "title": "Brooklyn/Williamsburg",
+   "summary": "Well known for its large artistic community, it is a diverse area with hipsters centered around Bedford Avenue, Orthodox Jews in South Williamsburg, a sizeable Polish population in Greenpoint, and a large Hispanic population and a growing arts community in Bushwick.",
+   "source_url": "https://en.wikivoyage.org/wiki/Brooklyn/Williamsburg",
+   "revid": 5392274
+  },
+  {
+   "city": "new-york",
+   "name": "Downtown, Brooklyn",
+   "title": "Brooklyn/Downtown",
+   "summary": "The main tourism district in Brooklyn, Downtown Brooklyn has majestic buildings, the Brooklyn Bridge, and an unparalleled view of the Downtown Manhattan skyline from the Brooklyn Heights Promenade.",
+   "source_url": "https://en.wikivoyage.org/wiki/Brooklyn/Downtown",
+   "revid": 5382515
+  },
+  {
+   "city": "new-york",
+   "name": "Gowanus and Red Hook, Brooklyn",
+   "title": "Brooklyn/Gowanus and Red Hook",
+   "summary": "Red Hook is an artists' colony and was home to MTV's Real World Brooklyn cast. The nearby areas of Gowanus and Carroll Gardens are good places to explore some of Brooklyn's industrial history.",
+   "source_url": "https://en.wikivoyage.org/wiki/Brooklyn/Gowanus_and_Red_Hook",
+   "revid": 5349213
+  },
+  {
+   "city": "new-york",
+   "name": "Prospect Park, Brooklyn",
+   "title": "Brooklyn/Prospect Park",
+   "summary": "Pretty brownstone houses, the Brooklyn Museum, the Brooklyn Botanical Gardens, and more, all ringing Olmstead and Vaux's preferred park.",
+   "source_url": "https://en.wikivoyage.org/wiki/Brooklyn/Prospect_Park",
+   "revid": 5382516
+  },
+  {
+   "city": "new-york",
+   "name": "Southwest Brooklyn",
+   "title": "Brooklyn/Southwest Brooklyn",
+   "summary": "The big attraction is the historic Green-Wood cemetery, one of the largest in New York and the final resting place of several notable people. Other attractions include New York's third Chinatown, and an Italian enclave in the west of Brooklyn (shown as Greenwood and New Utrecht on the map).",
+   "source_url": "https://en.wikivoyage.org/wiki/Brooklyn/Southwest_Brooklyn",
+   "revid": 5349215
+  },
+  {
+   "city": "new-york",
+   "name": "Bedford-Stuyvesant and Flatbush, Brooklyn",
+   "title": "Brooklyn/Bedford-Stuyvesant and Flatbush",
+   "summary": "The beating heart of Brooklyn is home to New York's largest African-American neighborhood, many West Indian immigrants, a large Orthodox Jewish community, mighty shopping streets, beautiful Victorian homes, and much of the classic history of Brooklyn.",
+   "source_url": "https://en.wikivoyage.org/wiki/Brooklyn/Bedford-Stuyvesant_and_Flatbush",
+   "revid": 5349209
+  },
+  {
+   "city": "new-york",
+   "name": "Coney Island and Brighton Beach, Brooklyn",
+   "title": "Brooklyn/Coney Island and Brighton Beach",
+   "summary": "Home to the fabled Coney Island amusement parks. The neighborhood has seen a rise in tourism with the opening of the Luna Park amusement park. Also home to New York's only aquarium, the Cyclones minor league baseball team, the original Nathan's restaurant, and one of the largest Russian-speaking communities outside the former USSR.",
+   "source_url": "https://en.wikivoyage.org/wiki/Brooklyn/Coney_Island_and_Brighton_Beach",
+   "revid": 5349210
+  },
+  {
+   "city": "new-york",
+   "name": "East, Brooklyn",
+   "title": "Brooklyn/East",
+   "summary": "While certain neighborhoods in this section are pretty rough and this one is off the average tourist's radar (except for its proximity to JFK), this section has some attractions near Jamaica Bay.",
+   "source_url": "https://en.wikivoyage.org/wiki/Brooklyn/East",
+   "revid": 5349212
+  },
+  {
+   "city": "new-york",
+   "name": "Long Island City and Astoria, Queens",
+   "title": "Queens/Long Island City and Astoria",
+   "summary": "Traditionally industrial, LIC is now home to a rising arts community. Astoria is known for its large Greek population, which is now accompanied by residents of diverse origins from four continents. Many trendy restaurants and shops are located in Astoria, with Steinway Street being a primary shopping district.",
+   "source_url": "https://en.wikivoyage.org/wiki/Queens/Long_Island_City_and_Astoria",
+   "revid": 5360519
+  },
+  {
+   "city": "new-york",
+   "name": "Jackson Heights, Queens",
+   "title": "Queens/Jackson Heights",
+   "summary": "A large South Asian neighborhood with numerous Indian restaurants, groceries, and shops, including a Bollywood (Hindi film industry) theater, is centered around 74th St. and Roosevelt Av. The rest of the neighborhood is an incredibly diverse Latino community, with nationalities all the way from Mexico to Chile and Argentina represented. Other diverse neighborhoods, such as Woodside, with its famous Thai restaurants and Filipino markets, and Elmhurst, where almost every Southeast Asian community is represented, along with Chinese, Koreans, South Asians, and Latinos, are also included in this article.",
+   "source_url": "https://en.wikivoyage.org/wiki/Queens/Jackson_Heights",
+   "revid": 5355432
+  },
+  {
+   "city": "new-york",
+   "name": "Flushing-Northeast, Queens",
+   "title": "Queens/Flushing-Northeast",
+   "summary": "At the end of the 7 line is a very large and diverse Chinese community; important Korean and Indian communities are also to be found, further from the subway stop.",
+   "source_url": "https://en.wikivoyage.org/wiki/Queens/Flushing-Northeast",
+   "revid": 5386266
+  },
+  {
+   "city": "new-york",
+   "name": "Forest Park, Queens",
+   "title": "Queens/Forest Park",
+   "summary": "A large park in the center of Queens and the surrounding neighborhoods.",
+   "source_url": "https://en.wikivoyage.org/wiki/Queens/Forest_Park",
+   "revid": 5355431
+  },
+  {
+   "city": "new-york",
+   "name": "Jamaica, Queens",
+   "title": "Queens/Jamaica",
+   "summary": "Transportation hub, primarily Black community, King Manor Museum, and unique cultural venues geared toward African American art.",
+   "source_url": "https://en.wikivoyage.org/wiki/Queens/Jamaica",
+   "revid": 5355433
+  },
+  {
+   "city": "new-york",
+   "name": "The Rockaways, Queens",
+   "title": "Queens/The Rockaways",
+   "summary": "A popular summer resort area since the 1830s, The Rockaways have become a mixture of lower, middle, and upper-class neighborhoods.",
+   "source_url": "https://en.wikivoyage.org/wiki/Queens/The_Rockaways",
+   "revid": 5126454
+  },
+  {
+   "city": "new-york",
+   "name": "Bronx",
+   "title": "Bronx",
+   "summary": "A primarily residential borough north of Manhattan, the Bronx is home to the Bronx Zoo, the New York Botanical Gardens, and the New York Yankees professional baseball team. It's also known as the birthplace of hip-hop and rap. The borough contains the largest park in New York City, Pelham Bay Park, which is three times larger than Central Park. It is the only borough in the city that is part of mainland New York State.",
+   "source_url": "https://en.wikivoyage.org/wiki/Bronx",
+   "revid": 5382513
+  },
+  {
+   "city": "new-york",
+   "name": "Staten Island",
+   "title": "Staten Island",
+   "summary": "A large island in New York Harbor, south of Manhattan and just across the narrow Kill Van Kull from New Jersey. The borough has the unfortunate nickname of The Forgotten Borough, due to the fact that it lacks a subway connection and has a weaker political influence compared to the other boroughs. Unlike most of the rest of New York City, much of Staten Island has a somewhat suburban character.",
+   "source_url": "https://en.wikivoyage.org/wiki/Staten_Island",
+   "revid": 5356732
+  },
+  {
+   "city": "los-angeles",
+   "name": "Bunker Hill",
+   "title": "Los Angeles/Bunker Hill",
+   "summary": "Just east of the 110 freeway, contains most of Downtown's high-rise skyscrapers and music venues, as well as many hotels and bars.",
+   "source_url": "https://en.wikivoyage.org/wiki/Los_Angeles/Bunker_Hill",
+   "revid": 5384847
+  },
+  {
+   "city": "los-angeles",
+   "name": "Chinatown",
+   "title": "Los Angeles/Chinatown",
+   "summary": "Roughly bordered by the River, the 101 freeway and the 110 freeway, this area contains LA's historic Spanish core, its Chinese-American enclave, and Union Station.",
+   "source_url": "https://en.wikivoyage.org/wiki/Los_Angeles/Chinatown",
+   "revid": 5384849
+  },
+  {
+   "city": "los-angeles",
+   "name": "Eastside",
+   "title": "Los Angeles/Eastside",
+   "summary": "In the hills east of the downtown area is the Hispanic center of Los Angeles. This area is mostly residential in character, with a few scattered attractions.",
+   "source_url": "https://en.wikivoyage.org/wiki/Los_Angeles/Eastside",
+   "revid": 5368822
+  },
+  {
+   "city": "los-angeles",
+   "name": "Hollywood",
+   "title": "Los Angeles/Hollywood",
+   "summary": "The historic and spiritual heart of the entertainment industry, with many tourist attractions paying tribute to the film and television stars of the past and where many movies still have their public premieres.",
+   "source_url": "https://en.wikivoyage.org/wiki/Los_Angeles/Hollywood",
+   "revid": 5394043
+  },
+  {
+   "city": "los-angeles",
+   "name": "Northwest",
+   "title": "Los Angeles/Northwest",
+   "summary": "A funkier area in the heights north of Downtown and east of Hollywood that includes some rapidly gentrifying neighborhoods and the expansive Griffith Park, with its zoo, museums, and famous observatory.",
+   "source_url": "https://en.wikivoyage.org/wiki/Los_Angeles/Northwest",
+   "revid": 5384854
+  },
+  {
+   "city": "los-angeles",
+   "name": "South",
+   "title": "Los Angeles/South",
+   "summary": "Though it has long had a reputation for gang violence and is the infamous site of the Rodney King riots, this area has mellowed significantly in the years since. While it remains off most people's radar, there are some highlights including the Watts Towers and the science museums of Exposition Park.",
+   "source_url": "https://en.wikivoyage.org/wiki/Los_Angeles/South",
+   "revid": 5353188
+  },
+  {
+   "city": "los-angeles",
+   "name": "Wilshire",
+   "title": "Los Angeles/Wilshire",
+   "summary": "Home to the Miracle Mile District of Wilshire Boulevard, with its historic architecture and museums near the La Brea Tar Pits. Nearby are the studios, shops, and entertainment of the Fairfax District.",
+   "source_url": "https://en.wikivoyage.org/wiki/Los_Angeles/Wilshire",
+   "revid": 5353190
+  },
+  {
+   "city": "chicago",
+   "name": "Loop",
+   "title": "Chicago/Loop",
+   "summary": "",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/Loop",
+   "revid": 5389741
+  },
+  {
+   "city": "chicago",
+   "name": "Near North",
+   "title": "Chicago/Near North",
+   "summary": "",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/Near_North",
+   "revid": 5382925
+  },
+  {
+   "city": "chicago",
+   "name": "Near South",
+   "title": "Chicago/Near South",
+   "summary": "",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/Near_South",
+   "revid": 5382926
+  },
+  {
+   "city": "chicago",
+   "name": "Lakeview-North Center",
+   "title": "Chicago/Lakeview-North Center",
+   "summary": "",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/Lakeview-North_Center",
+   "revid": 5382922
+  },
+  {
+   "city": "chicago",
+   "name": "Lincoln Park-Old Town",
+   "title": "Chicago/Lincoln Park-Old Town",
+   "summary": "",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/Lincoln_Park-Old_Town",
+   "revid": 5382923
+  },
+  {
+   "city": "chicago",
+   "name": "Hyde Park",
+   "title": "Chicago/Hyde Park",
+   "summary": "",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/Hyde_Park",
+   "revid": 5389740
+  },
+  {
+   "city": "chicago",
+   "name": "Bronzeville",
+   "title": "Chicago/Bronzeville",
+   "summary": "",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/Bronzeville",
+   "revid": 5382918
+  },
+  {
+   "city": "chicago",
+   "name": "Bridgeport-Chinatown",
+   "title": "Chicago/Bridgeport-Chinatown",
+   "summary": "",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/Bridgeport-Chinatown",
+   "revid": 5382916
+  },
+  {
+   "city": "chicago",
+   "name": "Chatham-South Shore",
+   "title": "Chicago/Chatham-South Shore",
+   "summary": "",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/Chatham-South_Shore",
+   "revid": 5349795
+  },
+  {
+   "city": "chicago",
+   "name": "Wicker Park",
+   "title": "Chicago/Wicker Park",
+   "summary": "",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/Wicker_Park",
+   "revid": 5349813
+  },
+  {
+   "city": "chicago",
+   "name": "Logan-Bucktown",
+   "title": "Chicago/Logan-Bucktown",
+   "summary": "",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/Logan-Bucktown",
+   "revid": 5359524
+  },
+  {
+   "city": "chicago",
+   "name": "Near West Side",
+   "title": "Chicago/Near West Side",
+   "summary": "",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/Near_West_Side",
+   "revid": 5349807
+  },
+  {
+   "city": "chicago",
+   "name": "Pilsen",
+   "title": "Chicago/Pilsen",
+   "summary": "",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/Pilsen",
+   "revid": 5359527
+  },
+  {
+   "city": "chicago",
+   "name": "Uptown",
+   "title": "Chicago/Uptown",
+   "summary": "",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/Uptown",
+   "revid": 5349812
+  },
+  {
+   "city": "chicago",
+   "name": "North Lincoln",
+   "title": "Chicago/North Lincoln",
+   "summary": "",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/North_Lincoln",
+   "revid": 5382929
+  },
+  {
+   "city": "chicago",
+   "name": "Rogers Park",
+   "title": "Chicago/Rogers Park",
+   "summary": "",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/Rogers_Park",
+   "revid": 5349810
+  },
+  {
+   "city": "chicago",
+   "name": "Far West Side",
+   "title": "Chicago/Far West Side",
+   "summary": "So far off the beaten tourist track you might not find your way back, but that's OK given all the great food, a couple of top blues clubs, and enormous parks.",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/Far_West_Side",
+   "revid": 5349799
+  },
+  {
+   "city": "chicago",
+   "name": "Southwest Side",
+   "title": "Chicago/Southwest Side",
+   "summary": "Former home to the massive meatpacking district of the Union Stockyards, huge Polish and Mexican neighborhoods, and Midway Airport.",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/Southwest_Side",
+   "revid": 5349811
+  },
+  {
+   "city": "chicago",
+   "name": "Far Northwest Side",
+   "title": "Chicago/Far Northwest Side",
+   "summary": "Polish Village, historic homes and theaters, and some undiscovered gems in the neighborhoods near O'Hare International Airport.",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/Far_Northwest_Side",
+   "revid": 5349796
+  },
+  {
+   "city": "chicago",
+   "name": "Far Southeast Side",
+   "title": "Chicago/Far Southeast Side",
+   "summary": "The giant, industrial underbelly of Chicago, home to one large tourist draw: the historic Pullman District.",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/Far_Southeast_Side",
+   "revid": 5382920
+  },
+  {
+   "city": "chicago",
+   "name": "Far Southwest Side",
+   "title": "Chicago/Far Southwest Side",
+   "summary": "Ireland in Chicago: authentic Irish pubs, brogues, galleries, and the odd haunted castle, all extremely far from the city center.",
+   "source_url": "https://en.wikivoyage.org/wiki/Chicago/Far_Southwest_Side",
+   "revid": 5349798
+  },
+  {
+   "city": "houston",
+   "name": "Downtown",
+   "title": "Houston/Downtown",
+   "summary": "Center of the city, still the home of high finance and big business. Houston is second only to New York City in corporate headquarters of Fortune 500 companies. Many of them are in downtown including some of the world's largest energy companies. Downtown Houston also boasts the second largest theater district in the United States and the city has world class permanent organizations such as the Houston Symphony and Houston Ballet. The Rockets, Astros, Dynamo, and Dash all play downtown.",
+   "source_url": "https://en.wikivoyage.org/wiki/Houston/Downtown",
+   "revid": 5384041
+  },
+  {
+   "city": "houston",
+   "name": "Neartown",
+   "title": "Houston/Neartown",
+   "summary": "Neartown encompasses Midtown, an older light industrial area cum trendy apartment archipelago; Montrose, a pleasant streetcar suburb that was abandoned and resurrected by Houston's LGBT community; and the historic 4th Ward, a Freedman's town that was built by the hands of freed African American slaves and now facing gentrification by a development company.",
+   "source_url": "https://en.wikivoyage.org/wiki/Houston/Neartown",
+   "revid": 5351834
+  },
+  {
+   "city": "houston",
+   "name": "Greater Heights",
+   "title": "Houston/Greater Heights",
+   "summary": "A large district of gingerbread Victorian homes as well as early 20th century bungalows. Like its sister neighborhood Montrose, the Heights is home to a diverse population from artists and musicians to wealthy professionals. Parts of the Heights are still dry, fostering a large number of BYOB restaurants ideal for those who enjoy their own selected wine.",
+   "source_url": "https://en.wikivoyage.org/wiki/Houston/Greater_Heights",
+   "revid": 5384042
+  },
+  {
+   "city": "houston",
+   "name": "South Inner Loop",
+   "title": "Houston/South Inner Loop",
+   "summary": "To the south and east of downtown lie Rice University, the many attractions of Hermann Park, NRG Stadium, and the Texas Medical Center (or just \"the med center\"), including some of the world's best hospitals. The Rice Village is a highly concentrated area of restaurants, bars, and shopping. The Museum District is the center of Houston's visual arts and museums.",
+   "source_url": "https://en.wikivoyage.org/wiki/Houston/South_Inner_Loop",
+   "revid": 5387516
+  },
+  {
+   "city": "houston",
+   "name": "West Inner Loop",
+   "title": "Houston/West Inner Loop",
+   "summary": "River Oaks is home to Houston's most exclusive and affluent neighborhoods and businesses, home to eye-popping mansions and the River Oaks Shopping Center, one of America's first suburban shopping districts and a great display of Art Deco architecture. This area has many great restaurants, vibrant nightlife, and infamous traffic jams during peak hours.",
+   "source_url": "https://en.wikivoyage.org/wiki/Houston/West_Inner_Loop",
+   "revid": 5351837
+  },
+  {
+   "city": "houston",
+   "name": "Uptown",
+   "title": "Houston/Uptown",
+   "summary": "Uptown or The Galleria Area is known for its namesake, a huge high-end shopping mall complex and has the tallest building in the United States outside of a main downtown area, the Williams tower.",
+   "source_url": "https://en.wikivoyage.org/wiki/Houston/Uptown",
+   "revid": 5384043
+  },
+  {
+   "city": "houston",
+   "name": "West Houston",
+   "title": "Houston/West Houston",
+   "summary": "",
+   "source_url": "https://en.wikivoyage.org/wiki/Houston/West_Houston",
+   "revid": 5241442
+  },
+  {
+   "city": "houston",
+   "name": "East Houston",
+   "title": "Houston/East Houston",
+   "summary": "",
+   "source_url": "https://en.wikivoyage.org/wiki/Houston/East_Houston",
+   "revid": 5359886
+  },
+  {
+   "city": "houston",
+   "name": "North Houston",
+   "title": "Houston/North Houston",
+   "summary": "",
+   "source_url": "https://en.wikivoyage.org/wiki/Houston/North_Houston",
+   "revid": 5351835
+  },
+  {
+   "city": "houston",
+   "name": "Clear Lake",
+   "title": "Houston/Clear Lake",
+   "summary": "",
+   "source_url": "https://en.wikivoyage.org/wiki/Houston/Clear_Lake",
+   "revid": 5351830
+  },
+  {
+   "city": "philadelphia",
+   "name": "Center City East",
+   "title": "Philadelphia/Center City East",
+   "summary": "Philadelphia's beautiful City Hall, the Convention Center, Chinatown, Washington Square West, the gay-friendly Gayborhood, and the Broad Street Arts Corridor.",
+   "source_url": "https://en.wikivoyage.org/wiki/Philadelphia/Center_City_East",
+   "revid": 5386011
+  },
+  {
+   "city": "philadelphia",
+   "name": "Center City West",
+   "title": "Philadelphia/Center City West",
+   "summary": "West of Broad Street and City Hall, includes the art museum district, Rittenhouse Square, shopping resembling an outdoor mall with dining on Chestnut and Walnut Streets, and a good portion of the central business district with Philadelphia's tallest skyscrapers.",
+   "source_url": "https://en.wikivoyage.org/wiki/Philadelphia/Center_City_West",
+   "revid": 5355011
+  },
+  {
+   "city": "philadelphia",
+   "name": "Old City",
+   "title": "Philadelphia/Old City",
+   "summary": "Philadelphia's oldest historic quarter, where the roots of American Independence began. It's between 6th Street and the Delaware River, and features Independence Mall and historical landmarks like the Liberty Bell, Constitution Hall, and Independence Hall. Also of significance are the art, design and fashion businesses and galleries, making Old City a vibrant and culturally diverse neighborhood with an 'old world' European aesthetic. Evening hours bring added excitement with great restaurants, bars and clubs.",
+   "source_url": "https://en.wikivoyage.org/wiki/Philadelphia/Old_City",
+   "revid": 5386014
+  },
+  {
+   "city": "philadelphia",
+   "name": "South",
+   "title": "Philadelphia/South",
+   "summary": "South Street, the Italian Market, the Sports Complex, endless cheap dive bars, and Philly cheesesteaks.",
+   "source_url": "https://en.wikivoyage.org/wiki/Philadelphia/South",
+   "revid": 5355015
+  },
+  {
+   "city": "philadelphia",
+   "name": "North",
+   "title": "Philadelphia/North",
+   "summary": "Working class neighborhoods, some of which are struggling with crime problems, but also the home of Temple University and Northern Liberties.",
+   "source_url": "https://en.wikivoyage.org/wiki/Philadelphia/North",
+   "revid": 5355012
+  },
+  {
+   "city": "philadelphia",
+   "name": "West",
+   "title": "Philadelphia/West",
+   "summary": "West of the Schuylkill River, includes University City comprising of University of Pennsylvania and Drexel University and its surrounding neighborhoods.",
+   "source_url": "https://en.wikivoyage.org/wiki/Philadelphia/West",
+   "revid": 5360447
+  },
+  {
+   "city": "philadelphia",
+   "name": "Northwest",
+   "title": "Philadelphia/Northwest",
+   "summary": "The off-the-beaten-path northwestern reaches of the city, most notable for its middle-to-upper class residential neighborhoods of Manayunk, Chestnut Hill, East Falls and Mt. Airy.",
+   "source_url": "https://en.wikivoyage.org/wiki/Philadelphia/Northwest",
+   "revid": 5386013
+  },
+  {
+   "city": "philadelphia",
+   "name": "Northeast",
+   "title": "Philadelphia/Northeast",
+   "summary": "The far northeastern part of town, a residential yet multicultural area.",
+   "source_url": "https://en.wikivoyage.org/wiki/Philadelphia/Northeast",
+   "revid": 5285389
+  },
+  {
+   "city": "san-diego",
+   "name": "Downtown",
+   "title": "San Diego/Downtown",
+   "summary": "A hub of business and nightlife on the bay, downtown has many tourist attractions among its gleaming office and hotel towers.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Diego/Downtown",
+   "revid": 5355964
+  },
+  {
+   "city": "san-diego",
+   "name": "Balboa Park-Hillcrest",
+   "title": "San Diego/Balboa Park-Hillcrest",
+   "summary": "Balboa is a massive urban parkland in the city's heart, home to many museums and the renowned San Diego Zoo. Next door is Hillcrest, a trendy urban neighborhood.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Diego/Balboa_Park-Hillcrest",
+   "revid": 5355963
+  },
+  {
+   "city": "san-diego",
+   "name": "Old Town-Mission Valley",
+   "title": "San Diego/Old Town-Mission Valley",
+   "summary": "The site of the first Spanish settlement in California, Old Town is a historic district popular with tourists. It sits at the foot of Mission Valley, a major commercial center.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Diego/Old_Town-Mission_Valley",
+   "revid": 5380863
+  },
+  {
+   "city": "san-diego",
+   "name": "Point Loma-Ocean Beach",
+   "title": "San Diego/Point Loma-Ocean Beach",
+   "summary": "A scenic peninsula curving around the bay, this area offers gorgeous views of San Diego, beautiful coastline, and quiet, laid-back beach neighborhoods.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Diego/Point_Loma-Ocean_Beach",
+   "revid": 5355970
+  },
+  {
+   "city": "san-diego",
+   "name": "Mission Beach-Pacific Beach",
+   "title": "San Diego/Mission Beach-Pacific Beach",
+   "summary": "Two popular beach communities with plenty of shops, restaurants, and nightlife, alongside a man-made inlet that is home to Sea World. Mission Bay park is the largest water-based city park in the nation.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Diego/Mission_Beach-Pacific_Beach",
+   "revid": 5386639
+  },
+  {
+   "city": "san-diego",
+   "name": "La Jolla",
+   "title": "San Diego/La Jolla",
+   "summary": "An upscale beach community, it features some of the most picturesque coastline and lovely beaches around, an exceptional aquarium, and the University of California at San Diego (UCSD).",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Diego/La_Jolla",
+   "revid": 5392423
+  },
+  {
+   "city": "san-diego",
+   "name": "Mid-City",
+   "title": "San Diego/Mid-City",
+   "summary": "A set of neighborhoods in the heights east of Balboa Park. There isn't much in the way of tourist attractions out here, but one can find trendy districts with locally oriented restaurants, shops, and theaters.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Diego/Mid-City",
+   "revid": 5355966
+  },
+  {
+   "city": "san-diego",
+   "name": "North",
+   "title": "San Diego/North",
+   "summary": "A large region of the city composed of many suburban neighborhoods stretching far inland to the hills of the north, with a few scattered tourist attractions, including the popular Safari Park.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Diego/North",
+   "revid": 5373978
+  },
+  {
+   "city": "san-diego",
+   "name": "San Ysidro",
+   "title": "San Diego/San Ysidro",
+   "summary": "Home to one of the world's busiest land border crossings, where one can travel between San Diego and Tijuana, Mexico. This section is not contiguous with the rest of San Diego; you have to travel through the suburbs of National City and Chula Vista on the I-5 or I-805 freeways or take the San Diego Trolley.",
+   "source_url": "https://en.wikivoyage.org/wiki/San_Diego/San_Ysidro",
+   "revid": 5253144
+  },
+  {
+   "city": "dallas",
+   "name": "Downtown",
+   "title": "Dallas/Downtown",
+   "summary": "Downtown Dallas is undergoing slow urban renewal and expansion. Traditionally bound by a belt of above-ground expressways, consisting of anonymous high-rise towers, and pocked with parking craters, it is now rediscovering walkability, street-level retail, and public transit. It is in Downtown that you will find most of Dallas' surviving historic architecture and monuments, major cultural institutions, museums and art galleries. It also has several concentrations of restaurants and bars and many upscale hotels for the moneyed traveler to choose from.",
+   "source_url": "https://en.wikivoyage.org/wiki/Dallas/Downtown",
+   "revid": 5389888
+  },
+  {
+   "city": "dallas",
+   "name": "North Dallas",
+   "title": "Dallas/North Dallas",
+   "summary": "North Dallas contains the Park Cities, the most affluent area of the metroplex, as well as several other upscale neighborhoods. The Park Cities, Highland Park and University Park, are mostly residential but also offer world-class shopping opportunities, and University Park is home to Southern Methodist University (SMU), the Meadows Museum at SMU, and the George W. Bush Presidential Library.",
+   "source_url": "https://en.wikivoyage.org/wiki/Dallas/North_Dallas",
+   "revid": 5350249
+  },
+  {
+   "city": "dallas",
+   "name": "South Dallas",
+   "title": "Dallas/South Dallas",
+   "summary": "South Dallas includes areas south of the I30 Interstate Highway and the southwestern bank of the Trinity River. It includes Fair Park: the annual home of the Texas State Fair, a small collection of year-round museums, and the Cotton Bowl, the venerable football stadium where the University of Texas and University of Oklahoma face off on the gridiron every year during the Fair. The Exposition Park neighborhood across from Fair Park and its DART light rail station is a little hamlet of hipster bars, clubs, and restaurants.",
+   "source_url": "https://en.wikivoyage.org/wiki/Dallas/South_Dallas",
+   "revid": 5239165
+  }
+ ],
+ "matches": {
+  "San Francisco/Golden Gate": {
+   "new-york": [
+    {
+     "title": "Manhattan/Greenwich Village",
+     "score": 93,
+     "sections": {
+      "understand": 69,
+      "see": 66,
+      "do": 94,
+      "buy": 76,
+      "eat": 96,
+      "drink": 40
+     }
+    },
+    {
+     "title": "Manhattan/Upper West Side",
+     "score": 92,
+     "sections": {
+      "understand": 23,
+      "see": 46,
+      "do": 91,
+      "buy": 42,
+      "eat": 94,
+      "drink": 99
+     }
+    },
+    {
+     "title": "Queens/The Rockaways",
+     "score": 89,
+     "sections": {
+      "understand": 98,
+      "see": 77,
+      "do": 22,
+      "eat": 74
+     }
+    },
+    {
+     "title": "Manhattan/Central Park",
+     "score": 83,
+     "sections": {
+      "understand": 100,
+      "see": 52,
+      "do": 83,
+      "buy": 38,
+      "eat": 71,
+      "drink": 16
+     }
+    },
+    {
+     "title": "Manhattan/Upper East Side",
+     "score": 79,
+     "sections": {
+      "understand": 16,
+      "see": 25,
+      "do": 91,
+      "buy": 95,
+      "eat": 88,
+      "drink": 39
+     }
+    }
+   ],
+   "los-angeles": [
+    {
+     "title": "Los Angeles/Hollywood",
+     "score": 92,
+     "sections": {
+      "understand": 79,
+      "see": 48,
+      "do": 92,
+      "buy": 83,
+      "eat": 56,
+      "drink": 90
+     }
+    },
+    {
+     "title": "Los Angeles/South",
+     "score": 75,
+     "sections": {
+      "understand": 96,
+      "see": 73,
+      "do": 10,
+      "buy": 5,
+      "eat": 81,
+      "drink": 95
+     }
+    },
+    {
+     "title": "Los Angeles/Eastside",
+     "score": 55,
+     "sections": {
+      "understand": 18,
+      "see": 87,
+      "do": 32,
+      "buy": 29,
+      "eat": 41,
+      "drink": 88
+     }
+    },
+    {
+     "title": "Los Angeles/Bunker Hill",
+     "score": 47,
+     "sections": {
+      "see": 62,
+      "do": 37,
+      "eat": 99,
+      "drink": 0
+     }
+    },
+    {
+     "title": "Los Angeles/Northwest",
+     "score": 36,
+     "sections": {
+      "understand": 1,
+      "see": 54,
+      "do": 75,
+      "buy": 82,
+      "eat": 11,
+      "drink": 72
+     }
+    }
+   ],
+   "chicago": [
+    {
+     "title": "Chicago/Near North",
+     "score": 99,
+     "sections": {
+      "understand": 97,
+      "see": 79,
+      "do": 78,
+      "buy": 100,
+      "eat": 71,
+      "drink": 89
+     }
+    },
+    {
+     "title": "Chicago/Lincoln Park-Old Town",
+     "score": 92,
+     "sections": {
+      "understand": 93,
+      "see": 59,
+      "do": 86,
+      "buy": 77,
+      "eat": 69,
+      "drink": 71
+     }
+    },
+    {
+     "title": "Chicago/Rogers Park",
+     "score": 78,
+     "sections": {
+      "understand": 20,
+      "see": 56,
+      "do": 74,
+      "buy": 88,
+      "eat": 83,
+      "drink": 66
+     }
+    },
+    {
+     "title": "Chicago/Loop",
+     "score": 76,
+     "sections": {
+      "understand": 50,
+      "see": 75,
+      "do": 62,
+      "buy": 95,
+      "eat": 82,
+      "drink": 9
+     }
+    },
+    {
+     "title": "Chicago/Far Southeast Side",
+     "score": 75,
+     "sections": {
+      "understand": 73,
+      "see": 76,
+      "do": 46,
+      "eat": 76,
+      "drink": 50
+     }
+    }
+   ],
+   "houston": [
+    {
+     "title": "Houston/West Inner Loop",
+     "score": 81,
+     "sections": {
+      "understand": 75,
+      "see": 78,
+      "do": 75,
+      "buy": 54,
+      "eat": 56,
+      "drink": 75
+     }
+    },
+    {
+     "title": "Houston/East Houston",
+     "score": 73,
+     "sections": {
+      "see": 99,
+      "do": 20,
+      "eat": 6,
+      "drink": 82
+     }
+    },
+    {
+     "title": "Houston/Greater Heights",
+     "score": 67,
+     "sections": {
+      "understand": 56,
+      "see": 5,
+      "do": 80,
+      "buy": 15,
+      "eat": 78,
+      "drink": 98
+     }
+    },
+    {
+     "title": "Houston/Clear Lake",
+     "score": 64,
+     "sections": {
+      "understand": 77,
+      "see": 70,
+      "do": 70,
+      "buy": 78,
+      "eat": 10,
+      "drink": 51
+     }
+    },
+    {
+     "title": "Houston/Uptown",
+     "score": 56,
+     "sections": {
+      "see": 31,
+      "do": 65,
+      "buy": 78,
+      "eat": 31,
+      "drink": 64
+     }
+    }
+   ],
+   "philadelphia": [
+    {
+     "title": "Philadelphia/Old City",
+     "score": 88,
+     "sections": {
+      "understand": 68,
+      "see": 94,
+      "do": 56,
+      "buy": 56,
+      "eat": 44,
+      "drink": 92
+     }
+    },
+    {
+     "title": "Philadelphia/Center City West",
+     "score": 81,
+     "sections": {
+      "understand": 82,
+      "see": 34,
+      "do": 32,
+      "buy": 98,
+      "eat": 58,
+      "drink": 71
+     }
+    },
+    {
+     "title": "Philadelphia/Northwest",
+     "score": 66,
+     "sections": {
+      "understand": 32,
+      "see": 69,
+      "do": 73,
+      "buy": 42,
+      "eat": 46,
+      "drink": 82
+     }
+    },
+    {
+     "title": "Philadelphia/West",
+     "score": 51,
+     "sections": {
+      "understand": 93,
+      "see": 66,
+      "do": 43,
+      "buy": 68,
+      "eat": 10,
+      "drink": 19
+     }
+    },
+    {
+     "title": "Philadelphia/North",
+     "score": 48,
+     "sections": {
+      "understand": 48,
+      "see": 83,
+      "do": 51,
+      "buy": 13,
+      "eat": 52,
+      "drink": 37
+     }
+    }
+   ],
+   "san-diego": [
+    {
+     "title": "San Diego/Downtown",
+     "score": 90,
+     "sections": {
+      "understand": 8,
+      "see": 50,
+      "do": 54,
+      "buy": 68,
+      "eat": 97,
+      "drink": 100
+     }
+    },
+    {
+     "title": "San Diego/North",
+     "score": 83,
+     "sections": {
+      "see": 77,
+      "do": 84,
+      "eat": 82,
+      "drink": 23
+     }
+    },
+    {
+     "title": "San Diego/Point Loma-Ocean Beach",
+     "score": 78,
+     "sections": {
+      "see": 99,
+      "do": 32,
+      "buy": 95,
+      "eat": 54,
+      "drink": 1
+     }
+    },
+    {
+     "title": "San Diego/Mission Beach-Pacific Beach",
+     "score": 78,
+     "sections": {
+      "understand": 88,
+      "see": 3,
+      "do": 76,
+      "buy": 69,
+      "eat": 65,
+      "drink": 97
+     }
+    },
+    {
+     "title": "San Diego/Old Town-Mission Valley",
+     "score": 50,
+     "sections": {
+      "see": 91,
+      "do": 5,
+      "buy": 49,
+      "eat": 12,
+      "drink": 93
+     }
+    }
+   ],
+   "dallas": [
+    {
+     "title": "Dallas/North Dallas",
+     "score": 74,
+     "sections": {
+      "understand": 42,
+      "see": 22,
+      "do": 62,
+      "buy": 79,
+      "eat": 89,
+      "drink": 80
+     }
+    },
+    {
+     "title": "Dallas/South Dallas",
+     "score": 57,
+     "sections": {
+      "understand": 80,
+      "see": 81,
+      "do": 34,
+      "buy": 53,
+      "eat": 31,
+      "drink": 36
+     }
+    },
+    {
+     "title": "Dallas/Downtown",
+     "score": 29,
+     "sections": {
+      "understand": 31,
+      "see": 55,
+      "do": 60,
+      "buy": 20,
+      "eat": 36,
+      "drink": 34
+     }
+    }
+   ]
+  },
+  "San Francisco/Fisherman's Wharf": {
+   "new-york": [
+    {
+     "title": "Queens/The Rockaways",
+     "score": 99,
+     "sections": {
+      "understand": 97,
+      "see": 83,
+      "do": 95,
+      "eat": 86
+     }
+    },
+    {
+     "title": "Staten Island",
+     "score": 99,
+     "sections": {
+      "understand": 92,
+      "see": 56,
+      "do": 83,
+      "buy": 96,
+      "eat": 98,
+      "drink": 97
+     }
+    },
+    {
+     "title": "Brooklyn/Coney Island and Brighton Beach",
+     "score": 98,
+     "sections": {
+      "understand": 94,
+      "see": 89,
+      "do": 97,
+      "buy": 35,
+      "eat": 99,
+      "drink": 35
+     }
+    },
+    {
+     "title": "Brooklyn/Southwest Brooklyn",
+     "score": 94,
+     "sections": {
+      "understand": 52,
+      "see": 87,
+      "do": 56,
+      "buy": 53,
+      "eat": 77,
+      "drink": 100
+     }
+    },
+    {
+     "title": "Brooklyn/Gowanus and Red Hook",
+     "score": 90,
+     "sections": {
+      "understand": 91,
+      "see": 92,
+      "do": 77,
+      "buy": 44,
+      "eat": 62,
+      "drink": 59
+     }
+    }
+   ],
+   "los-angeles": [
+    {
+     "title": "Los Angeles/South",
+     "score": 75,
+     "sections": {
+      "understand": 57,
+      "see": 84,
+      "do": 49,
+      "buy": 35,
+      "eat": 69,
+      "drink": 83
+     }
+    },
+    {
+     "title": "Los Angeles/Hollywood",
+     "score": 71,
+     "sections": {
+      "understand": 95,
+      "see": 52,
+      "do": 67,
+      "buy": 90,
+      "eat": 35,
+      "drink": 6
+     }
+    },
+    {
+     "title": "Los Angeles/Eastside",
+     "score": 57,
+     "sections": {
+      "understand": 2,
+      "see": 30,
+      "do": 72,
+      "buy": 66,
+      "eat": 77,
+      "drink": 91
+     }
+    },
+    {
+     "title": "Los Angeles/Bunker Hill",
+     "score": 27,
+     "sections": {
+      "see": 39,
+      "do": 17,
+      "eat": 77,
+      "drink": 26
+     }
+    },
+    {
+     "title": "Los Angeles/Chinatown",
+     "score": 21,
+     "sections": {
+      "see": 35,
+      "eat": 37
+     }
+    }
+   ],
+   "chicago": [
+    {
+     "title": "Chicago/Near North",
+     "score": 99,
+     "sections": {
+      "understand": 98,
+      "see": 100,
+      "do": 99,
+      "buy": 85,
+      "eat": 30,
+      "drink": 23
+     }
+    },
+    {
+     "title": "Chicago/Far Southeast Side",
+     "score": 94,
+     "sections": {
+      "understand": 63,
+      "see": 87,
+      "do": 87,
+      "eat": 98,
+      "drink": 25
+     }
+    },
+    {
+     "title": "Chicago/Bridgeport-Chinatown",
+     "score": 85,
+     "sections": {
+      "understand": 70,
+      "see": 56,
+      "do": 82,
+      "buy": 80,
+      "eat": 46,
+      "drink": 85
+     }
+    },
+    {
+     "title": "Chicago/Pilsen",
+     "score": 84,
+     "sections": {
+      "understand": 28,
+      "see": 91,
+      "do": 85,
+      "buy": 23,
+      "eat": 94,
+      "drink": 56
+     }
+    },
+    {
+     "title": "Chicago/Loop",
+     "score": 81,
+     "sections": {
+      "understand": 93,
+      "see": 33,
+      "do": 31,
+      "buy": 81,
+      "eat": 77,
+      "drink": 82
+     }
+    }
+   ],
+   "houston": [
+    {
+     "title": "Houston/East Houston",
+     "score": 99,
+     "sections": {
+      "see": 99,
+      "do": 58,
+      "eat": 57,
+      "drink": 99
+     }
+    },
+    {
+     "title": "Houston/Clear Lake",
+     "score": 98,
+     "sections": {
+      "understand": 97,
+      "see": 70,
+      "do": 98,
+      "buy": 70,
+      "eat": 97,
+      "drink": 68
+     }
+    },
+    {
+     "title": "Houston/North Houston",
+     "score": 94,
+     "sections": {
+      "see": 63,
+      "do": 96,
+      "buy": 97,
+      "eat": 46,
+      "drink": 45
+     }
+    },
+    {
+     "title": "Houston/West Inner Loop",
+     "score": 31,
+     "sections": {
+      "understand": 68,
+      "see": 17,
+      "do": 70,
+      "buy": 44,
+      "eat": 19,
+      "drink": 32
+     }
+    },
+    {
+     "title": "Houston/Uptown",
+     "score": 30,
+     "sections": {
+      "see": 22,
+      "do": 18,
+      "buy": 87,
+      "eat": 23,
+      "drink": 56
+     }
+    }
+   ],
+   "philadelphia": [
+    {
+     "title": "Philadelphia/Northeast",
+     "score": 88,
+     "sections": {
+      "understand": 87,
+      "see": 42,
+      "do": 83,
+      "buy": 98,
+      "eat": 73,
+      "drink": 13
+     }
+    },
+    {
+     "title": "Philadelphia/Center City West",
+     "score": 82,
+     "sections": {
+      "understand": 15,
+      "see": 69,
+      "do": 93,
+      "buy": 93,
+      "eat": 52,
+      "drink": 58
+     }
+    },
+    {
+     "title": "Philadelphia/Old City",
+     "score": 74,
+     "sections": {
+      "understand": 70,
+      "see": 97,
+      "do": 22,
+      "buy": 14,
+      "eat": 44,
+      "drink": 89
+     }
+    },
+    {
+     "title": "Philadelphia/South",
+     "score": 63,
+     "sections": {
+      "understand": 69,
+      "see": 77,
+      "do": 20,
+      "buy": 12,
+      "eat": 97,
+      "drink": 35
+     }
+    },
+    {
+     "title": "Philadelphia/Northwest",
+     "score": 48,
+     "sections": {
+      "understand": 20,
+      "see": 35,
+      "do": 93,
+      "buy": 38,
+      "eat": 25,
+      "drink": 58
+     }
+    }
+   ],
+   "san-diego": [
+    {
+     "title": "San Diego/Mission Beach-Pacific Beach",
+     "score": 99,
+     "sections": {
+      "understand": 48,
+      "see": 94,
+      "do": 99,
+      "buy": 61,
+      "eat": 99,
+      "drink": 53
+     }
+    },
+    {
+     "title": "San Diego/Point Loma-Ocean Beach",
+     "score": 97,
+     "sections": {
+      "see": 86,
+      "do": 100,
+      "buy": 67,
+      "eat": 81,
+      "drink": 33
+     }
+    },
+    {
+     "title": "San Diego/La Jolla",
+     "score": 96,
+     "sections": {
+      "understand": 95,
+      "see": 43,
+      "do": 79,
+      "buy": 94,
+      "eat": 75,
+      "drink": 97
+     }
+    },
+    {
+     "title": "San Diego/Downtown",
+     "score": 86,
+     "sections": {
+      "understand": 2,
+      "see": 95,
+      "do": 63,
+      "buy": 99,
+      "eat": 64,
+      "drink": 60
+     }
+    },
+    {
+     "title": "San Diego/Balboa Park-Hillcrest",
+     "score": 21,
+     "sections": {
+      "see": 76,
+      "do": 18,
+      "buy": 1,
+      "eat": 59,
+      "drink": 57
+     }
+    }
+   ],
+   "dallas": [
+    {
+     "title": "Dallas/North Dallas",
+     "score": 67,
+     "sections": {
+      "understand": 55,
+      "see": 8,
+      "do": 89,
+      "buy": 87,
+      "eat": 65,
+      "drink": 44
+     }
+    },
+    {
+     "title": "Dallas/Downtown",
+     "score": 54,
+     "sections": {
+      "understand": 85,
+      "see": 63,
+      "do": 11,
+      "buy": 37,
+      "eat": 51,
+      "drink": 75
+     }
+    },
+    {
+     "title": "Dallas/South Dallas",
+     "score": 45,
+     "sections": {
+      "understand": 12,
+      "see": 91,
+      "do": 61,
+      "buy": 25,
+      "eat": 42,
+      "drink": 38
+     }
+    }
+   ]
+  },
+  "San Francisco/Nob Hill-Russian Hill": {
+   "new-york": [
+    {
+     "title": "Brooklyn/Williamsburg",
+     "score": 88,
+     "sections": {
+      "understand": 76,
+      "see": 86,
+      "do": 86,
+      "buy": 47,
+      "eat": 55,
+      "drink": 81
+     }
+    },
+    {
+     "title": "Manhattan/Gramercy Flatiron",
+     "score": 86,
+     "sections": {
+      "understand": 83,
+      "see": 70,
+      "do": 91,
+      "buy": 57,
+      "eat": 64,
+      "drink": 59
+     }
+    },
+    {
+     "title": "Manhattan/SoHo",
+     "score": 84,
+     "sections": {
+      "see": 82,
+      "do": 65,
+      "buy": 45,
+      "eat": 92,
+      "drink": 53
+     }
+    },
+    {
+     "title": "Brooklyn/Coney Island and Brighton Beach",
+     "score": 83,
+     "sections": {
+      "understand": 97,
+      "see": 9,
+      "do": 12,
+      "buy": 93,
+      "eat": 71,
+      "drink": 96
+     }
+    },
+    {
+     "title": "Manhattan/Upper East Side",
+     "score": 82,
+     "sections": {
+      "understand": 82,
+      "see": 36,
+      "do": 32,
+      "buy": 75,
+      "eat": 84,
+      "drink": 94
+     }
+    }
+   ],
+   "los-angeles": [
+    {
+     "title": "Los Angeles/Bunker Hill",
+     "score": 99,
+     "sections": {
+      "see": 83,
+      "do": 95,
+      "eat": 97,
+      "drink": 73
+     }
+    },
+    {
+     "title": "Los Angeles/Wilshire",
+     "score": 64,
+     "sections": {
+      "see": 40,
+      "do": 57,
+      "buy": 54,
+      "eat": 30,
+      "drink": 94
+     }
+    },
+    {
+     "title": "Los Angeles/Hollywood",
+     "score": 51,
+     "sections": {
+      "understand": 46,
+      "see": 72,
+      "do": 24,
+      "buy": 22,
+      "eat": 49,
+      "drink": 84
+     }
+    },
+    {
+     "title": "Los Angeles/Chinatown",
+     "score": 46,
+     "sections": {
+      "see": 66,
+      "eat": 29
+     }
+    },
+    {
+     "title": "Los Angeles/South",
+     "score": 41,
+     "sections": {
+      "understand": 10,
+      "see": 4,
+      "do": 69,
+      "buy": 91,
+      "eat": 90,
+      "drink": 18
+     }
+    }
+   ],
+   "chicago": [
+    {
+     "title": "Chicago/North Lincoln",
+     "score": 96,
+     "sections": {
+      "understand": 94,
+      "see": 97,
+      "do": 90,
+      "buy": 81,
+      "eat": 54,
+      "drink": 49
+     }
+    },
+    {
+     "title": "Chicago/Loop",
+     "score": 81,
+     "sections": {
+      "understand": 12,
+      "see": 58,
+      "do": 87,
+      "buy": 62,
+      "eat": 95,
+      "drink": 70
+     }
+    },
+    {
+     "title": "Chicago/Bronzeville",
+     "score": 79,
+     "sections": {
+      "understand": 54,
+      "see": 29,
+      "do": 89,
+      "buy": 97,
+      "eat": 21,
+      "drink": 74
+     }
+    },
+    {
+     "title": "Chicago/Wicker Park",
+     "score": 71,
+     "sections": {
+      "understand": 51,
+      "see": 89,
+      "do": 28,
+      "buy": 72,
+      "eat": 81,
+      "drink": 27
+     }
+    },
+    {
+     "title": "Chicago/Far Northwest Side",
+     "score": 70,
+     "sections": {
+      "understand": 66,
+      "see": 82,
+      "do": 84,
+      "buy": 78,
+      "eat": 8,
+      "drink": 38
+     }
+    }
+   ],
+   "houston": [
+    {
+     "title": "Houston/Greater Heights",
+     "score": 82,
+     "sections": {
+      "understand": 90,
+      "see": 33,
+      "do": 82,
+      "buy": 92,
+      "eat": 74,
+      "drink": 17
+     }
+    },
+    {
+     "title": "Houston/Uptown",
+     "score": 80,
+     "sections": {
+      "see": 90,
+      "do": 24,
+      "buy": 68,
+      "eat": 40,
+      "drink": 94
+     }
+    },
+    {
+     "title": "Houston/West Inner Loop",
+     "score": 70,
+     "sections": {
+      "understand": 84,
+      "see": 61,
+      "do": 50,
+      "buy": 68,
+      "eat": 38,
+      "drink": 66
+     }
+    },
+    {
+     "title": "Houston/Downtown",
+     "score": 68,
+     "sections": {
+      "understand": 17,
+      "see": 92,
+      "do": 73,
+      "eat": 56,
+      "drink": 36
+     }
+    },
+    {
+     "title": "Houston/Neartown",
+     "score": 58,
+     "sections": {
+      "understand": 49,
+      "see": 33,
+      "do": 67,
+      "buy": 63,
+      "eat": 25,
+      "drink": 87
+     }
+    }
+   ],
+   "philadelphia": [
+    {
+     "title": "Philadelphia/Northwest",
+     "score": 73,
+     "sections": {
+      "understand": 96,
+      "see": 76,
+      "do": 22,
+      "buy": 83,
+      "eat": 22,
+      "drink": 60
+     }
+    },
+    {
+     "title": "Philadelphia/Northeast",
+     "score": 66,
+     "sections": {
+      "understand": 67,
+      "see": 23,
+      "do": 76,
+      "buy": 31,
+      "eat": 83,
+      "drink": 68
+     }
+    },
+    {
+     "title": "Philadelphia/Center City East",
+     "score": 65,
+     "sections": {
+      "see": 91,
+      "do": 62,
+      "buy": 18,
+      "eat": 29,
+      "drink": 72
+     }
+    },
+    {
+     "title": "Philadelphia/Old City",
+     "score": 60,
+     "sections": {
+      "understand": 55,
+      "see": 19,
+      "do": 20,
+      "buy": 91,
+      "eat": 91,
+      "drink": 36
+     }
+    },
+    {
+     "title": "Philadelphia/North",
+     "score": 57,
+     "sections": {
+      "understand": 57,
+      "see": 29,
+      "do": 76,
+      "buy": 68,
+      "eat": 58,
+      "drink": 32
+     }
+    }
+   ],
+   "san-diego": [
+    {
+     "title": "San Diego/Balboa Park-Hillcrest",
+     "score": 77,
+     "sections": {
+      "see": 34,
+      "do": 81,
+      "buy": 79,
+      "eat": 84,
+      "drink": 39
+     }
+    },
+    {
+     "title": "San Diego/San Ysidro",
+     "score": 75,
+     "sections": {
+      "see": 69,
+      "buy": 69,
+      "eat": 56
+     }
+    },
+    {
+     "title": "San Diego/North",
+     "score": 58,
+     "sections": {
+      "see": 36,
+      "do": 71,
+      "eat": 1,
+      "drink": 99
+     }
+    },
+    {
+     "title": "San Diego/Downtown",
+     "score": 53,
+     "sections": {
+      "understand": 52,
+      "see": 54,
+      "do": 77,
+      "buy": 6,
+      "eat": 70,
+      "drink": 50
+     }
+    },
+    {
+     "title": "San Diego/Mid-City",
+     "score": 53,
+     "sections": {
+      "see": 40,
+      "do": 75,
+      "buy": 95,
+      "eat": 60,
+      "drink": 0
+     }
+    }
+   ],
+   "dallas": [
+    {
+     "title": "Dallas/Downtown",
+     "score": 64,
+     "sections": {
+      "understand": 36,
+      "see": 28,
+      "do": 69,
+      "buy": 59,
+      "eat": 86,
+      "drink": 63
+     }
+    },
+    {
+     "title": "Dallas/North Dallas",
+     "score": 57,
+     "sections": {
+      "understand": 40,
+      "see": 90,
+      "do": 29,
+      "buy": 25,
+      "eat": 58,
+      "drink": 64
+     }
+    },
+    {
+     "title": "Dallas/South Dallas",
+     "score": 33,
+     "sections": {
+      "understand": 77,
+      "see": 13,
+      "do": 54,
+      "buy": 70,
+      "eat": 17,
+      "drink": 30
+     }
+    }
+   ]
+  },
+  "San Francisco/Chinatown-North Beach": {
+   "new-york": [
+    {
+     "title": "Manhattan/Chinatown",
+     "score": 100,
+     "sections": {
+      "understand": 97,
+      "see": 100,
+      "do": 98,
+      "buy": 99,
+      "eat": 100,
+      "drink": 90
+     }
+    },
+    {
+     "title": "Manhattan/Midtown East",
+     "score": 94,
+     "sections": {
+      "understand": 54,
+      "see": 82,
+      "do": 95,
+      "buy": 71,
+      "eat": 77
+     }
+    },
+    {
+     "title": "Brooklyn/Southwest Brooklyn",
+     "score": 92,
+     "sections": {
+      "understand": 92,
+      "see": 53,
+      "do": 84,
+      "buy": 61,
+      "eat": 79,
+      "drink": 86
+     }
+    },
+    {
+     "title": "Manhattan/SoHo",
+     "score": 89,
+     "sections": {
+      "see": 96,
+      "do": 1,
+      "buy": 96,
+      "eat": 85,
+      "drink": 72
+     }
+    },
+    {
+     "title": "Brooklyn/Coney Island and Brighton Beach",
+     "score": 88,
+     "sections": {
+      "understand": 84,
+      "see": 69,
+      "do": 72,
+      "buy": 72,
+      "eat": 48,
+      "drink": 90
+     }
+    }
+   ],
+   "los-angeles": [
+    {
+     "title": "Los Angeles/Chinatown",
+     "score": 100,
+     "sections": {
+      "see": 100,
+      "eat": 84
+     }
+    },
+    {
+     "title": "Los Angeles/Hollywood",
+     "score": 79,
+     "sections": {
+      "understand": 80,
+      "see": 56,
+      "do": 70,
+      "buy": 70,
+      "eat": 80,
+      "drink": 48
+     }
+    },
+    {
+     "title": "Los Angeles/Eastside",
+     "score": 52,
+     "sections": {
+      "understand": 79,
+      "see": 51,
+      "do": 72,
+      "buy": 30,
+      "eat": 35,
+      "drink": 33
+     }
+    },
+    {
+     "title": "Los Angeles/Northwest",
+     "score": 42,
+     "sections": {
+      "understand": 22,
+      "see": 10,
+      "do": 52,
+      "buy": 64,
+      "eat": 80,
+      "drink": 57
+     }
+    },
+    {
+     "title": "Los Angeles/Bunker Hill",
+     "score": 26,
+     "sections": {
+      "see": 68,
+      "do": 23,
+      "eat": 9,
+      "drink": 70
+     }
+    }
+   ],
+   "chicago": [
+    {
+     "title": "Chicago/Bridgeport-Chinatown",
+     "score": 100,
+     "sections": {
+      "understand": 95,
+      "see": 99,
+      "do": 81,
+      "buy": 96,
+      "eat": 100,
+      "drink": 45
+     }
+    },
+    {
+     "title": "Chicago/North Lincoln",
+     "score": 94,
+     "sections": {
+      "understand": 89,
+      "see": 85,
+      "do": 39,
+      "buy": 94,
+      "eat": 75,
+      "drink": 81
+     }
+    },
+    {
+     "title": "Chicago/Near North",
+     "score": 90,
+     "sections": {
+      "understand": 71,
+      "see": 60,
+      "do": 96,
+      "buy": 76,
+      "eat": 61,
+      "drink": 66
+     }
+    },
+    {
+     "title": "Chicago/Chatham-South Shore",
+     "score": 80,
+     "sections": {
+      "understand": 90,
+      "see": 61,
+      "do": 76,
+      "buy": 34,
+      "eat": 68,
+      "drink": 71
+     }
+    },
+    {
+     "title": "Chicago/Pilsen",
+     "score": 76,
+     "sections": {
+      "understand": 36,
+      "see": 29,
+      "do": 95,
+      "buy": 93,
+      "eat": 53,
+      "drink": 43
+     }
+    }
+   ],
+   "houston": [
+    {
+     "title": "Houston/West Houston",
+     "score": 95,
+     "sections": {
+      "understand": 98,
+      "do": 45,
+      "buy": 91,
+      "eat": 75,
+      "drink": 78
+     }
+    },
+    {
+     "title": "Houston/Neartown",
+     "score": 89,
+     "sections": {
+      "understand": 45,
+      "see": 45,
+      "do": 94,
+      "buy": 88,
+      "eat": 66,
+      "drink": 82
+     }
+    },
+    {
+     "title": "Houston/North Houston",
+     "score": 89,
+     "sections": {
+      "see": 68,
+      "do": 82,
+      "buy": 18,
+      "eat": 99,
+      "drink": 32
+     }
+    },
+    {
+     "title": "Houston/Downtown",
+     "score": 76,
+     "sections": {
+      "understand": 51,
+      "see": 94,
+      "do": 91,
+      "eat": 24,
+      "drink": 15
+     }
+    },
+    {
+     "title": "Houston/East Houston",
+     "score": 64,
+     "sections": {
+      "see": 41,
+      "do": 23,
+      "eat": 89,
+      "drink": 72
+     }
+    }
+   ],
+   "philadelphia": [
+    {
+     "title": "Philadelphia/Center City East",
+     "score": 99,
+     "sections": {
+      "see": 100,
+      "do": 73,
+      "buy": 92,
+      "eat": 76,
+      "drink": 66
+     }
+    },
+    {
+     "title": "Philadelphia/South",
+     "score": 94,
+     "sections": {
+      "understand": 95,
+      "see": 59,
+      "do": 57,
+      "buy": 97,
+      "eat": 88,
+      "drink": 35
+     }
+    },
+    {
+     "title": "Philadelphia/Old City",
+     "score": 77,
+     "sections": {
+      "understand": 71,
+      "see": 81,
+      "do": 37,
+      "buy": 73,
+      "eat": 78,
+      "drink": 53
+     }
+    },
+    {
+     "title": "Philadelphia/Center City West",
+     "score": 39,
+     "sections": {
+      "understand": 59,
+      "see": 16,
+      "do": 88,
+      "buy": 19,
+      "eat": 7,
+      "drink": 81
+     }
+    },
+    {
+     "title": "Philadelphia/Northeast",
+     "score": 39,
+     "sections": {
+      "understand": 61,
+      "see": 10,
+      "do": 33,
+      "buy": 9,
+      "eat": 79,
+      "drink": 85
+     }
+    }
+   ],
+   "san-diego": [
+    {
+     "title": "San Diego/Mission Beach-Pacific Beach",
+     "score": 96,
+     "sections": {
+      "understand": 99,
+      "see": 28,
+      "do": 95,
+      "buy": 65,
+      "eat": 34,
+      "drink": 99
+     }
+    },
+    {
+     "title": "San Diego/Point Loma-Ocean Beach",
+     "score": 90,
+     "sections": {
+      "see": 73,
+      "do": 90,
+      "buy": 94,
+      "eat": 47,
+      "drink": 52
+     }
+    },
+    {
+     "title": "San Diego/San Ysidro",
+     "score": 87,
+     "sections": {
+      "see": 65,
+      "buy": 23,
+      "eat": 98
+     }
+    },
+    {
+     "title": "San Diego/Downtown",
+     "score": 72,
+     "sections": {
+      "understand": 14,
+      "see": 86,
+      "do": 96,
+      "buy": 22,
+      "eat": 15,
+      "drink": 89
+     }
+    },
+    {
+     "title": "San Diego/Mid-City",
+     "score": 57,
+     "sections": {
+      "see": 82,
+      "do": 2,
+      "buy": 91,
+      "eat": 50,
+      "drink": 60
+     }
+    }
+   ],
+   "dallas": [
+    {
+     "title": "Dallas/North Dallas",
+     "score": 81,
+     "sections": {
+      "understand": 58,
+      "see": 73,
+      "do": 93,
+      "buy": 24,
+      "eat": 64,
+      "drink": 75
+     }
+    },
+    {
+     "title": "Dallas/Downtown",
+     "score": 50,
+     "sections": {
+      "understand": 81,
+      "see": 64,
+      "do": 2,
+      "buy": 72,
+      "eat": 63,
+      "drink": 47
+     }
+    },
+    {
+     "title": "Dallas/South Dallas",
+     "score": 26,
+     "sections": {
+      "understand": 13,
+      "see": 17,
+      "do": 74,
+      "buy": 60,
+      "eat": 34,
+      "drink": 33
+     }
+    }
+   ]
+  },
+  "San Francisco/Union Square-Financial District": {
+   "new-york": [
+    {
+     "title": "Manhattan/Theater District",
+     "score": 100,
+     "sections": {
+      "understand": 100,
+      "see": 99,
+      "do": 98,
+      "buy": 95,
+      "eat": 61,
+      "drink": 83
+     }
+    },
+    {
+     "title": "Manhattan/SoHo",
+     "score": 99,
+     "sections": {
+      "see": 97,
+      "do": 97,
+      "buy": 92,
+      "eat": 69,
+      "drink": 95
+     }
+    },
+    {
+     "title": "Manhattan/Upper West Side",
+     "score": 99,
+     "sections": {
+      "understand": 99,
+      "see": 93,
+      "do": 99,
+      "buy": 37,
+      "eat": 97,
+      "drink": 23
+     }
+    },
+    {
+     "title": "Manhattan/Gramercy Flatiron",
+     "score": 98,
+     "sections": {
+      "understand": 92,
+      "see": 99,
+      "do": 64,
+      "buy": 93,
+      "eat": 94,
+      "drink": 19
+     }
+    },
+    {
+     "title": "Manhattan/Financial District",
+     "score": 97,
+     "sections": {
+      "understand": 100,
+      "see": 98,
+      "buy": 44,
+      "eat": 49,
+      "drink": 34
+     }
+    }
+   ],
+   "los-angeles": [
+    {
+     "title": "Los Angeles/Chinatown",
+     "score": 100,
+     "sections": {
+      "see": 94,
+      "eat": 99
+     }
+    },
+    {
+     "title": "Los Angeles/Bunker Hill",
+     "score": 97,
+     "sections": {
+      "see": 98,
+      "do": 84,
+      "eat": 27,
+      "drink": 96
+     }
+    },
+    {
+     "title": "Los Angeles/Hollywood",
+     "score": 92,
+     "sections": {
+      "understand": 85,
+      "see": 64,
+      "do": 67,
+      "buy": 99,
+      "eat": 78,
+      "drink": 27
+     }
+    },
+    {
+     "title": "Los Angeles/Wilshire",
+     "score": 68,
+     "sections": {
+      "see": 38,
+      "do": 89,
+      "buy": 4,
+      "eat": 58,
+      "drink": 93
+     }
+    },
+    {
+     "title": "Los Angeles/South",
+     "score": 13,
+     "sections": {
+      "understand": 88,
+      "see": 49,
+      "do": 23,
+      "buy": 18,
+      "eat": 2,
+      "drink": 21
+     }
+    }
+   ],
+   "chicago": [
+    {
+     "title": "Chicago/Loop",
+     "score": 100,
+     "sections": {
+      "understand": 95,
+      "see": 99,
+      "do": 87,
+      "buy": 98,
+      "eat": 88,
+      "drink": 99
+     }
+    },
+    {
+     "title": "Chicago/Near North",
+     "score": 98,
+     "sections": {
+      "understand": 94,
+      "see": 98,
+      "do": 15,
+      "buy": 99,
+      "eat": 95,
+      "drink": 50
+     }
+    },
+    {
+     "title": "Chicago/Near West Side",
+     "score": 82,
+     "sections": {
+      "understand": 97,
+      "see": 84,
+      "do": 41,
+      "buy": 58,
+      "eat": 48,
+      "drink": 55
+     }
+    },
+    {
+     "title": "Chicago/Lincoln Park-Old Town",
+     "score": 80,
+     "sections": {
+      "understand": 94,
+      "see": 24,
+      "do": 96,
+      "buy": 36,
+      "eat": 54,
+      "drink": 54
+     }
+    },
+    {
+     "title": "Chicago/Uptown",
+     "score": 78,
+     "sections": {
+      "understand": 37,
+      "see": 89,
+      "do": 96,
+      "buy": 36,
+      "eat": 49,
+      "drink": 40
+     }
+    }
+   ],
+   "houston": [
+    {
+     "title": "Houston/Downtown",
+     "score": 97,
+     "sections": {
+      "understand": 98,
+      "see": 98,
+      "do": 56,
+      "eat": 47,
+      "drink": 86
+     }
+    },
+    {
+     "title": "Houston/Uptown",
+     "score": 87,
+     "sections": {
+      "see": 89,
+      "do": 82,
+      "buy": 28,
+      "eat": 76,
+      "drink": 70
+     }
+    },
+    {
+     "title": "Houston/West Houston",
+     "score": 69,
+     "sections": {
+      "understand": 78,
+      "do": 41,
+      "buy": 51,
+      "eat": 20,
+      "drink": 97
+     }
+    },
+    {
+     "title": "Houston/East Houston",
+     "score": 69,
+     "sections": {
+      "see": 74,
+      "do": 68,
+      "eat": 69,
+      "drink": 28
+     }
+    },
+    {
+     "title": "Houston/Greater Heights",
+     "score": 65,
+     "sections": {
+      "understand": 37,
+      "see": 73,
+      "do": 99,
+      "buy": 59,
+      "eat": 26,
+      "drink": 3
+     }
+    }
+   ],
+   "philadelphia": [
+    {
+     "title": "Philadelphia/Center City East",
+     "score": 95,
+     "sections": {
+      "see": 94,
+      "do": 98,
+      "buy": 27,
+      "eat": 51,
+      "drink": 78
+     }
+    },
+    {
+     "title": "Philadelphia/Center City West",
+     "score": 93,
+     "sections": {
+      "understand": 98,
+      "see": 94,
+      "do": 26,
+      "buy": 66,
+      "eat": 79,
+      "drink": 61
+     }
+    },
+    {
+     "title": "Philadelphia/West",
+     "score": 83,
+     "sections": {
+      "understand": 93,
+      "see": 10,
+      "do": 84,
+      "buy": 86,
+      "eat": 61,
+      "drink": 72
+     }
+    },
+    {
+     "title": "Philadelphia/Old City",
+     "score": 61,
+     "sections": {
+      "understand": 74,
+      "see": 86,
+      "do": 90,
+      "buy": 44,
+      "eat": 9,
+      "drink": 13
+     }
+    },
+    {
+     "title": "Philadelphia/South",
+     "score": 53,
+     "sections": {
+      "understand": 41,
+      "see": 75,
+      "do": 29,
+      "buy": 36,
+      "eat": 48,
+      "drink": 77
+     }
+    }
+   ],
+   "san-diego": [
+    {
+     "title": "San Diego/Old Town-Mission Valley",
+     "score": 90,
+     "sections": {
+      "see": 58,
+      "do": 85,
+      "buy": 89,
+      "eat": 87,
+      "drink": 45
+     }
+    },
+    {
+     "title": "San Diego/Balboa Park-Hillcrest",
+     "score": 72,
+     "sections": {
+      "see": 84,
+      "do": 60,
+      "buy": 22,
+      "eat": 46,
+      "drink": 85
+     }
+    },
+    {
+     "title": "San Diego/North",
+     "score": 63,
+     "sections": {
+      "see": 28,
+      "do": 30,
+      "eat": 93,
+      "drink": 64
+     }
+    },
+    {
+     "title": "San Diego/San Ysidro",
+     "score": 57,
+     "sections": {
+      "see": 32,
+      "buy": 92,
+      "eat": 25
+     }
+    },
+    {
+     "title": "San Diego/Mid-City",
+     "score": 56,
+     "sections": {
+      "see": 43,
+      "do": 91,
+      "buy": 24,
+      "eat": 76,
+      "drink": 13
+     }
+    }
+   ],
+   "dallas": [
+    {
+     "title": "Dallas/Downtown",
+     "score": 94,
+     "sections": {
+      "understand": 76,
+      "see": 97,
+      "do": 98,
+      "buy": 15,
+      "eat": 79,
+      "drink": 45
+     }
+    },
+    {
+     "title": "Dallas/North Dallas",
+     "score": 23,
+     "sections": {
+      "understand": 38,
+      "see": 23,
+      "do": 16,
+      "buy": 89,
+      "eat": 41,
+      "drink": 16
+     }
+    },
+    {
+     "title": "Dallas/South Dallas",
+     "score": 15,
+     "sections": {
+      "understand": 37,
+      "see": 16,
+      "do": 4,
+      "buy": 42,
+      "eat": 33,
+      "drink": 83
+     }
+    }
+   ]
+  },
+  "San Francisco/Civic Center-Tenderloin": {
+   "new-york": [
+    {
+     "title": "Manhattan/Upper West Side",
+     "score": 99,
+     "sections": {
+      "understand": 91,
+      "see": 99,
+      "do": 100,
+      "buy": 56,
+      "eat": 81,
+      "drink": 45
+     }
+    },
+    {
+     "title": "Manhattan/Chelsea",
+     "score": 97,
+     "sections": {
+      "understand": 73,
+      "see": 85,
+      "do": 96,
+      "buy": 80,
+      "eat": 57,
+      "drink": 97
+     }
+    },
+    {
+     "title": "Manhattan/Gramercy Flatiron",
+     "score": 97,
+     "sections": {
+      "understand": 89,
+      "see": 95,
+      "do": 92,
+      "buy": 79,
+      "eat": 88,
+      "drink": 61
+     }
+    },
+    {
+     "title": "Manhattan/SoHo",
+     "score": 96,
+     "sections": {
+      "see": 96,
+      "do": 86,
+      "buy": 86,
+      "eat": 41,
+      "drink": 86
+     }
+    },
+    {
+     "title": "Manhattan/Upper East Side",
+     "score": 93,
+     "sections": {
+      "understand": 72,
+      "see": 98,
+      "do": 58,
+      "buy": 83,
+      "eat": 63,
+      "drink": 68
+     }
+    }
+   ],
+   "los-angeles": [
+    {
+     "title": "Los Angeles/Bunker Hill",
+     "score": 97,
+     "sections": {
+      "see": 96,
+      "do": 98,
+      "eat": 28,
+      "drink": 67
+     }
+    },
+    {
+     "title": "Los Angeles/Wilshire",
+     "score": 92,
+     "sections": {
+      "see": 37,
+      "do": 90,
+      "buy": 77,
+      "eat": 94,
+      "drink": 65
+     }
+    },
+    {
+     "title": "Los Angeles/Chinatown",
+     "score": 67,
+     "sections": {
+      "see": 72,
+      "eat": 45
+     }
+    },
+    {
+     "title": "Los Angeles/Hollywood",
+     "score": 65,
+     "sections": {
+      "understand": 49,
+      "see": 40,
+      "do": 72,
+      "buy": 38,
+      "eat": 34,
+      "drink": 95
+     }
+    },
+    {
+     "title": "Los Angeles/South",
+     "score": 28,
+     "sections": {
+      "understand": 87,
+      "see": 52,
+      "do": 35,
+      "buy": 20,
+      "eat": 47,
+      "drink": 4
+     }
+    }
+   ],
+   "chicago": [
+    {
+     "title": "Chicago/Loop",
+     "score": 99,
+     "sections": {
+      "understand": 86,
+      "see": 98,
+      "do": 100,
+      "buy": 43,
+      "eat": 68,
+      "drink": 80
+     }
+    },
+    {
+     "title": "Chicago/Wicker Park",
+     "score": 93,
+     "sections": {
+      "understand": 43,
+      "see": 87,
+      "do": 88,
+      "buy": 73,
+      "eat": 45,
+      "drink": 96
+     }
+    },
+    {
+     "title": "Chicago/Uptown",
+     "score": 92,
+     "sections": {
+      "understand": 88,
+      "see": 24,
+      "do": 95,
+      "buy": 60,
+      "eat": 86,
+      "drink": 79
+     }
+    },
+    {
+     "title": "Chicago/Far Northwest Side",
+     "score": 81,
+     "sections": {
+      "understand": 84,
+      "see": 79,
+      "do": 77,
+      "buy": 29,
+      "eat": 86,
+      "drink": 42
+     }
+    },
+    {
+     "title": "Chicago/Near West Side",
+     "score": 76,
+     "sections": {
+      "understand": 76,
+      "see": 90,
+      "do": 63,
+      "buy": 85,
+      "eat": 30,
+      "drink": 29
+     }
+    }
+   ],
+   "houston": [
+    {
+     "title": "Houston/Neartown",
+     "score": 98,
+     "sections": {
+      "understand": 53,
+      "see": 95,
+      "do": 83,
+      "buy": 96,
+      "eat": 91,
+      "drink": 95
+     }
+    },
+    {
+     "title": "Houston/Downtown",
+     "score": 94,
+     "sections": {
+      "understand": 72,
+      "see": 59,
+      "do": 94,
+      "eat": 95,
+      "drink": 52
+     }
+    },
+    {
+     "title": "Houston/West Houston",
+     "score": 93,
+     "sections": {
+      "understand": 93,
+      "do": 75,
+      "buy": 88,
+      "eat": 80,
+      "drink": 44
+     }
+    },
+    {
+     "title": "Houston/South Inner Loop",
+     "score": 78,
+     "sections": {
+      "see": 85,
+      "do": 46,
+      "buy": 90,
+      "eat": 32,
+      "drink": 68
+     }
+    },
+    {
+     "title": "Houston/Uptown",
+     "score": 54,
+     "sections": {
+      "see": 80,
+      "do": 38,
+      "buy": 8,
+      "eat": 56,
+      "drink": 79
+     }
+    }
+   ],
+   "philadelphia": [
+    {
+     "title": "Philadelphia/Center City East",
+     "score": 98,
+     "sections": {
+      "see": 92,
+      "do": 99,
+      "buy": 80,
+      "eat": 62,
+      "drink": 89
+     }
+    },
+    {
+     "title": "Philadelphia/Old City",
+     "score": 90,
+     "sections": {
+      "understand": 77,
+      "see": 94,
+      "do": 92,
+      "buy": 61,
+      "eat": 21,
+      "drink": 74
+     }
+    },
+    {
+     "title": "Philadelphia/Center City West",
+     "score": 66,
+     "sections": {
+      "understand": 29,
+      "see": 97,
+      "do": 26,
+      "buy": 64,
+      "eat": 38,
+      "drink": 53
+     }
+    },
+    {
+     "title": "Philadelphia/North",
+     "score": 56,
+     "sections": {
+      "understand": 91,
+      "see": 62,
+      "do": 50,
+      "buy": 18,
+      "eat": 32,
+      "drink": 56
+     }
+    },
+    {
+     "title": "Philadelphia/South",
+     "score": 50,
+     "sections": {
+      "understand": 77,
+      "see": 5,
+      "do": 49,
+      "buy": 94,
+      "eat": 45,
+      "drink": 35
+     }
+    }
+   ],
+   "san-diego": [
+    {
+     "title": "San Diego/Downtown",
+     "score": 96,
+     "sections": {
+      "understand": 96,
+      "see": 90,
+      "do": 97,
+      "buy": 13,
+      "eat": 95,
+      "drink": 55
+     }
+    },
+    {
+     "title": "San Diego/Old Town-Mission Valley",
+     "score": 91,
+     "sections": {
+      "see": 91,
+      "do": 71,
+      "buy": 97,
+      "eat": 16,
+      "drink": 74
+     }
+    },
+    {
+     "title": "San Diego/Balboa Park-Hillcrest",
+     "score": 86,
+     "sections": {
+      "see": 83,
+      "do": 97,
+      "buy": 84,
+      "eat": 12,
+      "drink": 37
+     }
+    },
+    {
+     "title": "San Diego/Mid-City",
+     "score": 82,
+     "sections": {
+      "see": 79,
+      "do": 93,
+      "buy": 73,
+      "eat": 35,
+      "drink": 40
+     }
+    },
+    {
+     "title": "San Diego/Point Loma-Ocean Beach",
+     "score": 47,
+     "sections": {
+      "see": 35,
+      "do": 18,
+      "buy": 68,
+      "eat": 61,
+      "drink": 71
+     }
+    }
+   ],
+   "dallas": [
+    {
+     "title": "Dallas/Downtown",
+     "score": 91,
+     "sections": {
+      "understand": 67,
+      "see": 97,
+      "do": 92,
+      "buy": 86,
+      "eat": 7,
+      "drink": 72
+     }
+    },
+    {
+     "title": "Dallas/South Dallas",
+     "score": 54,
+     "sections": {
+      "understand": 32,
+      "see": 10,
+      "do": 49,
+      "buy": 94,
+      "eat": 78,
+      "drink": 36
+     }
+    },
+    {
+     "title": "Dallas/North Dallas",
+     "score": 7,
+     "sections": {
+      "understand": 52,
+      "see": 28,
+      "do": 4,
+      "buy": 0,
+      "eat": 76,
+      "drink": 49
+     }
+    }
+   ]
+  },
+  "San Francisco/SoMa": {
+   "new-york": [
+    {
+     "title": "Brooklyn/Bedford-Stuyvesant and Flatbush",
+     "score": 93,
+     "sections": {
+      "understand": 33,
+      "see": 94,
+      "do": 25,
+      "buy": 84,
+      "eat": 87,
+      "drink": 98
+     }
+    },
+    {
+     "title": "Manhattan/Upper East Side",
+     "score": 91,
+     "sections": {
+      "understand": 76,
+      "see": 97,
+      "do": 86,
+      "buy": 17,
+      "eat": 73,
+      "drink": 70
+     }
+    },
+    {
+     "title": "Queens/Long Island City and Astoria",
+     "score": 91,
+     "sections": {
+      "understand": 87,
+      "see": 81,
+      "do": 19,
+      "buy": 78,
+      "eat": 98,
+      "drink": 66
+     }
+    },
+    {
+     "title": "Manhattan/Chelsea",
+     "score": 87,
+     "sections": {
+      "understand": 67,
+      "see": 86,
+      "do": 91,
+      "buy": 33,
+      "eat": 68,
+      "drink": 73
+     }
+    },
+    {
+     "title": "Manhattan/Financial District",
+     "score": 84,
+     "sections": {
+      "understand": 71,
+      "see": 57,
+      "buy": 80,
+      "eat": 73,
+      "drink": 77
+     }
+    }
+   ],
+   "los-angeles": [
+    {
+     "title": "Los Angeles/South",
+     "score": 73,
+     "sections": {
+      "understand": 69,
+      "see": 92,
+      "do": 39,
+      "buy": 21,
+      "eat": 78,
+      "drink": 58
+     }
+    },
+    {
+     "title": "Los Angeles/Wilshire",
+     "score": 64,
+     "sections": {
+      "see": 94,
+      "do": 58,
+      "buy": 23,
+      "eat": 42,
+      "drink": 40
+     }
+    },
+    {
+     "title": "Los Angeles/Bunker Hill",
+     "score": 60,
+     "sections": {
+      "see": 19,
+      "do": 28,
+      "eat": 97,
+      "drink": 54
+     }
+    },
+    {
+     "title": "Los Angeles/Hollywood",
+     "score": 60,
+     "sections": {
+      "understand": 40,
+      "see": 50,
+      "do": 5,
+      "buy": 95,
+      "eat": 44,
+      "drink": 90
+     }
+    },
+    {
+     "title": "Los Angeles/Northwest",
+     "score": 48,
+     "sections": {
+      "understand": 71,
+      "see": 11,
+      "do": 97,
+      "buy": 11,
+      "eat": 34,
+      "drink": 34
+     }
+    }
+   ],
+   "chicago": [
+    {
+     "title": "Chicago/Near South",
+     "score": 98,
+     "sections": {
+      "understand": 84,
+      "see": 91,
+      "do": 98,
+      "buy": 32,
+      "eat": 96,
+      "drink": 89
+     }
+    },
+    {
+     "title": "Chicago/Near West Side",
+     "score": 97,
+     "sections": {
+      "understand": 97,
+      "see": 89,
+      "do": 96,
+      "buy": 71,
+      "eat": 85,
+      "drink": 32
+     }
+    },
+    {
+     "title": "Chicago/Chatham-South Shore",
+     "score": 83,
+     "sections": {
+      "understand": 56,
+      "see": 44,
+      "do": 49,
+      "buy": 91,
+      "eat": 84,
+      "drink": 85
+     }
+    },
+    {
+     "title": "Chicago/Lincoln Park-Old Town",
+     "score": 81,
+     "sections": {
+      "understand": 56,
+      "see": 18,
+      "do": 65,
+      "buy": 33,
+      "eat": 93,
+      "drink": 98
+     }
+    },
+    {
+     "title": "Chicago/Lakeview-North Center",
+     "score": 79,
+     "sections": {
+      "understand": 60,
+      "see": 51,
+      "do": 73,
+      "buy": 35,
+      "eat": 93,
+      "drink": 75
+     }
+    }
+   ],
+   "houston": [
+    {
+     "title": "Houston/Downtown",
+     "score": 90,
+     "sections": {
+      "understand": 81,
+      "see": 15,
+      "do": 90,
+      "eat": 95,
+      "drink": 68
+     }
+    },
+    {
+     "title": "Houston/South Inner Loop",
+     "score": 78,
+     "sections": {
+      "see": 65,
+      "do": 93,
+      "buy": 20,
+      "eat": 77,
+      "drink": 52
+     }
+    },
+    {
+     "title": "Houston/Uptown",
+     "score": 71,
+     "sections": {
+      "see": 14,
+      "do": 44,
+      "buy": 98,
+      "eat": 25,
+      "drink": 88
+     }
+    },
+    {
+     "title": "Houston/Neartown",
+     "score": 62,
+     "sections": {
+      "understand": 38,
+      "see": 45,
+      "do": 74,
+      "buy": 19,
+      "eat": 39,
+      "drink": 96
+     }
+    },
+    {
+     "title": "Houston/Greater Heights",
+     "score": 53,
+     "sections": {
+      "understand": 36,
+      "see": 98,
+      "do": 9,
+      "buy": 14,
+      "eat": 74,
+      "drink": 43
+     }
+    }
+   ],
+   "philadelphia": [
+    {
+     "title": "Philadelphia/North",
+     "score": 86,
+     "sections": {
+      "understand": 29,
+      "see": 34,
+      "do": 67,
+      "buy": 69,
+      "eat": 98,
+      "drink": 94
+     }
+    },
+    {
+     "title": "Philadelphia/Center City West",
+     "score": 71,
+     "sections": {
+      "understand": 85,
+      "see": 82,
+      "do": 36,
+      "buy": 44,
+      "eat": 68,
+      "drink": 45
+     }
+    },
+    {
+     "title": "Philadelphia/Northwest",
+     "score": 52,
+     "sections": {
+      "understand": 36,
+      "see": 15,
+      "do": 67,
+      "buy": 69,
+      "eat": 66,
+      "drink": 60
+     }
+    },
+    {
+     "title": "Philadelphia/Northeast",
+     "score": 50,
+     "sections": {
+      "understand": 27,
+      "see": 85,
+      "do": 51,
+      "buy": 90,
+      "eat": 10,
+      "drink": 26
+     }
+    },
+    {
+     "title": "Philadelphia/South",
+     "score": 49,
+     "sections": {
+      "understand": 62,
+      "see": 57,
+      "do": 98,
+      "buy": 3,
+      "eat": 1,
+      "drink": 71
+     }
+    }
+   ],
+   "san-diego": [
+    {
+     "title": "San Diego/Downtown",
+     "score": 92,
+     "sections": {
+      "understand": 94,
+      "see": 85,
+      "do": 95,
+      "buy": 40,
+      "eat": 9,
+      "drink": 96
+     }
+    },
+    {
+     "title": "San Diego/Balboa Park-Hillcrest",
+     "score": 85,
+     "sections": {
+      "see": 98,
+      "do": 52,
+      "buy": 25,
+      "eat": 84,
+      "drink": 38
+     }
+    },
+    {
+     "title": "San Diego/Mid-City",
+     "score": 80,
+     "sections": {
+      "see": 60,
+      "do": 94,
+      "buy": 32,
+      "eat": 50,
+      "drink": 77
+     }
+    },
+    {
+     "title": "San Diego/San Ysidro",
+     "score": 68,
+     "sections": {
+      "see": 54,
+      "buy": 99,
+      "eat": 2
+     }
+    },
+    {
+     "title": "San Diego/Mission Beach-Pacific Beach",
+     "score": 66,
+     "sections": {
+      "understand": 30,
+      "see": 85,
+      "do": 37,
+      "buy": 65,
+      "eat": 75,
+      "drink": 50
+     }
+    }
+   ],
+   "dallas": [
+    {
+     "title": "Dallas/Downtown",
+     "score": 71,
+     "sections": {
+      "understand": 82,
+      "see": 93,
+      "do": 49,
+      "buy": 1,
+      "eat": 44,
+      "drink": 91
+     }
+    },
+    {
+     "title": "Dallas/South Dallas",
+     "score": 44,
+     "sections": {
+      "understand": 37,
+      "see": 29,
+      "do": 63,
+      "buy": 66,
+      "eat": 56,
+      "drink": 31
+     }
+    },
+    {
+     "title": "Dallas/North Dallas",
+     "score": 43,
+     "sections": {
+      "understand": 29,
+      "see": 23,
+      "do": 46,
+      "buy": 93,
+      "eat": 49,
+      "drink": 22
+     }
+    }
+   ]
+  },
+  "San Francisco/Western Addition": {
+   "new-york": [
+    {
+     "title": "Manhattan/Upper West Side",
+     "score": 91,
+     "sections": {
+      "understand": 11,
+      "see": 80,
+      "do": 92,
+      "buy": 99,
+      "eat": 70,
+      "drink": 41
+     }
+    },
+    {
+     "title": "Brooklyn/Williamsburg",
+     "score": 87,
+     "sections": {
+      "understand": 80,
+      "see": 48,
+      "do": 65,
+      "buy": 95,
+      "eat": 81,
+      "drink": 58
+     }
+    },
+    {
+     "title": "Manhattan/East Village",
+     "score": 85,
+     "sections": {
+      "understand": 97,
+      "see": 81,
+      "do": 82,
+      "buy": 25,
+      "eat": 85,
+      "drink": 12
+     }
+    },
+    {
+     "title": "Manhattan/Upper East Side",
+     "score": 79,
+     "sections": {
+      "understand": 86,
+      "see": 62,
+      "do": 36,
+      "buy": 55,
+      "eat": 96,
+      "drink": 42
+     }
+    },
+    {
+     "title": "Queens/Flushing-Northeast",
+     "score": 77,
+     "sections": {
+      "see": 67,
+      "do": 59,
+      "buy": 91,
+      "eat": 54,
+      "drink": 50
+     }
+    }
+   ],
+   "los-angeles": [
+    {
+     "title": "Los Angeles/Chinatown",
+     "score": 91,
+     "sections": {
+      "see": 83,
+      "eat": 66
+     }
+    },
+    {
+     "title": "Los Angeles/Bunker Hill",
+     "score": 81,
+     "sections": {
+      "see": 39,
+      "do": 91,
+      "eat": 59,
+      "drink": 70
+     }
+    },
+    {
+     "title": "Los Angeles/South",
+     "score": 66,
+     "sections": {
+      "understand": 18,
+      "see": 30,
+      "do": 70,
+      "buy": 97,
+      "eat": 72,
+      "drink": 26
+     }
+    },
+    {
+     "title": "Los Angeles/Northwest",
+     "score": 42,
+     "sections": {
+      "understand": 92,
+      "see": 56,
+      "do": 14,
+      "buy": 24,
+      "eat": 36,
+      "drink": 48
+     }
+    },
+    {
+     "title": "Los Angeles/Wilshire",
+     "score": 42,
+     "sections": {
+      "see": 45,
+      "do": 39,
+      "buy": 3,
+      "eat": 86,
+      "drink": 69
+     }
+    }
+   ],
+   "chicago": [
+    {
+     "title": "Chicago/Far Northwest Side",
+     "score": 95,
+     "sections": {
+      "understand": 39,
+      "see": 92,
+      "do": 84,
+      "buy": 49,
+      "eat": 96,
+      "drink": 93
+     }
+    },
+    {
+     "title": "Chicago/Hyde Park",
+     "score": 88,
+     "sections": {
+      "understand": 94,
+      "see": 83,
+      "do": 69,
+      "buy": 87,
+      "eat": 63,
+      "drink": 24
+     }
+    },
+    {
+     "title": "Chicago/Logan-Bucktown",
+     "score": 87,
+     "sections": {
+      "understand": 68,
+      "see": 96,
+      "do": 65,
+      "buy": 61,
+      "eat": 46,
+      "drink": 79
+     }
+    },
+    {
+     "title": "Chicago/Near West Side",
+     "score": 83,
+     "sections": {
+      "understand": 94,
+      "see": 71,
+      "do": 82,
+      "buy": 7,
+      "eat": 67,
+      "drink": 79
+     }
+    },
+    {
+     "title": "Chicago/Wicker Park",
+     "score": 82,
+     "sections": {
+      "understand": 76,
+      "see": 88,
+      "do": 81,
+      "buy": 54,
+      "eat": 84,
+      "drink": 14
+     }
+    }
+   ],
+   "houston": [
+    {
+     "title": "Houston/South Inner Loop",
+     "score": 80,
+     "sections": {
+      "see": 68,
+      "do": 63,
+      "buy": 92,
+      "eat": 37,
+      "drink": 69
+     }
+    },
+    {
+     "title": "Houston/North Houston",
+     "score": 79,
+     "sections": {
+      "see": 44,
+      "do": 62,
+      "buy": 88,
+      "eat": 57,
+      "drink": 81
+     }
+    },
+    {
+     "title": "Houston/Greater Heights",
+     "score": 75,
+     "sections": {
+      "understand": 67,
+      "see": 40,
+      "do": 69,
+      "buy": 72,
+      "eat": 60,
+      "drink": 77
+     }
+    },
+    {
+     "title": "Houston/Uptown",
+     "score": 59,
+     "sections": {
+      "see": 57,
+      "do": 71,
+      "buy": 4,
+      "eat": 88,
+      "drink": 54
+     }
+    },
+    {
+     "title": "Houston/Neartown",
+     "score": 56,
+     "sections": {
+      "understand": 37,
+      "see": 75,
+      "do": 34,
+      "buy": 72,
+      "eat": 61,
+      "drink": 36
+     }
+    }
+   ],
+   "philadelphia": [
+    {
+     "title": "Philadelphia/Northeast",
+     "score": 88,
+     "sections": {
+      "understand": 92,
+      "see": 71,
+      "do": 62,
+      "buy": 27,
+      "eat": 74,
+      "drink": 93
+     }
+    },
+    {
+     "title": "Philadelphia/Center City East",
+     "score": 80,
+     "sections": {
+      "see": 89,
+      "do": 77,
+      "buy": 82,
+      "eat": 33,
+      "drink": 36
+     }
+    },
+    {
+     "title": "Philadelphia/West",
+     "score": 65,
+     "sections": {
+      "understand": 32,
+      "see": 89,
+      "do": 83,
+      "buy": 49,
+      "eat": 17,
+      "drink": 54
+     }
+    },
+    {
+     "title": "Philadelphia/North",
+     "score": 63,
+     "sections": {
+      "understand": 30,
+      "see": 37,
+      "do": 69,
+      "buy": 93,
+      "eat": 38,
+      "drink": 57
+     }
+    },
+    {
+     "title": "Philadelphia/Old City",
+     "score": 31,
+     "sections": {
+      "understand": 39,
+      "see": 13,
+      "do": 57,
+      "buy": 45,
+      "eat": 74,
+      "drink": 20
+     }
+    }
+   ],
+   "san-diego": [
+    {
+     "title": "San Diego/Balboa Park-Hillcrest",
+     "score": 86,
+     "sections": {
+      "see": 22,
+      "do": 75,
+      "buy": 84,
+      "eat": 69,
+      "drink": 93
+     }
+    },
+    {
+     "title": "San Diego/Mid-City",
+     "score": 81,
+     "sections": {
+      "see": 90,
+      "do": 76,
+      "buy": 98,
+      "eat": 24,
+      "drink": 6
+     }
+    },
+    {
+     "title": "San Diego/Downtown",
+     "score": 60,
+     "sections": {
+      "understand": 89,
+      "see": 73,
+      "do": 29,
+      "buy": 10,
+      "eat": 90,
+      "drink": 21
+     }
+    },
+    {
+     "title": "San Diego/North",
+     "score": 53,
+     "sections": {
+      "see": 20,
+      "do": 64,
+      "eat": 42,
+      "drink": 83
+     }
+    },
+    {
+     "title": "San Diego/San Ysidro",
+     "score": 49,
+     "sections": {
+      "see": 58,
+      "buy": 20,
+      "eat": 70
+     }
+    }
+   ],
+   "dallas": [
+    {
+     "title": "Dallas/South Dallas",
+     "score": 66,
+     "sections": {
+      "understand": 62,
+      "see": 21,
+      "do": 59,
+      "buy": 51,
+      "eat": 66,
+      "drink": 91
+     }
+    },
+    {
+     "title": "Dallas/Downtown",
+     "score": 62,
+     "sections": {
+      "understand": 56,
+      "see": 32,
+      "do": 82,
+      "buy": 28,
+      "eat": 56,
+      "drink": 76
+     }
+    },
+    {
+     "title": "Dallas/North Dallas",
+     "score": 17,
+     "sections": {
+      "understand": 34,
+      "see": 85,
+      "do": 11,
+      "buy": 75,
+      "eat": 23,
+      "drink": 1
+     }
+    }
+   ]
+  },
+  "San Francisco/Haight": {
+   "new-york": [
+    {
+     "title": "Manhattan/East Village",
+     "score": 95,
+     "sections": {
+      "understand": 98,
+      "see": 85,
+      "do": 84,
+      "buy": 87,
+      "eat": 22,
+      "drink": 82
+     }
+    },
+    {
+     "title": "Brooklyn/Williamsburg",
+     "score": 95,
+     "sections": {
+      "understand": 85,
+      "see": 77,
+      "do": 39,
+      "buy": 100,
+      "eat": 55,
+      "drink": 88
+     }
+    },
+    {
+     "title": "Brooklyn/Gowanus and Red Hook",
+     "score": 90,
+     "sections": {
+      "understand": 60,
+      "see": 42,
+      "do": 90,
+      "buy": 93,
+      "eat": 74,
+      "drink": 73
+     }
+    },
+    {
+     "title": "Manhattan/Harlem and Upper Manhattan",
+     "score": 85,
+     "sections": {
+      "understand": 94,
+      "see": 75,
+      "do": 79,
+      "buy": 56,
+      "eat": 57,
+      "drink": 46
+     }
+    },
+    {
+     "title": "Bronx",
+     "score": 85,
+     "sections": {
+      "understand": 68,
+      "see": 86,
+      "do": 76,
+      "buy": 79,
+      "eat": 23,
+      "drink": 86
+     }
+    }
+   ],
+   "los-angeles": [
+    {
+     "title": "Los Angeles/Northwest",
+     "score": 86,
+     "sections": {
+      "understand": 85,
+      "see": 43,
+      "do": 74,
+      "buy": 71,
+      "eat": 40,
+      "drink": 96
+     }
+    },
+    {
+     "title": "Los Angeles/Wilshire",
+     "score": 65,
+     "sections": {
+      "see": 88,
+      "do": 7,
+      "buy": 45,
+      "eat": 82,
+      "drink": 73
+     }
+    },
+    {
+     "title": "Los Angeles/Hollywood",
+     "score": 61,
+     "sections": {
+      "understand": 21,
+      "see": 81,
+      "do": 87,
+      "buy": 89,
+      "eat": 37,
+      "drink": 4
+     }
+    },
+    {
+     "title": "Los Angeles/Chinatown",
+     "score": 44,
+     "sections": {
+      "see": 18,
+      "eat": 79
+     }
+    },
+    {
+     "title": "Los Angeles/Eastside",
+     "score": 40,
+     "sections": {
+      "understand": 29,
+      "see": 44,
+      "do": 70,
+      "buy": 10,
+      "eat": 76,
+      "drink": 37
+     }
+    }
+   ],
+   "chicago": [
+    {
+     "title": "Chicago/Wicker Park",
+     "score": 94,
+     "sections": {
+      "understand": 91,
+      "see": 66,
+      "do": 43,
+      "buy": 96,
+      "eat": 53,
+      "drink": 97
+     }
+    },
+    {
+     "title": "Chicago/Bronzeville",
+     "score": 92,
+     "sections": {
+      "understand": 99,
+      "see": 60,
+      "do": 80,
+      "buy": 64,
+      "eat": 92,
+      "drink": 21
+     }
+    },
+    {
+     "title": "Chicago/Hyde Park",
+     "score": 82,
+     "sections": {
+      "understand": 99,
+      "see": 57,
+      "do": 33,
+      "buy": 82,
+      "eat": 70,
+      "drink": 38
+     }
+    },
+    {
+     "title": "Chicago/Chatham-South Shore",
+     "score": 82,
+     "sections": {
+      "understand": 50,
+      "see": 78,
+      "do": 68,
+      "buy": 43,
+      "eat": 90,
+      "drink": 76
+     }
+    },
+    {
+     "title": "Chicago/Rogers Park",
+     "score": 73,
+     "sections": {
+      "understand": 48,
+      "see": 95,
+      "do": 51,
+      "buy": 57,
+      "eat": 20,
+      "drink": 82
+     }
+    }
+   ],
+   "houston": [
+    {
+     "title": "Houston/Neartown",
+     "score": 89,
+     "sections": {
+      "understand": 79,
+      "see": 93,
+      "do": 88,
+      "buy": 90,
+      "eat": 9,
+      "drink": 60
+     }
+    },
+    {
+     "title": "Houston/South Inner Loop",
+     "score": 88,
+     "sections": {
+      "see": 44,
+      "do": 52,
+      "buy": 94,
+      "eat": 81,
+      "drink": 81
+     }
+    },
+    {
+     "title": "Houston/West Inner Loop",
+     "score": 81,
+     "sections": {
+      "understand": 59,
+      "see": 31,
+      "do": 87,
+      "buy": 74,
+      "eat": 72,
+      "drink": 81
+     }
+    },
+    {
+     "title": "Houston/North Houston",
+     "score": 71,
+     "sections": {
+      "see": 62,
+      "do": 49,
+      "buy": 93,
+      "eat": 52,
+      "drink": 34
+     }
+    },
+    {
+     "title": "Houston/Clear Lake",
+     "score": 44,
+     "sections": {
+      "understand": 28,
+      "see": 83,
+      "do": 77,
+      "buy": 17,
+      "eat": 27,
+      "drink": 35
+     }
+    }
+   ],
+   "philadelphia": [
+    {
+     "title": "Philadelphia/Northwest",
+     "score": 89,
+     "sections": {
+      "understand": 82,
+      "see": 22,
+      "do": 98,
+      "buy": 60,
+      "eat": 79,
+      "drink": 65
+     }
+    },
+    {
+     "title": "Philadelphia/West",
+     "score": 65,
+     "sections": {
+      "understand": 80,
+      "see": 30,
+      "do": 47,
+      "buy": 32,
+      "eat": 90,
+      "drink": 60
+     }
+    },
+    {
+     "title": "Philadelphia/Center City West",
+     "score": 62,
+     "sections": {
+      "understand": 73,
+      "see": 72,
+      "do": 53,
+      "buy": 67,
+      "eat": 14,
+      "drink": 69
+     }
+    },
+    {
+     "title": "Philadelphia/North",
+     "score": 58,
+     "sections": {
+      "understand": 66,
+      "see": 53,
+      "do": 13,
+      "buy": 49,
+      "eat": 88,
+      "drink": 58
+     }
+    },
+    {
+     "title": "Philadelphia/Center City East",
+     "score": 53,
+     "sections": {
+      "see": 38,
+      "do": 28,
+      "buy": 80,
+      "eat": 49,
+      "drink": 62
+     }
+    }
+   ],
+   "san-diego": [
+    {
+     "title": "San Diego/Mid-City",
+     "score": 95,
+     "sections": {
+      "see": 44,
+      "do": 92,
+      "buy": 97,
+      "eat": 16,
+      "drink": 99
+     }
+    },
+    {
+     "title": "San Diego/La Jolla",
+     "score": 84,
+     "sections": {
+      "understand": 52,
+      "see": 93,
+      "do": 55,
+      "buy": 46,
+      "eat": 89,
+      "drink": 64
+     }
+    },
+    {
+     "title": "San Diego/North",
+     "score": 74,
+     "sections": {
+      "see": 70,
+      "do": 62,
+      "eat": 21,
+      "drink": 92
+     }
+    },
+    {
+     "title": "San Diego/Point Loma-Ocean Beach",
+     "score": 38,
+     "sections": {
+      "see": 22,
+      "do": 28,
+      "buy": 41,
+      "eat": 40,
+      "drink": 87
+     }
+    },
+    {
+     "title": "San Diego/Balboa Park-Hillcrest",
+     "score": 36,
+     "sections": {
+      "see": 49,
+      "do": 28,
+      "buy": 81,
+      "eat": 44,
+      "drink": 13
+     }
+    }
+   ],
+   "dallas": [
+    {
+     "title": "Dallas/North Dallas",
+     "score": 95,
+     "sections": {
+      "understand": 94,
+      "see": 68,
+      "do": 95,
+      "buy": 54,
+      "eat": 55,
+      "drink": 88
+     }
+    },
+    {
+     "title": "Dallas/South Dallas",
+     "score": 42,
+     "sections": {
+      "understand": 54,
+      "see": 58,
+      "do": 74,
+      "buy": 21,
+      "eat": 37,
+      "drink": 25
+     }
+    },
+    {
+     "title": "Dallas/Downtown",
+     "score": 11,
+     "sections": {
+      "understand": 4,
+      "see": 25,
+      "do": 1,
+      "buy": 83,
+      "eat": 66,
+      "drink": 32
+     }
+    }
+   ]
+  },
+  "San Francisco/The Avenues": {
+   "new-york": [
+    {
+     "title": "Staten Island",
+     "score": 98,
+     "sections": {
+      "understand": 99,
+      "see": 100,
+      "do": 73,
+      "buy": 54,
+      "eat": 63,
+      "drink": 64
+     }
+    },
+    {
+     "title": "Brooklyn/Southwest Brooklyn",
+     "score": 97,
+     "sections": {
+      "understand": 99,
+      "see": 95,
+      "do": 65,
+      "buy": 16,
+      "eat": 87,
+      "drink": 94
+     }
+    },
+    {
+     "title": "Queens/The Rockaways",
+     "score": 97,
+     "sections": {
+      "understand": 81,
+      "see": 89,
+      "do": 99,
+      "eat": 17
+     }
+    },
+    {
+     "title": "Queens/Forest Park",
+     "score": 93,
+     "sections": {
+      "see": 87,
+      "eat": 51,
+      "drink": 87
+     }
+    },
+    {
+     "title": "Manhattan/Chinatown",
+     "score": 92,
+     "sections": {
+      "understand": 42,
+      "see": 3,
+      "do": 85,
+      "buy": 36,
+      "eat": 100,
+      "drink": 96
+     }
+    }
+   ],
+   "los-angeles": [
+    {
+     "title": "Los Angeles/Northwest",
+     "score": 96,
+     "sections": {
+      "understand": 31,
+      "see": 100,
+      "do": 40,
+      "buy": 81,
+      "eat": 98,
+      "drink": 60
+     }
+    },
+    {
+     "title": "Los Angeles/South",
+     "score": 91,
+     "sections": {
+      "understand": 60,
+      "see": 85,
+      "do": 58,
+      "buy": 93,
+      "eat": 45,
+      "drink": 94
+     }
+    },
+    {
+     "title": "Los Angeles/Eastside",
+     "score": 59,
+     "sections": {
+      "understand": 43,
+      "see": 25,
+      "do": 78,
+      "buy": 44,
+      "eat": 34,
+      "drink": 92
+     }
+    },
+    {
+     "title": "Los Angeles/Wilshire",
+     "score": 41,
+     "sections": {
+      "see": 58,
+      "do": 34,
+      "buy": 16,
+      "eat": 96,
+      "drink": 5
+     }
+    },
+    {
+     "title": "Los Angeles/Hollywood",
+     "score": 37,
+     "sections": {
+      "understand": 65,
+      "see": 38,
+      "do": 93,
+      "buy": 8,
+      "eat": 38,
+      "drink": 8
+     }
+    }
+   ],
+   "chicago": [
+    {
+     "title": "Chicago/Rogers Park",
+     "score": 98,
+     "sections": {
+      "understand": 70,
+      "see": 95,
+      "do": 100,
+      "buy": 27,
+      "eat": 83,
+      "drink": 89
+     }
+    },
+    {
+     "title": "Chicago/Far Southwest Side",
+     "score": 98,
+     "sections": {
+      "understand": 98,
+      "see": 77,
+      "do": 52,
+      "buy": 97,
+      "eat": 55,
+      "drink": 99
+     }
+    },
+    {
+     "title": "Chicago/Bridgeport-Chinatown",
+     "score": 97,
+     "sections": {
+      "understand": 78,
+      "see": 20,
+      "do": 77,
+      "buy": 92,
+      "eat": 99,
+      "drink": 89
+     }
+    },
+    {
+     "title": "Chicago/North Lincoln",
+     "score": 96,
+     "sections": {
+      "understand": 63,
+      "see": 55,
+      "do": 52,
+      "buy": 98,
+      "eat": 99,
+      "drink": 87
+     }
+    },
+    {
+     "title": "Chicago/Hyde Park",
+     "score": 81,
+     "sections": {
+      "understand": 67,
+      "see": 83,
+      "do": 72,
+      "buy": 62,
+      "eat": 77,
+      "drink": 39
+     }
+    }
+   ],
+   "houston": [
+    {
+     "title": "Houston/Clear Lake",
+     "score": 95,
+     "sections": {
+      "understand": 33,
+      "see": 91,
+      "do": 93,
+      "buy": 63,
+      "eat": 96,
+      "drink": 79
+     }
+    },
+    {
+     "title": "Houston/North Houston",
+     "score": 81,
+     "sections": {
+      "see": 87,
+      "do": 91,
+      "buy": 24,
+      "eat": 83,
+      "drink": 23
+     }
+    },
+    {
+     "title": "Houston/East Houston",
+     "score": 79,
+     "sections": {
+      "see": 33,
+      "do": 43,
+      "eat": 79,
+      "drink": 95
+     }
+    },
+    {
+     "title": "Houston/West Houston",
+     "score": 78,
+     "sections": {
+      "understand": 66,
+      "do": 65,
+      "buy": 18,
+      "eat": 99,
+      "drink": 24
+     }
+    },
+    {
+     "title": "Houston/West Inner Loop",
+     "score": 70,
+     "sections": {
+      "understand": 92,
+      "see": 88,
+      "do": 64,
+      "buy": 14,
+      "eat": 4,
+      "drink": 91
+     }
+    }
+   ],
+   "philadelphia": [
+    {
+     "title": "Philadelphia/Northwest",
+     "score": 93,
+     "sections": {
+      "understand": 54,
+      "see": 92,
+      "do": 45,
+      "buy": 92,
+      "eat": 97,
+      "drink": 49
+     }
+    },
+    {
+     "title": "Philadelphia/Northeast",
+     "score": 64,
+     "sections": {
+      "understand": 84,
+      "see": 54,
+      "do": 95,
+      "buy": 52,
+      "eat": 8,
+      "drink": 31
+     }
+    },
+    {
+     "title": "Philadelphia/South",
+     "score": 48,
+     "sections": {
+      "understand": 69,
+      "see": 64,
+      "do": 36,
+      "buy": 51,
+      "eat": 19,
+      "drink": 64
+     }
+    },
+    {
+     "title": "Philadelphia/Old City",
+     "score": 44,
+     "sections": {
+      "understand": 65,
+      "see": 27,
+      "do": 37,
+      "buy": 83,
+      "eat": 18,
+      "drink": 56
+     }
+    },
+    {
+     "title": "Philadelphia/West",
+     "score": 42,
+     "sections": {
+      "understand": 10,
+      "see": 71,
+      "do": 6,
+      "buy": 14,
+      "eat": 96,
+      "drink": 80
+     }
+    }
+   ],
+   "san-diego": [
+    {
+     "title": "San Diego/San Ysidro",
+     "score": 96,
+     "sections": {
+      "see": 86,
+      "buy": 35,
+      "eat": 98
+     }
+    },
+    {
+     "title": "San Diego/La Jolla",
+     "score": 95,
+     "sections": {
+      "understand": 47,
+      "see": 93,
+      "do": 100,
+      "buy": 48,
+      "eat": 40,
+      "drink": 16
+     }
+    },
+    {
+     "title": "San Diego/Point Loma-Ocean Beach",
+     "score": 91,
+     "sections": {
+      "see": 62,
+      "do": 98,
+      "buy": 55,
+      "eat": 49,
+      "drink": 73
+     }
+    },
+    {
+     "title": "San Diego/North",
+     "score": 86,
+     "sections": {
+      "see": 81,
+      "do": 50,
+      "eat": 87,
+      "drink": 60
+     }
+    },
+    {
+     "title": "San Diego/Mission Beach-Pacific Beach",
+     "score": 70,
+     "sections": {
+      "understand": 93,
+      "see": 38,
+      "do": 96,
+      "buy": 16,
+      "eat": 70,
+      "drink": 7
+     }
+    }
+   ],
+   "dallas": [
+    {
+     "title": "Dallas/South Dallas",
+     "score": 77,
+     "sections": {
+      "understand": 95,
+      "see": 89,
+      "do": 57,
+      "buy": 46,
+      "eat": 34,
+      "drink": 39
+     }
+    },
+    {
+     "title": "Dallas/North Dallas",
+     "score": 71,
+     "sections": {
+      "understand": 24,
+      "see": 25,
+      "do": 90,
+      "buy": 39,
+      "eat": 74,
+      "drink": 92
+     }
+    },
+    {
+     "title": "Dallas/Downtown",
+     "score": 14,
+     "sections": {
+      "understand": 16,
+      "see": 32,
+      "do": 12,
+      "buy": 73,
+      "eat": 51,
+      "drink": 11
+     }
+    }
+   ]
+  },
+  "San Francisco/Twin Peaks-Lake Merced": {
+   "new-york": [
+    {
+     "title": "Queens/Flushing-Northeast",
+     "score": 93,
+     "sections": {
+      "see": 40,
+      "do": 84,
+      "buy": 91,
+      "eat": 95,
+      "drink": 53
+     }
+    },
+    {
+     "title": "Brooklyn/Prospect Park",
+     "score": 89,
+     "sections": {
+      "understand": 93,
+      "see": 68,
+      "do": 68,
+      "buy": 53,
+      "eat": 52,
+      "drink": 93
+     }
+    },
+    {
+     "title": "Manhattan/Midtown East",
+     "score": 87,
+     "sections": {
+      "understand": 64,
+      "see": 90,
+      "do": 59,
+      "buy": 60,
+      "eat": 81
+     }
+    },
+    {
+     "title": "Queens/Jamaica",
+     "score": 85,
+     "sections": {
+      "see": 20,
+      "do": 52,
+      "buy": 48,
+      "eat": 99
+     }
+    },
+    {
+     "title": "Queens/Jackson Heights",
+     "score": 84,
+     "sections": {
+      "understand": 83,
+      "see": 12,
+      "do": 67,
+      "buy": 31,
+      "eat": 98,
+      "drink": 93
+     }
+    }
+   ],
+   "los-angeles": [
+    {
+     "title": "Los Angeles/South",
+     "score": 97,
+     "sections": {
+      "understand": 83,
+      "see": 93,
+      "do": 89,
+      "buy": 67,
+      "eat": 52,
+      "drink": 99
+     }
+    },
+    {
+     "title": "Los Angeles/Eastside",
+     "score": 69,
+     "sections": {
+      "understand": 91,
+      "see": 26,
+      "do": 76,
+      "buy": 39,
+      "eat": 74,
+      "drink": 43
+     }
+    },
+    {
+     "title": "Los Angeles/Northwest",
+     "score": 52,
+     "sections": {
+      "understand": 46,
+      "see": 90,
+      "do": 72,
+      "buy": 38,
+      "eat": 15,
+      "drink": 25
+     }
+    },
+    {
+     "title": "Los Angeles/Bunker Hill",
+     "score": 28,
+     "sections": {
+      "see": 82,
+      "do": 64,
+      "eat": 19,
+      "drink": 3
+     }
+    },
+    {
+     "title": "Los Angeles/Wilshire",
+     "score": 24,
+     "sections": {
+      "see": 27,
+      "do": 3,
+      "buy": 56,
+      "eat": 81,
+      "drink": 47
+     }
+    }
+   ],
+   "chicago": [
+    {
+     "title": "Chicago/Southwest Side",
+     "score": 94,
+     "sections": {
+      "understand": 79,
+      "see": 62,
+      "do": 98,
+      "buy": 86,
+      "eat": 53,
+      "drink": 70
+     }
+    },
+    {
+     "title": "Chicago/Far Southwest Side",
+     "score": 86,
+     "sections": {
+      "understand": 73,
+      "see": 43,
+      "do": 74,
+      "buy": 21,
+      "eat": 53,
+      "drink": 100
+     }
+    },
+    {
+     "title": "Chicago/Lakeview-North Center",
+     "score": 78,
+     "sections": {
+      "understand": 85,
+      "see": 62,
+      "do": 15,
+      "buy": 76,
+      "eat": 80,
+      "drink": 84
+     }
+    },
+    {
+     "title": "Chicago/Bridgeport-Chinatown",
+     "score": 76,
+     "sections": {
+      "understand": 34,
+      "see": 13,
+      "do": 79,
+      "buy": 51,
+      "eat": 98,
+      "drink": 70
+     }
+    },
+    {
+     "title": "Chicago/Rogers Park",
+     "score": 72,
+     "sections": {
+      "understand": 68,
+      "see": 63,
+      "do": 92,
+      "buy": 3,
+      "eat": 73,
+      "drink": 72
+     }
+    }
+   ],
+   "houston": [
+    {
+     "title": "Houston/Clear Lake",
+     "score": 96,
+     "sections": {
+      "understand": 29,
+      "see": 95,
+      "do": 65,
+      "buy": 90,
+      "eat": 57,
+      "drink": 100
+     }
+    },
+    {
+     "title": "Houston/North Houston",
+     "score": 86,
+     "sections": {
+      "see": 27,
+      "do": 88,
+      "buy": 19,
+      "eat": 96,
+      "drink": 90
+     }
+    },
+    {
+     "title": "Houston/Uptown",
+     "score": 70,
+     "sections": {
+      "see": 89,
+      "do": 13,
+      "buy": 95,
+      "eat": 84,
+      "drink": 4
+     }
+    },
+    {
+     "title": "Houston/West Houston",
+     "score": 67,
+     "sections": {
+      "understand": 78,
+      "do": 48,
+      "buy": 79,
+      "eat": 79,
+      "drink": 13
+     }
+    },
+    {
+     "title": "Houston/East Houston",
+     "score": 59,
+     "sections": {
+      "see": 29,
+      "do": 93,
+      "eat": 72,
+      "drink": 7
+     }
+    }
+   ],
+   "philadelphia": [
+    {
+     "title": "Philadelphia/West",
+     "score": 90,
+     "sections": {
+      "understand": 52,
+      "see": 91,
+      "do": 53,
+      "buy": 83,
+      "eat": 90,
+      "drink": 61
+     }
+    },
+    {
+     "title": "Philadelphia/Northwest",
+     "score": 83,
+     "sections": {
+      "understand": 95,
+      "see": 80,
+      "do": 33,
+      "buy": 8,
+      "eat": 79,
+      "drink": 91
+     }
+    },
+    {
+     "title": "Philadelphia/Northeast",
+     "score": 81,
+     "sections": {
+      "understand": 80,
+      "see": 67,
+      "do": 86,
+      "buy": 75,
+      "eat": 30,
+      "drink": 65
+     }
+    },
+    {
+     "title": "Philadelphia/North",
+     "score": 67,
+     "sections": {
+      "understand": 39,
+      "see": 62,
+      "do": 81,
+      "buy": 89,
+      "eat": 21,
+      "drink": 52
+     }
+    },
+    {
+     "title": "Philadelphia/Center City West",
+     "score": 42,
+     "sections": {
+      "understand": 28,
+      "see": 31,
+      "do": 63,
+      "buy": 91,
+      "eat": 45,
+      "drink": 12
+     }
+    }
+   ],
+   "san-diego": [
+    {
+     "title": "San Diego/San Ysidro",
+     "score": 99,
+     "sections": {
+      "see": 59,
+      "buy": 78,
+      "eat": 100
+     }
+    },
+    {
+     "title": "San Diego/North",
+     "score": 90,
+     "sections": {
+      "see": 93,
+      "do": 69,
+      "eat": 62,
+      "drink": 59
+     }
+    },
+    {
+     "title": "San Diego/La Jolla",
+     "score": 82,
+     "sections": {
+      "understand": 45,
+      "see": 76,
+      "do": 78,
+      "buy": 85,
+      "eat": 43,
+      "drink": 79
+     }
+    },
+    {
+     "title": "San Diego/Point Loma-Ocean Beach",
+     "score": 51,
+     "sections": {
+      "see": 71,
+      "do": 65,
+      "buy": 2,
+      "eat": 27,
+      "drink": 93
+     }
+    },
+    {
+     "title": "San Diego/Old Town-Mission Valley",
+     "score": 40,
+     "sections": {
+      "see": 6,
+      "do": 94,
+      "buy": 30,
+      "eat": 9,
+      "drink": 83
+     }
+    }
+   ],
+   "dallas": [
+    {
+     "title": "Dallas/North Dallas",
+     "score": 79,
+     "sections": {
+      "understand": 61,
+      "see": 40,
+      "do": 68,
+      "buy": 94,
+      "eat": 33,
+      "drink": 88
+     }
+    },
+    {
+     "title": "Dallas/South Dallas",
+     "score": 65,
+     "sections": {
+      "understand": 55,
+      "see": 78,
+      "do": 43,
+      "buy": 10,
+      "eat": 88,
+      "drink": 68
+     }
+    },
+    {
+     "title": "Dallas/Downtown",
+     "score": 9,
+     "sections": {
+      "understand": 38,
+      "see": 35,
+      "do": 48,
+      "buy": 39,
+      "eat": 12,
+      "drink": 3
+     }
+    }
+   ]
+  },
+  "San Francisco/Castro-Noe Valley": {
+   "new-york": [
+    {
+     "title": "Brooklyn/Southwest Brooklyn",
+     "score": 95,
+     "sections": {
+      "understand": 88,
+      "see": 32,
+      "do": 88,
+      "buy": 91,
+      "eat": 91,
+      "drink": 87
+     }
+    },
+    {
+     "title": "Queens/Jamaica",
+     "score": 93,
+     "sections": {
+      "see": 93,
+      "do": 79,
+      "buy": 58,
+      "eat": 69
+     }
+    },
+    {
+     "title": "Manhattan/Chinatown",
+     "score": 85,
+     "sections": {
+      "understand": 86,
+      "see": 66,
+      "do": 72,
+      "buy": 31,
+      "eat": 93,
+      "drink": 63
+     }
+    },
+    {
+     "title": "Manhattan/Harlem and Upper Manhattan",
+     "score": 85,
+     "sections": {
+      "understand": 44,
+      "see": 81,
+      "do": 80,
+      "buy": 52,
+      "eat": 97,
+      "drink": 28
+     }
+    },
+    {
+     "title": "Manhattan/Greenwich Village",
+     "score": 84,
+     "sections": {
+      "understand": 53,
+      "see": 57,
+      "do": 41,
+      "buy": 80,
+      "eat": 79,
+      "drink": 96
+     }
+    }
+   ],
+   "los-angeles": [
+    {
+     "title": "Los Angeles/Wilshire",
+     "score": 79,
+     "sections": {
+      "see": 82,
+      "do": 66,
+      "buy": 79,
+      "eat": 62,
+      "drink": 44
+     }
+    },
+    {
+     "title": "Los Angeles/Northwest",
+     "score": 72,
+     "sections": {
+      "understand": 61,
+      "see": 46,
+      "do": 40,
+      "buy": 58,
+      "eat": 82,
+      "drink": 86
+     }
+    },
+    {
+     "title": "Los Angeles/Hollywood",
+     "score": 70,
+     "sections": {
+      "understand": 72,
+      "see": 96,
+      "do": 27,
+      "buy": 21,
+      "eat": 62,
+      "drink": 51
+     }
+    },
+    {
+     "title": "Los Angeles/South",
+     "score": 57,
+     "sections": {
+      "understand": 16,
+      "see": 60,
+      "do": 78,
+      "buy": 59,
+      "eat": 78,
+      "drink": 25
+     }
+    },
+    {
+     "title": "Los Angeles/Eastside",
+     "score": 55,
+     "sections": {
+      "understand": 51,
+      "see": 42,
+      "do": 42,
+      "buy": 45,
+      "eat": 72,
+      "drink": 68
+     }
+    }
+   ],
+   "chicago": [
+    {
+     "title": "Chicago/Far West Side",
+     "score": 92,
+     "sections": {
+      "understand": 87,
+      "see": 13,
+      "do": 97,
+      "buy": 75,
+      "eat": 73,
+      "drink": 86
+     }
+    },
+    {
+     "title": "Chicago/Pilsen",
+     "score": 87,
+     "sections": {
+      "understand": 10,
+      "see": 82,
+      "do": 100,
+      "buy": 53,
+      "eat": 68,
+      "drink": 40
+     }
+    },
+    {
+     "title": "Chicago/Uptown",
+     "score": 84,
+     "sections": {
+      "understand": 92,
+      "see": 34,
+      "do": 60,
+      "buy": 81,
+      "eat": 83,
+      "drink": 65
+     }
+    },
+    {
+     "title": "Chicago/Bronzeville",
+     "score": 80,
+     "sections": {
+      "understand": 38,
+      "see": 71,
+      "do": 72,
+      "buy": 89,
+      "eat": 42,
+      "drink": 83
+     }
+    },
+    {
+     "title": "Chicago/Southwest Side",
+     "score": 74,
+     "sections": {
+      "understand": 65,
+      "see": 75,
+      "do": 20,
+      "buy": 68,
+      "eat": 90,
+      "drink": 58
+     }
+    }
+   ],
+   "houston": [
+    {
+     "title": "Houston/Neartown",
+     "score": 96,
+     "sections": {
+      "understand": 98,
+      "see": 91,
+      "do": 89,
+      "buy": 42,
+      "eat": 81,
+      "drink": 62
+     }
+    },
+    {
+     "title": "Houston/North Houston",
+     "score": 76,
+     "sections": {
+      "see": 85,
+      "do": 50,
+      "buy": 15,
+      "eat": 94,
+      "drink": 52
+     }
+    },
+    {
+     "title": "Houston/West Houston",
+     "score": 61,
+     "sections": {
+      "understand": 11,
+      "do": 73,
+      "buy": 24,
+      "eat": 75,
+      "drink": 88
+     }
+    },
+    {
+     "title": "Houston/Greater Heights",
+     "score": 60,
+     "sections": {
+      "understand": 23,
+      "see": 98,
+      "do": 18,
+      "buy": 59,
+      "eat": 17,
+      "drink": 76
+     }
+    },
+    {
+     "title": "Houston/Downtown",
+     "score": 44,
+     "sections": {
+      "understand": 60,
+      "see": 5,
+      "do": 85,
+      "eat": 82,
+      "drink": 14
+     }
+    }
+   ],
+   "philadelphia": [
+    {
+     "title": "Philadelphia/North",
+     "score": 76,
+     "sections": {
+      "understand": 77,
+      "see": 83,
+      "do": 63,
+      "buy": 67,
+      "eat": 50,
+      "drink": 47
+     }
+    },
+    {
+     "title": "Philadelphia/Northwest",
+     "score": 75,
+     "sections": {
+      "understand": 77,
+      "see": 13,
+      "do": 74,
+      "buy": 46,
+      "eat": 92,
+      "drink": 78
+     }
+    },
+    {
+     "title": "Philadelphia/Old City",
+     "score": 74,
+     "sections": {
+      "understand": 71,
+      "see": 74,
+      "do": 78,
+      "buy": 80,
+      "eat": 26,
+      "drink": 46
+     }
+    },
+    {
+     "title": "Philadelphia/Center City West",
+     "score": 50,
+     "sections": {
+      "understand": 2,
+      "see": 99,
+      "do": 43,
+      "buy": 32,
+      "eat": 65,
+      "drink": 18
+     }
+    },
+    {
+     "title": "Philadelphia/Northeast",
+     "score": 39,
+     "sections": {
+      "understand": 60,
+      "see": 64,
+      "do": 29,
+      "buy": 58,
+      "eat": 15,
+      "drink": 48
+     }
+    }
+   ],
+   "san-diego": [
+    {
+     "title": "San Diego/Mid-City",
+     "score": 86,
+     "sections": {
+      "see": 72,
+      "do": 47,
+      "buy": 66,
+      "eat": 94,
+      "drink": 71
+     }
+    },
+    {
+     "title": "San Diego/Balboa Park-Hillcrest",
+     "score": 73,
+     "sections": {
+      "see": 98,
+      "do": 59,
+      "buy": 55,
+      "eat": 13,
+      "drink": 52
+     }
+    },
+    {
+     "title": "San Diego/Old Town-Mission Valley",
+     "score": 71,
+     "sections": {
+      "see": 60,
+      "do": 63,
+      "buy": 96,
+      "eat": 14,
+      "drink": 57
+     }
+    },
+    {
+     "title": "San Diego/Downtown",
+     "score": 63,
+     "sections": {
+      "understand": 29,
+      "see": 80,
+      "do": 93,
+      "buy": 33,
+      "eat": 28,
+      "drink": 48
+     }
+    },
+    {
+     "title": "San Diego/La Jolla",
+     "score": 51,
+     "sections": {
+      "understand": 87,
+      "see": 30,
+      "do": 22,
+      "buy": 41,
+      "eat": 39,
+      "drink": 84
+     }
+    }
+   ],
+   "dallas": [
+    {
+     "title": "Dallas/North Dallas",
+     "score": 63,
+     "sections": {
+      "understand": 84,
+      "see": 12,
+      "do": 55,
+      "buy": 11,
+      "eat": 84,
+      "drink": 90
+     }
+    },
+    {
+     "title": "Dallas/South Dallas",
+     "score": 54,
+     "sections": {
+      "understand": 11,
+      "see": 66,
+      "do": 85,
+      "buy": 69,
+      "eat": 50,
+      "drink": 19
+     }
+    },
+    {
+     "title": "Dallas/Downtown",
+     "score": 52,
+     "sections": {
+      "understand": 58,
+      "see": 86,
+      "do": 17,
+      "buy": 77,
+      "eat": 23,
+      "drink": 37
+     }
+    }
+   ]
+  },
+  "San Francisco/Mission": {
+   "new-york": [
+    {
+     "title": "Manhattan/Harlem and Upper Manhattan",
+     "score": 99,
+     "sections": {
+      "understand": 98,
+      "see": 49,
+      "do": 63,
+      "buy": 100,
+      "eat": 96,
+      "drink": 96
+     }
+    },
+    {
+     "title": "Manhattan/SoHo",
+     "score": 95,
+     "sections": {
+      "see": 80,
+      "do": 99,
+      "buy": 84,
+      "eat": 50,
+      "drink": 20
+     }
+    },
+    {
+     "title": "Manhattan/TriBeCa",
+     "score": 94,
+     "sections": {
+      "understand": 99,
+      "see": 64,
+      "do": 94,
+      "buy": 44,
+      "eat": 43
+     }
+    },
+    {
+     "title": "Manhattan/East Village",
+     "score": 94,
+     "sections": {
+      "understand": 100,
+      "see": 67,
+      "do": 47,
+      "buy": 86,
+      "eat": 8,
+      "drink": 98
+     }
+    },
+    {
+     "title": "Queens/Forest Park",
+     "score": 90,
+     "sections": {
+      "see": 86,
+      "eat": 94,
+      "drink": 17
+     }
+    }
+   ],
+   "los-angeles": [
+    {
+     "title": "Los Angeles/Northwest",
+     "score": 95,
+     "sections": {
+      "understand": 99,
+      "see": 26,
+      "do": 56,
+      "buy": 76,
+      "eat": 89,
+      "drink": 96
+     }
+    },
+    {
+     "title": "Los Angeles/Chinatown",
+     "score": 93,
+     "sections": {
+      "see": 95,
+      "eat": 38
+     }
+    },
+    {
+     "title": "Los Angeles/Eastside",
+     "score": 88,
+     "sections": {
+      "understand": 45,
+      "see": 62,
+      "do": 28,
+      "buy": 99,
+      "eat": 99,
+      "drink": 14
+     }
+    },
+    {
+     "title": "Los Angeles/Wilshire",
+     "score": 62,
+     "sections": {
+      "see": 76,
+      "do": 80,
+      "buy": 56,
+      "eat": 9,
+      "drink": 60
+     }
+    },
+    {
+     "title": "Los Angeles/Hollywood",
+     "score": 29,
+     "sections": {
+      "understand": 17,
+      "see": 11,
+      "do": 87,
+      "buy": 14,
+      "eat": 41,
+      "drink": 68
+     }
+    }
+   ],
+   "chicago": [
+    {
+     "title": "Chicago/Far West Side",
+     "score": 98,
+     "sections": {
+      "understand": 86,
+      "see": 64,
+      "do": 80,
+      "buy": 77,
+      "eat": 100,
+      "drink": 83
+     }
+    },
+    {
+     "title": "Chicago/Pilsen",
+     "score": 96,
+     "sections": {
+      "understand": 96,
+      "see": 70,
+      "do": 77,
+      "buy": 83,
+      "eat": 96,
+      "drink": 49
+     }
+    },
+    {
+     "title": "Chicago/Logan-Bucktown",
+     "score": 91,
+     "sections": {
+      "understand": 38,
+      "see": 59,
+      "do": 95,
+      "buy": 78,
+      "eat": 94,
+      "drink": 52
+     }
+    },
+    {
+     "title": "Chicago/Lincoln Park-Old Town",
+     "score": 89,
+     "sections": {
+      "understand": 75,
+      "see": 16,
+      "do": 93,
+      "buy": 74,
+      "eat": 73,
+      "drink": 94
+     }
+    },
+    {
+     "title": "Chicago/Lakeview-North Center",
+     "score": 87,
+     "sections": {
+      "understand": 17,
+      "see": 82,
+      "do": 90,
+      "buy": 65,
+      "eat": 91,
+      "drink": 67
+     }
+    }
+   ],
+   "houston": [
+    {
+     "title": "Houston/West Inner Loop",
+     "score": 90,
+     "sections": {
+      "understand": 51,
+      "see": 71,
+      "do": 31,
+      "buy": 76,
+      "eat": 99,
+      "drink": 74
+     }
+    },
+    {
+     "title": "Houston/Neartown",
+     "score": 76,
+     "sections": {
+      "understand": 88,
+      "see": 48,
+      "do": 32,
+      "buy": 54,
+      "eat": 72,
+      "drink": 87
+     }
+    },
+    {
+     "title": "Houston/Greater Heights",
+     "score": 72,
+     "sections": {
+      "understand": 89,
+      "see": 52,
+      "do": 74,
+      "buy": 21,
+      "eat": 29,
+      "drink": 89
+     }
+    },
+    {
+     "title": "Houston/Downtown",
+     "score": 69,
+     "sections": {
+      "understand": 28,
+      "see": 82,
+      "do": 66,
+      "eat": 55,
+      "drink": 66
+     }
+    },
+    {
+     "title": "Houston/South Inner Loop",
+     "score": 67,
+     "sections": {
+      "see": 21,
+      "do": 57,
+      "buy": 84,
+      "eat": 93,
+      "drink": 25
+     }
+    }
+   ],
+   "philadelphia": [
+    {
+     "title": "Philadelphia/Old City",
+     "score": 88,
+     "sections": {
+      "understand": 46,
+      "see": 46,
+      "do": 90,
+      "buy": 62,
+      "eat": 91,
+      "drink": 84
+     }
+    },
+    {
+     "title": "Philadelphia/Center City West",
+     "score": 83,
+     "sections": {
+      "understand": 90,
+      "see": 31,
+      "do": 51,
+      "buy": 91,
+      "eat": 53,
+      "drink": 88
+     }
+    },
+    {
+     "title": "Philadelphia/North",
+     "score": 52,
+     "sections": {
+      "understand": 60,
+      "see": 37,
+      "do": 53,
+      "buy": 20,
+      "eat": 90,
+      "drink": 34
+     }
+    },
+    {
+     "title": "Philadelphia/Center City East",
+     "score": 42,
+     "sections": {
+      "see": 85,
+      "do": 82,
+      "buy": 10,
+      "eat": 13,
+      "drink": 27
+     }
+    },
+    {
+     "title": "Philadelphia/West",
+     "score": 42,
+     "sections": {
+      "understand": 86,
+      "see": 41,
+      "do": 14,
+      "buy": 64,
+      "eat": 85,
+      "drink": 4
+     }
+    }
+   ],
+   "san-diego": [
+    {
+     "title": "San Diego/Old Town-Mission Valley",
+     "score": 96,
+     "sections": {
+      "see": 95,
+      "do": 28,
+      "buy": 72,
+      "eat": 99,
+      "drink": 79
+     }
+    },
+    {
+     "title": "San Diego/Downtown",
+     "score": 84,
+     "sections": {
+      "understand": 68,
+      "see": 33,
+      "do": 95,
+      "buy": 22,
+      "eat": 42,
+      "drink": 99
+     }
+    },
+    {
+     "title": "San Diego/Mission Beach-Pacific Beach",
+     "score": 77,
+     "sections": {
+      "understand": 74,
+      "see": 11,
+      "do": 43,
+      "buy": 96,
+      "eat": 52,
+      "drink": 92
+     }
+    },
+    {
+     "title": "San Diego/Mid-City",
+     "score": 70,
+     "sections": {
+      "see": 86,
+      "do": 82,
+      "buy": 12,
+      "eat": 91,
+      "drink": 7
+     }
+    },
+    {
+     "title": "San Diego/Point Loma-Ocean Beach",
+     "score": 51,
+     "sections": {
+      "see": 46,
+      "do": 52,
+      "buy": 69,
+      "eat": 81,
+      "drink": 8
+     }
+    }
+   ],
+   "dallas": [
+    {
+     "title": "Dallas/North Dallas",
+     "score": 73,
+     "sections": {
+      "understand": 62,
+      "see": 81,
+      "do": 38,
+      "buy": 64,
+      "eat": 23,
+      "drink": 95
+     }
+    },
+    {
+     "title": "Dallas/Downtown",
+     "score": 44,
+     "sections": {
+      "understand": 25,
+      "see": 33,
+      "do": 36,
+      "buy": 32,
+      "eat": 80,
+      "drink": 74
+     }
+    },
+    {
+     "title": "Dallas/South Dallas",
+     "score": 36,
+     "sections": {
+      "understand": 69,
+      "see": 26,
+      "do": 79,
+      "buy": 57,
+      "eat": 44,
+      "drink": 2
+     }
+    }
+   ]
+  },
+  "San Francisco/Bernal Heights": {
+   "new-york": [
+    {
+     "title": "Queens/Forest Park",
+     "score": 96,
+     "sections": {
+      "see": 94,
+      "eat": 95,
+      "drink": 36
+     }
+    },
+    {
+     "title": "Queens/Long Island City and Astoria",
+     "score": 93,
+     "sections": {
+      "understand": 27,
+      "see": 22,
+      "do": 88,
+      "buy": 99,
+      "eat": 67,
+      "drink": 98
+     }
+    },
+    {
+     "title": "Bronx",
+     "score": 93,
+     "sections": {
+      "understand": 97,
+      "see": 96,
+      "do": 20,
+      "buy": 75,
+      "eat": 92,
+      "drink": 29
+     }
+    },
+    {
+     "title": "Queens/The Rockaways",
+     "score": 87,
+     "sections": {
+      "understand": 71,
+      "see": 94,
+      "do": 62,
+      "eat": 45
+     }
+    },
+    {
+     "title": "Brooklyn/East",
+     "score": 85,
+     "sections": {
+      "understand": 78,
+      "see": 83,
+      "buy": 31,
+      "eat": 97,
+      "drink": 29
+     }
+    }
+   ],
+   "los-angeles": [
+    {
+     "title": "Los Angeles/Northwest",
+     "score": 88,
+     "sections": {
+      "understand": 81,
+      "see": 91,
+      "do": 44,
+      "buy": 63,
+      "eat": 84,
+      "drink": 67
+     }
+    },
+    {
+     "title": "Los Angeles/Eastside",
+     "score": 83,
+     "sections": {
+      "understand": 62,
+      "see": 78,
+      "do": 81,
+      "buy": 39,
+      "eat": 93,
+      "drink": 45
+     }
+    },
+    {
+     "title": "Los Angeles/Wilshire",
+     "score": 80,
+     "sections": {
+      "see": 37,
+      "do": 73,
+      "buy": 98,
+      "eat": 23,
+      "drink": 72
+     }
+    },
+    {
+     "title": "Los Angeles/Bunker Hill",
+     "score": 68,
+     "sections": {
+      "see": 45,
+      "do": 20,
+      "eat": 26,
+      "drink": 100
+     }
+    },
+    {
+     "title": "Los Angeles/Hollywood",
+     "score": 26,
+     "sections": {
+      "understand": 35,
+      "see": 51,
+      "do": 46,
+      "buy": 13,
+      "eat": 64,
+      "drink": 23
+     }
+    }
+   ],
+   "chicago": [
+    {
+     "title": "Chicago/Far Southwest Side",
+     "score": 96,
+     "sections": {
+      "understand": 96,
+      "see": 97,
+      "do": 92,
+      "buy": 31,
+      "eat": 90,
+      "drink": 28
+     }
+    },
+    {
+     "title": "Chicago/Lakeview-North Center",
+     "score": 80,
+     "sections": {
+      "understand": 55,
+      "see": 73,
+      "do": 57,
+      "buy": 67,
+      "eat": 82,
+      "drink": 77
+     }
+    },
+    {
+     "title": "Chicago/Wicker Park",
+     "score": 80,
+     "sections": {
+      "understand": 42,
+      "see": 47,
+      "do": 64,
+      "buy": 56,
+      "eat": 90,
+      "drink": 91
+     }
+    },
+    {
+     "title": "Chicago/Logan-Bucktown",
+     "score": 76,
+     "sections": {
+      "understand": 65,
+      "see": 80,
+      "do": 26,
+      "buy": 56,
+      "eat": 75,
+      "drink": 83
+     }
+    },
+    {
+     "title": "Chicago/Far Southeast Side",
+     "score": 73,
+     "sections": {
+      "understand": 82,
+      "see": 59,
+      "do": 76,
+      "eat": 45,
+      "drink": 47
+     }
+    }
+   ],
+   "houston": [
+    {
+     "title": "Houston/South Inner Loop",
+     "score": 89,
+     "sections": {
+      "see": 55,
+      "do": 44,
+      "buy": 82,
+      "eat": 93,
+      "drink": 85
+     }
+    },
+    {
+     "title": "Houston/West Inner Loop",
+     "score": 84,
+     "sections": {
+      "understand": 77,
+      "see": 65,
+      "do": 85,
+      "buy": 90,
+      "eat": 75,
+      "drink": 14
+     }
+    },
+    {
+     "title": "Houston/Uptown",
+     "score": 75,
+     "sections": {
+      "see": 83,
+      "do": 91,
+      "buy": 7,
+      "eat": 61,
+      "drink": 58
+     }
+    },
+    {
+     "title": "Houston/West Houston",
+     "score": 74,
+     "sections": {
+      "understand": 3,
+      "do": 58,
+      "buy": 98,
+      "eat": 77,
+      "drink": 67
+     }
+    },
+    {
+     "title": "Houston/Clear Lake",
+     "score": 56,
+     "sections": {
+      "understand": 51,
+      "see": 92,
+      "do": 64,
+      "buy": 28,
+      "eat": 45,
+      "drink": 17
+     }
+    }
+   ],
+   "philadelphia": [
+    {
+     "title": "Philadelphia/West",
+     "score": 85,
+     "sections": {
+      "understand": 70,
+      "see": 67,
+      "do": 96,
+      "buy": 70,
+      "eat": 56,
+      "drink": 33
+     }
+    },
+    {
+     "title": "Philadelphia/South",
+     "score": 84,
+     "sections": {
+      "understand": 69,
+      "see": 67,
+      "do": 56,
+      "buy": 98,
+      "eat": 66,
+      "drink": 32
+     }
+    },
+    {
+     "title": "Philadelphia/Northwest",
+     "score": 55,
+     "sections": {
+      "understand": 73,
+      "see": 92,
+      "do": 25,
+      "buy": 55,
+      "eat": 20,
+      "drink": 34
+     }
+    },
+    {
+     "title": "Philadelphia/North",
+     "score": 50,
+     "sections": {
+      "understand": 39,
+      "see": 48,
+      "do": 30,
+      "buy": 11,
+      "eat": 94,
+      "drink": 58
+     }
+    },
+    {
+     "title": "Philadelphia/Old City",
+     "score": 41,
+     "sections": {
+      "understand": 14,
+      "see": 7,
+      "do": 73,
+      "buy": 31,
+      "eat": 87,
+      "drink": 68
+     }
+    }
+   ],
+   "san-diego": [
+    {
+     "title": "San Diego/La Jolla",
+     "score": 87,
+     "sections": {
+      "understand": 64,
+      "see": 91,
+      "do": 79,
+      "buy": 82,
+      "eat": 68,
+      "drink": 37
+     }
+    },
+    {
+     "title": "San Diego/Balboa Park-Hillcrest",
+     "score": 80,
+     "sections": {
+      "see": 16,
+      "do": 59,
+      "buy": 58,
+      "eat": 76,
+      "drink": 98
+     }
+    },
+    {
+     "title": "San Diego/North",
+     "score": 79,
+     "sections": {
+      "see": 71,
+      "do": 83,
+      "eat": 33,
+      "drink": 75
+     }
+    },
+    {
+     "title": "San Diego/Old Town-Mission Valley",
+     "score": 69,
+     "sections": {
+      "see": 35,
+      "do": 90,
+      "buy": 69,
+      "eat": 87,
+      "drink": 6
+     }
+    },
+    {
+     "title": "San Diego/Point Loma-Ocean Beach",
+     "score": 55,
+     "sections": {
+      "see": 62,
+      "do": 21,
+      "buy": 57,
+      "eat": 40,
+      "drink": 85
+     }
+    }
+   ],
+   "dallas": [
+    {
+     "title": "Dallas/Downtown",
+     "score": 72,
+     "sections": {
+      "understand": 39,
+      "see": 5,
+      "do": 95,
+      "buy": 92,
+      "eat": 83,
+      "drink": 31
+     }
+    },
+    {
+     "title": "Dallas/South Dallas",
+     "score": 60,
+     "sections": {
+      "understand": 75,
+      "see": 65,
+      "do": 8,
+      "buy": 72,
+      "eat": 34,
+      "drink": 87
+     }
+    },
+    {
+     "title": "Dallas/North Dallas",
+     "score": 14,
+     "sections": {
+      "understand": 39,
+      "see": 84,
+      "do": 23,
+      "buy": 1,
+      "eat": 32,
+      "drink": 17
+     }
+    }
+   ]
+  },
+  "San Francisco/Southeast": {
+   "new-york": [
+    {
+     "title": "Queens/Forest Park",
+     "score": 98,
+     "sections": {
+      "see": 90,
+      "eat": 59,
+      "drink": 98
+     }
+    },
+    {
+     "title": "Queens/The Rockaways",
+     "score": 98,
+     "sections": {
+      "understand": 83,
+      "see": 99,
+      "do": 51,
+      "eat": 92
+     }
+    },
+    {
+     "title": "Brooklyn/Bedford-Stuyvesant and Flatbush",
+     "score": 94,
+     "sections": {
+      "understand": 63,
+      "see": 8,
+      "do": 83,
+      "buy": 94,
+      "eat": 96,
+      "drink": 96
+     }
+    },
+    {
+     "title": "Staten Island",
+     "score": 89,
+     "sections": {
+      "understand": 61,
+      "see": 99,
+      "do": 35,
+      "buy": 89,
+      "eat": 52,
+      "drink": 39
+     }
+    },
+    {
+     "title": "Brooklyn/East",
+     "score": 88,
+     "sections": {
+      "understand": 92,
+      "see": 95,
+      "buy": 76,
+      "eat": 12,
+      "drink": 57
+     }
+    }
+   ],
+   "los-angeles": [
+    {
+     "title": "Los Angeles/Eastside",
+     "score": 82,
+     "sections": {
+      "understand": 98,
+      "see": 67,
+      "do": 47,
+      "buy": 63,
+      "eat": 62,
+      "drink": 53
+     }
+    },
+    {
+     "title": "Los Angeles/South",
+     "score": 76,
+     "sections": {
+      "understand": 48,
+      "see": 90,
+      "do": 19,
+      "buy": 75,
+      "eat": 76,
+      "drink": 69
+     }
+    },
+    {
+     "title": "Los Angeles/Northwest",
+     "score": 75,
+     "sections": {
+      "understand": 52,
+      "see": 97,
+      "do": 77,
+      "buy": 35,
+      "eat": 19,
+      "drink": 61
+     }
+    },
+    {
+     "title": "Los Angeles/Wilshire",
+     "score": 53,
+     "sections": {
+      "see": 36,
+      "do": 77,
+      "buy": 96,
+      "eat": 26,
+      "drink": 5
+     }
+    },
+    {
+     "title": "Los Angeles/Bunker Hill",
+     "score": 18,
+     "sections": {
+      "see": 2,
+      "do": 60,
+      "eat": 59,
+      "drink": 44
+     }
+    }
+   ],
+   "chicago": [
+    {
+     "title": "Chicago/Logan-Bucktown",
+     "score": 90,
+     "sections": {
+      "understand": 46,
+      "see": 71,
+      "do": 72,
+      "buy": 33,
+      "eat": 91,
+      "drink": 98
+     }
+    },
+    {
+     "title": "Chicago/Southwest Side",
+     "score": 88,
+     "sections": {
+      "understand": 99,
+      "see": 8,
+      "do": 81,
+      "buy": 90,
+      "eat": 58,
+      "drink": 57
+     }
+    },
+    {
+     "title": "Chicago/Near South",
+     "score": 84,
+     "sections": {
+      "understand": 52,
+      "see": 79,
+      "do": 84,
+      "buy": 55,
+      "eat": 48,
+      "drink": 89
+     }
+    },
+    {
+     "title": "Chicago/Lakeview-North Center",
+     "score": 84,
+     "sections": {
+      "understand": 18,
+      "see": 97,
+      "do": 38,
+      "buy": 77,
+      "eat": 25,
+      "drink": 98
+     }
+    },
+    {
+     "title": "Chicago/Far West Side",
+     "score": 84,
+     "sections": {
+      "understand": 100,
+      "see": 47,
+      "do": 61,
+      "buy": 60,
+      "eat": 57,
+      "drink": 39
+     }
+    }
+   ],
+   "houston": [
+    {
+     "title": "Houston/Clear Lake",
+     "score": 95,
+     "sections": {
+      "understand": 73,
+      "see": 98,
+      "do": 11,
+      "buy": 100,
+      "eat": 23,
+      "drink": 64
+     }
+    },
+    {
+     "title": "Houston/East Houston",
+     "score": 87,
+     "sections": {
+      "see": 69,
+      "do": 56,
+      "eat": 73,
+      "drink": 90
+     }
+    },
+    {
+     "title": "Houston/West Houston",
+     "score": 63,
+     "sections": {
+      "understand": 86,
+      "do": 88,
+      "buy": 55,
+      "eat": 5,
+      "drink": 52
+     }
+    },
+    {
+     "title": "Houston/Greater Heights",
+     "score": 56,
+     "sections": {
+      "understand": 13,
+      "see": 5,
+      "do": 51,
+      "buy": 84,
+      "eat": 96,
+      "drink": 66
+     }
+    },
+    {
+     "title": "Houston/West Inner Loop",
+     "score": 46,
+     "sections": {
+      "understand": 35,
+      "see": 93,
+      "do": 32,
+      "buy": 11,
+      "eat": 74,
+      "drink": 18
+     }
+    }
+   ],
+   "philadelphia": [
+    {
+     "title": "Philadelphia/Northeast",
+     "score": 91,
+     "sections": {
+      "understand": 81,
+      "see": 43,
+      "do": 83,
+      "buy": 77,
+      "eat": 89,
+      "drink": 78
+     }
+    },
+    {
+     "title": "Philadelphia/South",
+     "score": 88,
+     "sections": {
+      "understand": 62,
+      "see": 74,
+      "do": 89,
+      "buy": 74,
+      "eat": 65,
+      "drink": 75
+     }
+    },
+    {
+     "title": "Philadelphia/North",
+     "score": 72,
+     "sections": {
+      "understand": 58,
+      "see": 70,
+      "do": 57,
+      "buy": 47,
+      "eat": 46,
+      "drink": 87
+     }
+    },
+    {
+     "title": "Philadelphia/Northwest",
+     "score": 57,
+     "sections": {
+      "understand": 61,
+      "see": 98,
+      "do": 35,
+      "buy": 46,
+      "eat": 17,
+      "drink": 20
+     }
+    },
+    {
+     "title": "Philadelphia/West",
+     "score": 50,
+     "sections": {
+      "understand": 41,
+      "see": 84,
+      "do": 53,
+      "buy": 79,
+      "eat": 19,
+      "drink": 15
+     }
+    }
+   ],
+   "san-diego": [
+    {
+     "title": "San Diego/North",
+     "score": 92,
+     "sections": {
+      "see": 95,
+      "do": 97,
+      "eat": 50,
+      "drink": 9
+     }
+    },
+    {
+     "title": "San Diego/Mid-City",
+     "score": 62,
+     "sections": {
+      "see": 62,
+      "do": 58,
+      "buy": 18,
+      "eat": 41,
+      "drink": 92
+     }
+    },
+    {
+     "title": "San Diego/Old Town-Mission Valley",
+     "score": 60,
+     "sections": {
+      "see": 34,
+      "do": 86,
+      "buy": 19,
+      "eat": 57,
+      "drink": 70
+     }
+    },
+    {
+     "title": "San Diego/Balboa Park-Hillcrest",
+     "score": 46,
+     "sections": {
+      "see": 3,
+      "do": 55,
+      "buy": 61,
+      "eat": 66,
+      "drink": 85
+     }
+    },
+    {
+     "title": "San Diego/San Ysidro",
+     "score": 45,
+     "sections": {
+      "see": 64,
+      "buy": 26,
+      "eat": 51
+     }
+    }
+   ],
+   "dallas": [
+    {
+     "title": "Dallas/South Dallas",
+     "score": 85,
+     "sections": {
+      "understand": 47,
+      "see": 92,
+      "do": 66,
+      "buy": 40,
+      "eat": 78,
+      "drink": 85
+     }
+    },
+    {
+     "title": "Dallas/Downtown",
+     "score": 44,
+     "sections": {
+      "understand": 78,
+      "see": 1,
+      "do": 68,
+      "buy": 68,
+      "eat": 31,
+      "drink": 77
+     }
+    },
+    {
+     "title": "Dallas/North Dallas",
+     "score": 13,
+     "sections": {
+      "understand": 25,
+      "see": 68,
+      "do": 21,
+      "buy": 50,
+      "eat": 28,
+      "drink": 2
+     }
+    }
+   ]
+  }
+ }
+}
