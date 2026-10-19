@@ -1,5 +1,7 @@
-# San Francisco plus the ten largest US cities by the Census Bureau's Vintage
-# 2025 population estimates (July 1, 2025). Any city can be the starting point.
+# San Francisco, the ten largest US cities by the Census Bureau's Vintage 2025
+# population estimates (July 1, 2025), and further cities added on request.
+# Any city can be the starting point. state holds the country for cities
+# outside the US.
 #
 # geofabrik names the OpenStreetMap extract that contains the city, from
 # https://download.geofabrik.de/.
@@ -120,3 +122,30 @@ cities:
     wikivoyage: Fort Worth
     wikipedia: Fort Worth, Texas
     wikivoyage_districts: false
+
+  - slug: mexico-city
+    name: Mexico City
+    state: Mexico
+    wikidata: Q1489
+    geofabrik: north-america/mexico
+    wikivoyage: Mexico City
+    wikipedia: Mexico City
+    wikivoyage_districts: true
+
+  - slug: new-orleans
+    name: New Orleans
+    state: LA
+    wikidata: Q34404
+    geofabrik: north-america/us/louisiana
+    wikivoyage: New Orleans
+    wikipedia: New Orleans
+    wikivoyage_districts: true
+
+  - slug: boston
+    name: Boston
+    state: MA
+    wikidata: Q100
+    geofabrik: north-america/us/massachusetts
+    wikivoyage: Boston
+    wikipedia: Boston
+    wikivoyage_districts: true

@@ -30,10 +30,13 @@ Doppelhood is a free iOS app that tells a traveler which neighborhood in a city 
 | City | Neighborhoods | Notes |
 |---|---|---|
 | San Francisco | 61 | |
-| New York | 263 | |
-| Other eight cities | 0 | Their OpenStreetMap extracts are not downloaded yet |
+| New York | 265 | |
+| Mexico City | 58 | OpenStreetMap labels about 2,000 colonias, but only the better-known ones have English Wikipedia articles |
+| Boston | 44 | |
+| New Orleans | 26 | OpenStreetMap labels fewer New Orleans neighborhoods than the city's official list |
+| Other nine cities | 0 | Their OpenStreetMap extracts are not downloaded yet |
 
-A neighborhood is included only when it has an English Wikipedia article within 3 kilometers of its label. OpenStreetMap's Wikidata links are checked against that rule too, since some point at a same-named town or a railroad station. Labels with no qualifying article, such as Cow Hollow, Presidio Heights, and Gramercy, drop out for now.
+A neighborhood is included only when it has an English Wikipedia article within 3 kilometers of its label, and only when that article describes a place that exists and that people live in. An article whose first sentence is in the past tense ("Tlatelolco was a pre-Columbian altepetl") or that describes an uninhabited island is dropped. OpenStreetMap's Wikidata links are checked against that rule too, since some point at a same-named town or a railroad station. Labels with no qualifying article, such as Cow Hollow, Presidio Heights, and Gramercy, drop out for now.
 
 ## Known Misses
 
@@ -48,10 +51,10 @@ These come from checking matches against first-hand knowledge of San Francisco, 
 | Item | Why |
 |---|---|
 | Labeled validation set | A list of expected matches from people who know both cities would turn the known misses into a score that every model change can be measured against |
-| Remaining cities | Downloading the California, Illinois, Texas, Pennsylvania, and Arizona extracts would add the other eight cities |
+| Remaining cities | Downloading the Southern California, Illinois, Texas, Pennsylvania, and Arizona extracts would add the other nine cities |
 | Neighborhoods without articles | Labels such as Cow Hollow could be kept with street life and listings alone, with a summary written from those signals |
+| Spanish Wikipedia for Mexico City | Most colonias have Spanish articles only, which a multilingual embedding model could compare against English ones |
 | Who's On First boundaries | Finer neighborhood shapes to attach Wikipedia and OpenStreetMap data to, and the basis for a map view |
 | Extracted tags | Labels such as "gritty," "touristy," or "late-night" pulled from the text would explain a match in words a reader recognizes |
 | Adjustable weights | A reader who cares about food and nightlife could weight those sections up and get different matches than a family would |
-| International cities | The Wikivoyage format is the same worldwide, so the pipeline should carry over with little change |
 | Map view | Showing the matched districts side by side on maps of both cities |

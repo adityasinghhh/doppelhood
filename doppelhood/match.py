@@ -31,6 +31,27 @@ MODEL = "sentence-transformers/all-mpnet-base-v2"
 PASSAGE_CHARS = 800
 MIN_ARTICLE_CHARS = 800
 LISTING_RADIUS_M = 800
+MAIN_VERB = re.compile(r"\b(is|are|was|were)\b", re.IGNORECASE)
+ISLAND = re.compile(r"\bis (an?|one of the)\s+(\w+\s+)?islands?\b", re.IGNORECASE)
+LIVED_IN = re.compile(r"neighbou?rhood|residential|residents", re.IGNORECASE)
+
+
+def not_current(lead):
+    """True for an article about a place that no longer exists or that nobody lives in.
+
+    The first sentence's main verb gives the first away ("The Barbary Coast was
+    a red-light district"), and an island that the lead never calls a
+    neighborhood is the second (the Boston Harbor Islands, but not Roosevelt
+    Island).
+    """
+    first = wikipedia.summary(lead, sentences=1)
+    verb = MAIN_VERB.search(first)
+    if verb and verb.group(1).lower() in ("was", "were"):
+        return True
+    return bool(ISLAND.search(first)) and not LIVED_IN.search(lead)
+# Searching Wikipedia label by label is slow, so cities with thousands of
+# labels (Mexico City's colonias) rely on Wikidata matches alone.
+SEARCH_LABEL_LIMIT = 600
 TOP_MATCHES = 5
 EMBED_CACHE = Path("data/cache/embeddings.npz")
 OUTPUT = Path("web/data/matches.json")
@@ -80,18 +101,26 @@ def load_city(city):
     """
     labels = osm.neighborhoods(city)
     titles = wikidata.sitelinks([n["wikidata"] for n in labels])
+    local = wikidata.local_articles(city)
     names = [n["name"] for n in labels]
 
     hoods = []
     for n in labels:
-        title = wikidata.article_title(n, titles)
-        if not title or not wikipedia.plausible(title, n["lat"], n["lon"]):
+        title = None
+        for candidate in (wikidata.article_title(n, titles), local.get(wikidata.normalize(n["name"]))):
+            if candidate and wikipedia.plausible(candidate, n["lat"], n["lon"]):
+                title = candidate
+                break
+        if not title and len(labels) <= SEARCH_LABEL_LIMIT:
             title = wikipedia.search(n["name"], city, n["lat"], n["lon"])
         page = wikipedia.fetch(title) if title else None
         if not page:
             continue
         lead, text = wikipedia.character(page["wikitext"])
         if len(text) < MIN_ARTICLE_CHARS:
+            continue
+        if not_current(lead):
+            print(f"  skipped {n['name']}: {wikipedia.summary(lead, sentences=1)[:90]}")
             continue
         name = n["name"] if names.count(n["name"]) == 1 else wikidata.display_name(page["title"], city)
         # A neighborhood's own name would otherwise match on words like
@@ -110,16 +139,23 @@ def load_city(city):
             "revid": page["revid"],
         })
 
-    # "Arverne By The Sea" and "Arverne View" are developments inside Arverne
-    # that share its article, so labels that extend another label's name and
-    # point at the same article are dropped. "Outer Sunset" and "Inner
-    # Sunset" survive, since neither starts with "Sunset District".
-    names_by_article = {}
-    for n in hoods:
-        names_by_article.setdefault(n["source_url"], set()).add(n["name"])
-    hoods = [n for n in hoods if not any(
-        other != n["name"] and n["name"].lower().startswith(other.lower() + " ")
-        for other in names_by_article[n["source_url"]])]
+    # Several labels can point at one article. "Condesa" and "Colonia Condesa"
+    # are the same place, so labels whose normalized names are equal keep only
+    # the shorter one. "Arverne By The Sea" is a development inside Arverne,
+    # so a label that extends another label's name is dropped too. "Outer
+    # Sunset" survives, since it does not start with "Sunset District".
+    by_article = {}
+    for n in sorted(hoods, key=lambda n: len(n["name"])):
+        by_article.setdefault(n["source_url"], []).append(n)
+    kept = []
+    for group in by_article.values():
+        names = []
+        for n in group:
+            key = wikidata.normalize(n["name"])
+            if not any(key == other or key.startswith(other + " ") for other in names):
+                names.append(key)
+                kept.append(n)
+    hoods = kept
 
     osm.attach_features(city, hoods)
 
