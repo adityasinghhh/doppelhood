@@ -38,7 +38,7 @@ OVERPASS = [
 # The public Overpass server rejects heavy queries, so large cities are
 # fetched in tiles of about this many degrees, and busy responses are retried.
 TILE_DEG = 0.15
-OVERPASS_RETRIES = 9
+OVERPASS_RETRIES = 18
 PBF_DIR = Path("data/raw/pbf")
 CITY_DIR = Path("data/raw/osm")
 RADIUS_M = 500
@@ -141,7 +141,8 @@ def overpass(query):
             response.raise_for_status()
             return response.json()["elements"]
         if attempt % len(OVERPASS) == len(OVERPASS) - 1:
-            time.sleep(30)
+            # Back off longer after each full cycle, up to five minutes.
+            time.sleep(min(300, 30 * (attempt // len(OVERPASS) + 1)))
     raise RuntimeError(f"Every Overpass server was busy after {OVERPASS_RETRIES} attempts")
 
 
@@ -158,12 +159,20 @@ def tiles(boundary):
                 yield f"({tile.bounds[1]},{tile.bounds[0]},{tile.bounds[3]},{tile.bounds[2]})"
 
 
-def overpass_tiled(boundary, statements):
-    """Run statements, each with a {bbox} placeholder, over every tile, without duplicates."""
+def overpass_tiled(boundary, statements, cache):
+    """Run statements, each with a {bbox} placeholder, over every tile, without duplicates.
+    Each tile's result is kept in the cache directory, so a failed run resumes where it stopped."""
+    cache.mkdir(parents=True, exist_ok=True)
     elements = {}
-    for bbox in tiles(boundary):
+    for i, bbox in enumerate(tiles(boundary)):
         query = "(" + "".join(s.format(bbox=bbox) for s in statements) + ");out center tags;"
-        for e in overpass(query):
+        path = cache / f"{i}.json"
+        if path.exists():
+            result = json.loads(path.read_text())
+        else:
+            result = overpass(query)
+            path.write_text(json.dumps(result))
+        for e in result:
             elements[(e["type"], e["id"])] = e
     return list(elements.values())
 
@@ -204,7 +213,8 @@ def prepare_overpass(city, out):
     else:
         boundary = overpass_boundary(city, out)
     if not (out / "places.geojsonseq").exists():
-        places = overpass_tiled(boundary, [f'nwr["place"~"^({"|".join(sorted(PLACE_TYPES))})$"]{{bbox}};'])
+        places = overpass_tiled(boundary, [f'nwr["place"~"^({"|".join(sorted(PLACE_TYPES))})$"]{{bbox}};'],
+                                out / "tiles" / "places")
         write_seq(out / "places.geojsonseq", filter(None, map(as_point_feature, places)))
 
     # Only the tag values the feature categories count, plus every shop.
@@ -212,7 +222,7 @@ def prepare_overpass(city, out):
     for key in sorted({k for rules in CATEGORIES.values() for k in rules if k != "shop"}):
         values = sorted({v for rules in CATEGORIES.values() for v in rules.get(key, ())})
         statements.append(f'nwr["{key}"~"^({"|".join(values)})$"]{{bbox}};')
-    pois = overpass_tiled(boundary, statements)
+    pois = overpass_tiled(boundary, statements, out / "tiles" / "pois")
     write_seq(out / "pois.geojsonseq", filter(None, map(as_point_feature, pois)))
     return out
 
