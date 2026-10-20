@@ -65,12 +65,16 @@ def extract(city):
     path = PBF_DIR / (city["geofabrik"].rsplit("/", 1)[-1] + "-latest.osm.pbf")
     if not path.exists():
         PBF_DIR.mkdir(parents=True, exist_ok=True)
+        # Download beside the target and rename at the end, so an interrupted
+        # download is never mistaken for a complete extract.
+        partial = path.with_suffix(".part")
         with requests.get(GEOFABRIK.format(city["geofabrik"]), stream=True,
                           headers={"User-Agent": USER_AGENT}, timeout=60) as response:
             response.raise_for_status()
-            with open(path, "wb") as f:
+            with open(partial, "wb") as f:
                 for chunk in response.iter_content(1 << 20):
                     f.write(chunk)
+        partial.rename(path)
     return path
 
 
