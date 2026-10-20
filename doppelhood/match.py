@@ -34,6 +34,18 @@ LISTING_RADIUS_M = 800
 MAIN_VERB = re.compile(r"\b(is|are|was|were)\b", re.IGNORECASE)
 ISLAND = re.compile(r"\bis (an?|one of the)\s+(\w+\s+)?islands?\b", re.IGNORECASE)
 LIVED_IN = re.compile(r"neighbou?rhood|residential|residents", re.IGNORECASE)
+# Searching Wikipedia label by label is slow, so cities with thousands of
+# labels (Mexico City's colonias) rely on Wikidata matches alone.
+SEARCH_LABEL_LIMIT = 600
+TOP_MATCHES = 5
+EMBED_CACHE = Path("data/cache/embeddings.npz")
+OUTPUT = Path("web/data/matches.json")
+
+LISTING_SECTIONS = ["eat", "drink", "see", "do", "buy"]
+WEIGHTS = {"character": 0.4, "listings": 0.3, "street": 0.3}
+# A neighborhood stands out on a feature when its count is this many standard
+# deviations above its city's mean; below that it reads as residential.
+STANDOUT_Z = 0.5
 
 
 def not_current(lead):
@@ -49,18 +61,6 @@ def not_current(lead):
     if verb and verb.group(1).lower() in ("was", "were"):
         return True
     return bool(ISLAND.search(first)) and not LIVED_IN.search(lead)
-# Searching Wikipedia label by label is slow, so cities with thousands of
-# labels (Mexico City's colonias) rely on Wikidata matches alone.
-SEARCH_LABEL_LIMIT = 600
-TOP_MATCHES = 5
-EMBED_CACHE = Path("data/cache/embeddings.npz")
-OUTPUT = Path("web/data/matches.json")
-
-LISTING_SECTIONS = ["eat", "drink", "see", "do", "buy"]
-WEIGHTS = {"character": 0.4, "listings": 0.3, "street": 0.3}
-# A neighborhood stands out on a feature when its count is this many standard
-# deviations above its city's mean; below that it reads as residential.
-STANDOUT_Z = 0.5
 
 
 class Embedder:

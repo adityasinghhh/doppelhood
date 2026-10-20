@@ -36,7 +36,7 @@ python3 -m venv .venv
 .venv/bin/python -m doppelhood.match san-francisco new-york
 ```
 
-The matcher downloads each city's OpenStreetMap extract from Geofabrik on first use (several hundred megabytes per state), caches every source under `data/raw/`, and writes `web/data/matches.json`.
+The matcher fetches each city's boundary, neighborhood labels, and points of interest from the Overpass API on first use, or cuts them from a Geofabrik extract when one is already in `data/raw/pbf/`. It caches every source under `data/raw/` and writes `web/data/matches.json`.
 
 The iOS app bundles that file. Generate the Xcode project with `cd ios && xcodegen`, then open `Doppelhood.xcodeproj` and run it on a simulator. The web preview reads the same file: `cd web && python3 -m http.server 8765`.
 

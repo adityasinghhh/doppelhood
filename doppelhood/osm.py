@@ -17,17 +17,28 @@ therefore covers the same area and the counts read as densities.
 import json
 import re
 import subprocess
+import time
 from pathlib import Path
 
 import numpy as np
 import requests
-from shapely.geometry import LineString, Point, mapping, shape
+from shapely.geometry import LineString, Point, box, mapping, shape
 from shapely.ops import linemerge, polygonize, unary_union
 
 from doppelhood.wikivoyage import USER_AGENT
 
 GEOFABRIK = "https://download.geofabrik.de/{}-latest.osm.pbf"
-OVERPASS = "https://overpass-api.de/api/interpreter"
+# The main Overpass server and two public mirrors of the same data, tried in
+# turn when one is busy.
+OVERPASS = [
+    "https://overpass-api.de/api/interpreter",
+    "https://overpass.kumi.systems/api/interpreter",
+    "https://overpass.private.coffee/api/interpreter",
+]
+# The public Overpass server rejects heavy queries, so large cities are
+# fetched in tiles of about this many degrees, and busy responses are retried.
+TILE_DEG = 0.15
+OVERPASS_RETRIES = 9
 PBF_DIR = Path("data/raw/pbf")
 CITY_DIR = Path("data/raw/osm")
 RADIUS_M = 500
@@ -119,10 +130,42 @@ def prepare(city):
 
 
 def overpass(query):
-    response = requests.post(OVERPASS, data={"data": f"[out:json][timeout:900];{query}"},
-                             headers={"User-Agent": USER_AGENT}, timeout=960)
-    response.raise_for_status()
-    return response.json()["elements"]
+    for attempt in range(OVERPASS_RETRIES):
+        endpoint = OVERPASS[attempt % len(OVERPASS)]
+        try:
+            response = requests.post(endpoint, data={"data": f"[out:json][timeout:300];{query}"},
+                                     headers={"User-Agent": USER_AGENT}, timeout=(20, 360))
+        except (requests.ConnectionError, requests.Timeout):
+            continue
+        if response.status_code not in (429, 502, 503, 504):
+            response.raise_for_status()
+            return response.json()["elements"]
+        if attempt % len(OVERPASS) == len(OVERPASS) - 1:
+            time.sleep(30)
+    raise RuntimeError(f"Every Overpass server was busy after {OVERPASS_RETRIES} attempts")
+
+
+def tiles(boundary):
+    """Split the boundary's bounding box into tiles, keeping those that touch the city."""
+    west, south, east, north = boundary.bounds
+    rows = max(1, round((north - south) / TILE_DEG))
+    cols = max(1, round((east - west) / TILE_DEG))
+    dy, dx = (north - south) / rows, (east - west) / cols
+    for r in range(rows):
+        for c in range(cols):
+            tile = box(west + c * dx, south + r * dy, west + (c + 1) * dx, south + (r + 1) * dy)
+            if tile.intersects(boundary):
+                yield f"({tile.bounds[1]},{tile.bounds[0]},{tile.bounds[3]},{tile.bounds[2]})"
+
+
+def overpass_tiled(boundary, statements):
+    """Run statements, each with a {bbox} placeholder, over every tile, without duplicates."""
+    elements = {}
+    for bbox in tiles(boundary):
+        query = "(" + "".join(s.format(bbox=bbox) for s in statements) + ");out center tags;"
+        for e in overpass(query):
+            elements[(e["type"], e["id"])] = e
+    return list(elements.values())
 
 
 def write_seq(path, features):
@@ -154,6 +197,27 @@ def boundary_polygon(relation):
 
 
 def prepare_overpass(city, out):
+    """Fetch each file in turn, keeping those already fetched, since a large city
+    can take many minutes on a busy server."""
+    if (out / "boundary.geojsonseq").exists():
+        boundary = city_boundary(out)
+    else:
+        boundary = overpass_boundary(city, out)
+    if not (out / "places.geojsonseq").exists():
+        places = overpass_tiled(boundary, [f'nwr["place"~"^({"|".join(sorted(PLACE_TYPES))})$"]{{bbox}};'])
+        write_seq(out / "places.geojsonseq", filter(None, map(as_point_feature, places)))
+
+    # Only the tag values the feature categories count, plus every shop.
+    statements = ['nwr["shop"]{bbox};']
+    for key in sorted({k for rules in CATEGORIES.values() for k in rules if k != "shop"}):
+        values = sorted({v for rules in CATEGORIES.values() for v in rules.get(key, ())})
+        statements.append(f'nwr["{key}"~"^({"|".join(values)})$"]{{bbox}};')
+    pois = overpass_tiled(boundary, statements)
+    write_seq(out / "pois.geojsonseq", filter(None, map(as_point_feature, pois)))
+    return out
+
+
+def overpass_boundary(city, out):
     relations = [e for e in overpass(f'rel["wikidata"="{city["wikidata"]}"];out geom;')
                  if e.get("tags", {}).get("type") in ("boundary", "multipolygon")]
     polygons = [boundary_polygon(r) for r in relations]
@@ -162,20 +226,7 @@ def prepare_overpass(city, out):
         raise RuntimeError(f"No boundary relation in OpenStreetMap for {city['wikidata']}")
     write_seq(out / "boundary.geojsonseq",
               [{"type": "Feature", "properties": {}, "geometry": mapping(boundary)}])
-
-    west, south, east, north = boundary.bounds
-    bbox = f"({south},{west},{north},{east})"
-    places = overpass(f'nwr["place"~"^({"|".join(sorted(PLACE_TYPES))})$"]{bbox};out center tags;')
-    write_seq(out / "places.geojsonseq", filter(None, map(as_point_feature, places)))
-
-    # Only the tag values the feature categories count, plus every shop.
-    filters = [f'nwr["shop"]{bbox};']
-    for key in sorted({k for rules in CATEGORIES.values() for k in rules if k != "shop"}):
-        values = sorted({v for rules in CATEGORIES.values() for v in rules.get(key, ())})
-        filters.append(f'nwr["{key}"~"^({"|".join(values)})$"]{bbox};')
-    pois = overpass(f'({"".join(filters)});out center tags;')
-    write_seq(out / "pois.geojsonseq", filter(None, map(as_point_feature, pois)))
-    return out
+    return boundary
 
 
 def city_boundary(out):
