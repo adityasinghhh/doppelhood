@@ -40,10 +40,7 @@ struct MatchesView: View {
                         .buttonStyle(.plain)
                     }
                     ForEach(matches.dropFirst(), id: \.match.id) { item in
-                        NavigationLink(value: item.neighborhood) {
-                            MatchRow(neighborhood: item.neighborhood, match: item.match)
-                        }
-                        .buttonStyle(.plain)
+                        MatchRow(neighborhood: item.neighborhood, match: item.match)
                     }
                 }
                 .padding(.horizontal)
@@ -153,22 +150,23 @@ struct TopMatchCard: View {
     }
 }
 
-/// One signal's score as a labeled bar on a dark background.
+/// One signal's score as a labeled bar.
 struct PartBar: View {
     let part: Part
     let value: Int
+    var onDark = true
 
     var body: some View {
         HStack(spacing: 10) {
             Image(systemName: part.symbol)
                 .frame(width: 20)
-                .foregroundStyle(Color.gold)
+                .foregroundStyle(onDark ? Color.gold : Color.coral)
             Text(part.label)
                 .frame(width: 84, alignment: .leading)
-                .foregroundStyle(.white.opacity(0.85))
+                .foregroundStyle(onDark ? AnyShapeStyle(.white.opacity(0.85)) : AnyShapeStyle(.secondary))
             GeometryReader { proxy in
                 ZStack(alignment: .leading) {
-                    Capsule().fill(.white.opacity(0.12))
+                    Capsule().fill(onDark ? AnyShapeStyle(.white.opacity(0.12)) : AnyShapeStyle(.fill.tertiary))
                     Capsule().fill(.brand)
                         .frame(width: proxy.size.width * CGFloat(value) / 100)
                 }
@@ -177,34 +175,55 @@ struct PartBar: View {
             Text("\(value)")
                 .monospacedDigit()
                 .frame(width: 26, alignment: .trailing)
-                .foregroundStyle(.white.opacity(0.85))
+                .foregroundStyle(onDark ? AnyShapeStyle(.white.opacity(0.85)) : AnyShapeStyle(.secondary))
         }
         .font(.caption.weight(.medium))
     }
 }
 
-/// A runner-up match with its two strongest signals.
+/// A runner-up match with its two strongest signals, expanding to all of them.
 struct MatchRow: View {
     let neighborhood: Neighborhood
     let match: Match
+    @State private var expanded = false
 
     var body: some View {
-        HStack(spacing: 14) {
-            ScoreRing(score: match.score)
-            VStack(alignment: .leading, spacing: 6) {
-                Text(neighborhood.name)
-                    .font(.headline)
-                HStack(spacing: 6) {
-                    ForEach(match.strongest(2), id: \.part.key) { PartTag(part: $0.part, value: $0.value) }
+        VStack(spacing: 12) {
+            HStack(spacing: 14) {
+                ScoreRing(score: match.score)
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(neighborhood.name)
+                        .font(.headline)
+                    if !expanded {
+                        HStack(spacing: 6) {
+                            ForEach(match.strongest(2), id: \.part.key) { PartTag(part: $0.part, value: $0.value) }
+                        }
+                    }
+                }
+                Spacer(minLength: 0)
+                Image(systemName: "chevron.down")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(.tertiary)
+                    .rotationEffect(.degrees(expanded ? 180 : 0))
+            }
+            if expanded {
+                VStack(spacing: 8) {
+                    ForEach(allParts, id: \.key) { part in
+                        if let value = match.parts[part.key] {
+                            PartBar(part: part, value: value, onDark: false)
+                        }
+                    }
+                }
+                NavigationLink(value: neighborhood) {
+                    Label("Open \(neighborhood.name)", systemImage: "arrow.right")
+                        .font(.subheadline.weight(.semibold))
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
-            Spacer(minLength: 0)
-            Image(systemName: "chevron.right")
-                .font(.footnote.weight(.semibold))
-                .foregroundStyle(.tertiary)
         }
         .padding(14)
         .background(.background.secondary, in: .rect(cornerRadius: 18))
         .contentShape(.rect)
+        .onTapGesture { withAnimation(.snappy) { expanded.toggle() } }
     }
 }
