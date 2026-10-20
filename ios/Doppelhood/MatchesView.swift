@@ -1,3 +1,4 @@
+import MapKit
 import SwiftUI
 
 /// A neighborhood's closest equivalents in one other city.
@@ -5,6 +6,7 @@ struct MatchesView: View {
     @Environment(Store.self) private var store
     let neighborhood: Neighborhood
     @AppStorage("toCity") private var toCity = "new-york"
+    @State private var expanded = false
 
     private var targets: [City] {
         store.cities.filter { $0.slug != neighborhood.city }
@@ -14,80 +16,195 @@ struct MatchesView: View {
         targets.contains { $0.slug == toCity } ? toCity : targets.first?.slug ?? ""
     }
 
+    private var matches: [(match: Match, neighborhood: Neighborhood)] {
+        store.matches(for: neighborhood, in: target).compactMap { match in
+            store.neighborhood(match.id).map { (match, $0) }
+        }
+    }
+
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                Text(neighborhood.summary)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                Link("Read on Wikipedia", destination: neighborhood.sourceURL)
-                    .font(.subheadline)
-
-                Picker("Compare with", selection: $toCity) {
-                    ForEach(targets) { Text($0.label).tag($0.slug) }
+            VStack(alignment: .leading, spacing: 20) {
+                header
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("Feels like")
+                        .font(.title2.bold())
+                        .padding(.horizontal)
+                    CityChips(cities: targets, selection: $toCity)
                 }
-                .pickerStyle(.menu)
-                .padding(.top, 4)
-
-                ForEach(store.matches(for: neighborhood, in: target), id: \.id) { match in
-                    if let hood = store.neighborhood(match.id) {
-                        NavigationLink(value: hood) {
-                            MatchCard(neighborhood: hood, match: match)
+                VStack(spacing: 12) {
+                    if let top = matches.first {
+                        NavigationLink(value: top.neighborhood) {
+                            TopMatchCard(neighborhood: top.neighborhood, match: top.match)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                    ForEach(matches.dropFirst(), id: \.match.id) { item in
+                        NavigationLink(value: item.neighborhood) {
+                            MatchRow(neighborhood: item.neighborhood, match: item.match)
                         }
                         .buttonStyle(.plain)
                     }
                 }
+                .padding(.horizontal)
+                .animation(.snappy, value: target)
             }
-            .padding()
+            .padding(.bottom, 24)
         }
         .navigationTitle(neighborhood.name)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            // The header already shows the name in large type.
+            ToolbarItem(placement: .principal) { EmptyView() }
+        }
         .onAppear {
             if !targets.contains(where: { $0.slug == toCity }), let first = targets.first {
                 toCity = first.slug
             }
         }
     }
+
+    private var header: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            MapPreview(neighborhood: neighborhood, height: 180)
+            VStack(alignment: .leading, spacing: 4) {
+                Text(neighborhood.name)
+                    .font(.largeTitle.bold())
+                Text(store.city(neighborhood.city)?.label ?? "")
+                    .font(.headline)
+                    .foregroundStyle(.secondary)
+            }
+            Text(neighborhood.summary)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .lineLimit(expanded ? nil : 2)
+            HStack(spacing: 16) {
+                Button(expanded ? "Less" : "More") {
+                    withAnimation(.snappy) { expanded.toggle() }
+                }
+                Link(destination: neighborhood.sourceURL) {
+                    Label("Wikipedia", systemImage: "arrow.up.right")
+                }
+            }
+            .font(.subheadline.weight(.semibold))
+        }
+        .padding(.horizontal)
+    }
 }
 
-struct MatchCard: View {
+/// A non-interactive map centered on a neighborhood's label.
+struct MapPreview: View {
+    let neighborhood: Neighborhood
+    var height: CGFloat
+
+    var body: some View {
+        let center = CLLocationCoordinate2D(latitude: neighborhood.lat, longitude: neighborhood.lon)
+        Map(initialPosition: .region(MKCoordinateRegion(center: center, latitudinalMeters: 1800,
+                                                        longitudinalMeters: 1800)),
+            interactionModes: []) {
+            Annotation(neighborhood.name, coordinate: center) {
+                Circle()
+                    .fill(Color.coral)
+                    .stroke(.white, lineWidth: 3)
+                    .frame(width: 18, height: 18)
+                    .shadow(radius: 3)
+            }
+            .annotationTitles(.hidden)
+        }
+        .mapStyle(.standard(pointsOfInterest: .excludingAll))
+        .frame(height: height)
+        .clipShape(.rect(cornerRadius: 20))
+        .id(neighborhood.id)
+    }
+}
+
+/// The best match, with its map and every signal.
+struct TopMatchCard: View {
+    @Environment(Store.self) private var store
     let neighborhood: Neighborhood
     let match: Match
 
-    private let columns = [GridItem(.adaptive(minimum: 130), spacing: 12)]
-
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack(alignment: .firstTextBaseline) {
-                Text(neighborhood.name)
-                    .font(.headline)
-                Spacer()
-                Text("\(match.score)")
-                    .font(.title2.bold().monospacedDigit())
-                    .foregroundStyle(.orange)
+        VStack(alignment: .leading, spacing: 14) {
+            MapPreview(neighborhood: neighborhood, height: 120)
+            HStack(alignment: .center, spacing: 14) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Best match")
+                        .font(.caption.weight(.semibold))
+                        .textCase(.uppercase)
+                        .foregroundStyle(Color.gold)
+                    Text(neighborhood.name)
+                        .font(.title2.bold())
+                        .foregroundStyle(.white)
+                }
+                Spacer(minLength: 0)
+                ScoreRing(score: match.score, size: 64, lineWidth: 7, onDark: true)
             }
-            Text(neighborhood.summary)
-                .font(.footnote)
-                .foregroundStyle(.secondary)
-                .lineLimit(3)
-            LazyVGrid(columns: columns, alignment: .leading, spacing: 8) {
-                ForEach(partLabels, id: \.key) { part in
+            VStack(spacing: 8) {
+                ForEach(allParts, id: \.key) { part in
                     if let value = match.parts[part.key] {
-                        VStack(alignment: .leading, spacing: 3) {
-                            HStack {
-                                Text(part.label)
-                                Spacer()
-                                Text("\(value)").monospacedDigit()
-                            }
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                            ProgressView(value: Double(value), total: 100)
-                        }
+                        PartBar(part: part, value: value)
                     }
                 }
             }
         }
-        .padding()
-        .background(.background.secondary, in: .rect(cornerRadius: 14))
+        .padding(14)
+        .background(Color.navy, in: .rect(cornerRadius: 24))
+    }
+}
+
+/// One signal's score as a labeled bar on a dark background.
+struct PartBar: View {
+    let part: Part
+    let value: Int
+
+    var body: some View {
+        HStack(spacing: 10) {
+            Image(systemName: part.symbol)
+                .frame(width: 20)
+                .foregroundStyle(Color.gold)
+            Text(part.label)
+                .frame(width: 84, alignment: .leading)
+                .foregroundStyle(.white.opacity(0.85))
+            GeometryReader { proxy in
+                ZStack(alignment: .leading) {
+                    Capsule().fill(.white.opacity(0.12))
+                    Capsule().fill(.brand)
+                        .frame(width: proxy.size.width * CGFloat(value) / 100)
+                }
+            }
+            .frame(height: 6)
+            Text("\(value)")
+                .monospacedDigit()
+                .frame(width: 26, alignment: .trailing)
+                .foregroundStyle(.white.opacity(0.85))
+        }
+        .font(.caption.weight(.medium))
+    }
+}
+
+/// A runner-up match with its two strongest signals.
+struct MatchRow: View {
+    let neighborhood: Neighborhood
+    let match: Match
+
+    var body: some View {
+        HStack(spacing: 14) {
+            ScoreRing(score: match.score)
+            VStack(alignment: .leading, spacing: 6) {
+                Text(neighborhood.name)
+                    .font(.headline)
+                HStack(spacing: 6) {
+                    ForEach(match.strongest(2), id: \.part.key) { PartTag(part: $0.part, value: $0.value) }
+                }
+            }
+            Spacer(minLength: 0)
+            Image(systemName: "chevron.right")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(.tertiary)
+        }
+        .padding(14)
+        .background(.background.secondary, in: .rect(cornerRadius: 18))
+        .contentShape(.rect)
     }
 }

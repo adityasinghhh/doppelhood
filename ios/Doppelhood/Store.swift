@@ -71,15 +71,38 @@ final class Store {
     func matches(for neighborhood: Neighborhood, in city: String) -> [Match] {
         matches[neighborhood.id]?[city] ?? []
     }
+
+    /// The highest-scoring match in any other city.
+    func bestMatch(for neighborhood: Neighborhood) -> (match: Match, neighborhood: Neighborhood)? {
+        let best = matches[neighborhood.id]?.values.compactMap(\.first).max { $0.score < $1.score }
+        guard let best, let hood = byID[best.id] else { return nil }
+        return (best, hood)
+    }
 }
 
-/// Display names for the per-signal scores, in the order they are shown.
-let partLabels: [(key: String, label: String)] = [
-    ("character", "Character"),
-    ("street", "Street life"),
-    ("eat", "Food"),
-    ("drink", "Nightlife"),
-    ("see", "Sights"),
-    ("do", "Activities"),
-    ("buy", "Shopping"),
+/// A per-signal score's display name and symbol, in the order they are shown.
+struct Part {
+    let key: String
+    let label: String
+    let symbol: String
+}
+
+let allParts: [Part] = [
+    Part(key: "character", label: "Character", symbol: "text.book.closed"),
+    Part(key: "street", label: "Street life", symbol: "storefront"),
+    Part(key: "eat", label: "Food", symbol: "fork.knife"),
+    Part(key: "drink", label: "Nightlife", symbol: "wineglass"),
+    Part(key: "see", label: "Sights", symbol: "camera"),
+    Part(key: "do", label: "Activities", symbol: "figure.walk"),
+    Part(key: "buy", label: "Shopping", symbol: "bag"),
 ]
+
+extension Match {
+    /// The signals this match scores highest on.
+    func strongest(_ count: Int) -> [(part: Part, value: Int)] {
+        allParts.compactMap { part in self.parts[part.key].map { (part: part, value: $0) } }
+            .sorted { $0.value > $1.value }
+            .prefix(count)
+            .map { $0 }
+    }
+}

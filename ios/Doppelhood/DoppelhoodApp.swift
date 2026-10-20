@@ -8,7 +8,8 @@ struct DoppelhoodApp: App {
         WindowGroup {
             NeighborhoodListView()
                 .environment(store)
-                .tint(.orange)
+                .tint(.coral)
+                .fontDesign(.rounded)
         }
     }
 }
