@@ -14,6 +14,8 @@ Doppelhood's code is released under the MIT License in [LICENSE](LICENSE). The d
 
 Matching uses the [all-mpnet-base-v2](https://huggingface.co/sentence-transformers/all-mpnet-base-v2) embedding model, released under the Apache License 2.0. The model is downloaded at run time and is not redistributed in this repository.
 
+The app icon and the city landmark icons in `ios/icon.svg` and `ios/icons/` were drawn for Doppelhood and fall under the MIT License with the code. Neighborhood symbols are Apple's SF Symbols, used in the app under Apple's license for apps on its platforms. The maps in the iOS app come from Apple's MapKit, which displays its own attribution and legal link on every map.
+
 The Wikimedia terms come from the [Wikimedia Terms of Use](https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use), and the OpenStreetMap terms from its [copyright page](https://www.openstreetmap.org/copyright) and [attribution guidelines](https://osmfoundation.org/wiki/Licence/Attribution_Guidelines).
 
 ## Share-Alike Obligations

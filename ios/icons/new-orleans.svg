@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <g fill="none" stroke="#000" stroke-width="2" stroke-linecap="round">
+    <path d="M32,6 L28,13 M32,6 L36,13"/>
+  </g>
+  <g fill="#000" fill-rule="evenodd">
+    <rect x="24" y="12" width="16" height="2.5" rx="1"/>
+    <path d="M6,20 Q32,12 58,20 V22 H6 Z"/>
+    <path d="M7,22 H57 V48 H7 Z M10,26 V35 H17 V26 Z M20,26 V35 H27 V26 Z M30,26 V35 H34 V26 Z M37,26 V35 H44 V26 Z M47,26 V35 H54 V26 Z M30,38 V46 H34 V38 Z"/>
+    <rect x="4" y="48" width="56" height="3"/>
+    <circle cx="16" cy="55" r="4"/><circle cx="48" cy="55" r="4"/>
+    <rect x="0" y="59" width="64" height="2"/>
+  </g>
+</svg>

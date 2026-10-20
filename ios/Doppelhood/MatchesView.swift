@@ -50,10 +50,6 @@ struct MatchesView: View {
         }
         .navigationTitle(neighborhood.name)
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            // The header already shows the name in large type.
-            ToolbarItem(placement: .principal) { EmptyView() }
-        }
         .onAppear {
             if !targets.contains(where: { $0.slug == toCity }), let first = targets.first {
                 toCity = first.slug
@@ -70,6 +66,15 @@ struct MatchesView: View {
                 Text(store.city(neighborhood.city)?.label ?? "")
                     .font(.headline)
                     .foregroundStyle(.secondary)
+            }
+            if let style = neighborhood.standoutStyle {
+                Label(style.label == "Residential" ? "Mostly residential" : "Known for \(style.label.lowercased())",
+                      systemImage: style.symbol)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Color.coral)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(Color.coral.opacity(0.14), in: .capsule)
             }
             Text(neighborhood.summary)
                 .font(.subheadline)
@@ -191,6 +196,7 @@ struct MatchRow: View {
         VStack(spacing: 12) {
             HStack(spacing: 14) {
                 ScoreRing(score: match.score)
+                StandoutBadge(neighborhood: neighborhood, size: 30)
                 VStack(alignment: .leading, spacing: 6) {
                     Text(neighborhood.name)
                         .font(.headline)

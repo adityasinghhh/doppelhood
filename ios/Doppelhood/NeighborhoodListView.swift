@@ -63,6 +63,7 @@ struct NeighborhoodRow: View {
 
     var body: some View {
         HStack(spacing: 14) {
+            StandoutBadge(neighborhood: neighborhood)
             VStack(alignment: .leading, spacing: 3) {
                 Text(neighborhood.name)
                     .font(.headline)

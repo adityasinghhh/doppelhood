@@ -50,13 +50,17 @@ struct CityChips: View {
                         Button {
                             withAnimation(.snappy) { selection = city.slug }
                         } label: {
-                            Text(city.name)
-                                .font(.subheadline.weight(.semibold))
-                                .padding(.horizontal, 14)
-                                .padding(.vertical, 8)
-                                .foregroundStyle(selected ? Color.white : Color.primary)
-                                .background(selected ? AnyShapeStyle(Color.coral) : AnyShapeStyle(.fill.tertiary),
-                                            in: .capsule)
+                            Label {
+                                Text(city.name)
+                            } icon: {
+                                city.icon.resizable().scaledToFit().frame(width: 18, height: 18)
+                            }
+                            .font(.subheadline.weight(.semibold))
+                            .padding(.horizontal, 14)
+                            .padding(.vertical, 8)
+                            .foregroundStyle(selected ? Color.white : Color.primary)
+                            .background(selected ? AnyShapeStyle(Color.coral) : AnyShapeStyle(.fill.tertiary),
+                                        in: .capsule)
                         }
                         .buttonStyle(.plain)
                         .id(city.slug)
@@ -83,5 +87,19 @@ struct PartTag: View {
             .foregroundStyle(onDark ? .white : .secondary)
             .background(onDark ? AnyShapeStyle(Color.white.opacity(0.12)) : AnyShapeStyle(.fill.quaternary),
                         in: .capsule)
+    }
+}
+
+/// A neighborhood's standout feature as a symbol in a tinted circle.
+struct StandoutBadge: View {
+    let neighborhood: Neighborhood
+    var size: CGFloat = 36
+
+    var body: some View {
+        Image(systemName: neighborhood.standoutStyle?.symbol ?? "mappin")
+            .font(.system(size: size * 0.42, weight: .semibold))
+            .foregroundStyle(Color.coral)
+            .frame(width: size, height: size)
+            .background(Color.coral.opacity(0.14), in: .circle)
     }
 }

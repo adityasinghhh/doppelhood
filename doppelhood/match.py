@@ -58,6 +58,9 @@ OUTPUT = Path("web/data/matches.json")
 
 LISTING_SECTIONS = ["eat", "drink", "see", "do", "buy"]
 WEIGHTS = {"character": 0.4, "listings": 0.3, "street": 0.3}
+# A neighborhood stands out on a feature when its count is this many standard
+# deviations above its city's mean; below that it reads as residential.
+STANDOUT_Z = 0.5
 
 
 class Embedder:
@@ -196,6 +199,34 @@ def percentiles(similarity, cross):
     return out
 
 
+def street_z(hoods):
+    """Each neighborhood's log feature counts as z-scores within its own city."""
+    cities = np.array([n["city"] for n in hoods])
+    has_osm = np.array([n["osm"] is not None for n in hoods])
+    counts = np.log1p(np.array([[n["osm"][f] for f in osm.FEATURES] if n["osm"] else
+                                [0] * len(osm.FEATURES) for n in hoods], dtype=float))
+    z = np.full_like(counts, np.nan)
+    for city in set(cities):
+        rows = (cities == city) & has_osm
+        if rows.any():
+            sd = counts[rows].std(axis=0)
+            z[rows] = (counts[rows] - counts[rows].mean(axis=0)) / np.where(sd == 0, 1, sd)
+    return z
+
+
+def standouts(hoods):
+    """The street feature each neighborhood has most of relative to its city."""
+    z = street_z(hoods)
+    out = []
+    for row in z:
+        if np.isnan(row).all():
+            out.append(None)
+            continue
+        best = int(np.nanargmax(row))
+        out.append(osm.FEATURES[best] if row[best] >= STANDOUT_Z else "residential")
+    return out
+
+
 def score(hoods, embed):
     cities = np.array([n["city"] for n in hoods])
     cross = cities[:, None] != cities[None, :]
@@ -217,15 +248,7 @@ def score(hoods, embed):
         v = centered(m, cities, present)
         parts[section] = percentiles(v @ v.T, cross)
 
-    has_osm = np.array([n["osm"] is not None for n in hoods])
-    counts = np.log1p(np.array([[n["osm"][f] for f in osm.FEATURES] if n["osm"] else
-                                [0] * len(osm.FEATURES) for n in hoods], dtype=float))
-    z = np.full_like(counts, np.nan)
-    for city in set(cities):
-        rows = (cities == city) & has_osm
-        if rows.any():
-            sd = counts[rows].std(axis=0)
-            z[rows] = (counts[rows] - counts[rows].mean(axis=0)) / np.where(sd == 0, 1, sd)
+    z = street_z(hoods)
     norms = np.linalg.norm(z, axis=1, keepdims=True)
     v = z / np.where(norms == 0, 1, norms)
     parts["street"] = percentiles(v @ v.T, cross)
@@ -261,6 +284,8 @@ def main():
     embed = Embedder()
     overall, parts = score(hoods, embed)
     embed.save()
+    for n, feature in zip(hoods, standouts(hoods)):
+        n["standout"] = feature
 
     matches = {}
     for i, n in enumerate(hoods):
@@ -287,7 +312,8 @@ def main():
                    "ODbL 1.0 (https://www.openstreetmap.org/copyright), as are the neighborhood "
                    "names and locations. Wikipedia articles are linked through Wikidata (CC0).",
         "cities": [{k: c[k] for k in ("slug", "name", "state")} for c in cities],
-        "neighborhoods": [{k: n[k] for k in ("id", "city", "name", "summary", "source_url", "lat", "lon")}
+        "neighborhoods": [{k: n[k] for k in ("id", "city", "name", "summary", "source_url", "lat", "lon",
+                                                          "standout")}
                           for n in hoods],
         "matches": matches,
     }, ensure_ascii=False, separators=(",", ":")))

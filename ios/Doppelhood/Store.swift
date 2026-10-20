@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 import Observation
 
 struct City: Decodable, Hashable, Identifiable {
@@ -8,6 +9,10 @@ struct City: Decodable, Hashable, Identifiable {
 
     var id: String { slug }
     var label: String { "\(name), \(state)" }
+    /// A landmark drawn for the app, in the asset catalog as city-<slug>.
+    var icon: Image {
+        UIImage(named: "city-\(slug)") != nil ? Image("city-\(slug)") : Image(systemName: "building.2")
+    }
 }
 
 struct Neighborhood: Decodable, Hashable, Identifiable {
@@ -18,9 +23,11 @@ struct Neighborhood: Decodable, Hashable, Identifiable {
     let sourceURL: URL
     let lat: Double
     let lon: Double
+    /// The street feature it has most of relative to its city, or "residential".
+    let standout: String?
 
     enum CodingKeys: String, CodingKey {
-        case id, city, name, summary, lat, lon
+        case id, city, name, summary, lat, lon, standout
         case sourceURL = "source_url"
     }
 }
@@ -104,5 +111,28 @@ extension Match {
             .sorted { $0.value > $1.value }
             .prefix(count)
             .map { $0 }
+    }
+}
+
+/// What a neighborhood's standout street feature is called and drawn as.
+let standouts: [String: (label: String, symbol: String)] = [
+    "restaurant": ("Restaurants", "fork.knife"),
+    "fast_food": ("Quick bites", "takeoutbag.and.cup.and.straw"),
+    "cafe": ("Cafes", "cup.and.saucer"),
+    "bar": ("Bars", "wineglass"),
+    "nightlife": ("Nightlife", "music.note"),
+    "culture": ("Arts and culture", "theatermasks"),
+    "attraction": ("Sights", "binoculars"),
+    "lodging": ("Hotels", "bed.double"),
+    "park": ("Parks", "tree"),
+    "fashion": ("Fashion", "tshirt"),
+    "grocery": ("Markets", "basket"),
+    "other_shop": ("Shops", "bag"),
+    "residential": ("Residential", "house"),
+]
+
+extension Neighborhood {
+    var standoutStyle: (label: String, symbol: String)? {
+        standout.flatMap { standouts[$0] }
     }
 }
