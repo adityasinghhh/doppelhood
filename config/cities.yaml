@@ -1,7 +1,6 @@
-# San Francisco, the ten largest US cities by the Census Bureau's Vintage 2025
-# population estimates (July 1, 2025), and further cities added on request.
-# Any city can be the starting point. state holds the country for cities
-# outside the US.
+# Cities chosen for travelers: places people visit, not the largest by
+# population. Any city can be the starting point. state holds the country for
+# cities outside the US.
 #
 # geofabrik names the OpenStreetMap extract that contains the city, from
 # https://download.geofabrik.de/.
@@ -28,7 +27,6 @@ cities:
     wikidata: Q60
     exclude_labels: [Manhattan, Brooklyn, Queens, The Bronx, Bronx, Staten Island]
     geofabrik: north-america/us/new-york
-    population_rank: 1
     wikivoyage: New York City
     wikipedia: New York City
     wikivoyage_districts: true
@@ -38,7 +36,6 @@ cities:
     state: CA
     wikidata: Q65
     geofabrik: north-america/us/california/socal
-    population_rank: 2
     wikivoyage: Los Angeles
     wikipedia: Los Angeles
     wikivoyage_districts: true
@@ -48,97 +45,8 @@ cities:
     state: IL
     wikidata: Q1297
     geofabrik: north-america/us/illinois
-    population_rank: 3
     wikivoyage: Chicago
     wikipedia: Chicago
-    wikivoyage_districts: true
-
-  - slug: houston
-    name: Houston
-    state: TX
-    wikidata: Q16555
-    geofabrik: north-america/us/texas
-    population_rank: 4
-    wikivoyage: Houston
-    wikipedia: Houston
-    wikivoyage_districts: true
-
-  - slug: phoenix
-    name: Phoenix
-    state: AZ
-    wikidata: Q16556
-    geofabrik: north-america/us/arizona
-    population_rank: 5
-    wikivoyage: Phoenix
-    wikipedia: Phoenix, Arizona
-    wikivoyage_districts: false
-
-  - slug: philadelphia
-    name: Philadelphia
-    state: PA
-    wikidata: Q1345
-    geofabrik: north-america/us/pennsylvania
-    population_rank: 6
-    wikivoyage: Philadelphia
-    wikipedia: Philadelphia
-    wikivoyage_districts: true
-
-  - slug: san-antonio
-    name: San Antonio
-    state: TX
-    wikidata: Q975
-    geofabrik: north-america/us/texas
-    population_rank: 7
-    wikivoyage: San Antonio
-    wikipedia: San Antonio
-    wikivoyage_districts: false
-
-  - slug: san-diego
-    name: San Diego
-    state: CA
-    wikidata: Q16552
-    geofabrik: north-america/us/california/socal
-    population_rank: 8
-    wikivoyage: San Diego
-    wikipedia: San Diego
-    wikivoyage_districts: true
-
-  - slug: dallas
-    name: Dallas
-    state: TX
-    wikidata: Q16557
-    geofabrik: north-america/us/texas
-    population_rank: 9
-    wikivoyage: Dallas
-    wikipedia: Dallas
-    wikivoyage_districts: true
-
-  - slug: fort-worth
-    name: Fort Worth
-    state: TX
-    wikidata: Q16558
-    geofabrik: north-america/us/texas
-    population_rank: 10
-    wikivoyage: Fort Worth
-    wikipedia: Fort Worth, Texas
-    wikivoyage_districts: false
-
-  - slug: mexico-city
-    name: Mexico City
-    state: Mexico
-    wikidata: Q1489
-    geofabrik: north-america/mexico
-    wikivoyage: Mexico City
-    wikipedia: Mexico City
-    wikivoyage_districts: true
-
-  - slug: new-orleans
-    name: New Orleans
-    state: LA
-    wikidata: Q34404
-    geofabrik: north-america/us/louisiana
-    wikivoyage: New Orleans
-    wikipedia: New Orleans
     wikivoyage_districts: true
 
   - slug: boston
@@ -150,6 +58,24 @@ cities:
     wikipedia: Boston
     wikivoyage_districts: true
 
+  - slug: new-orleans
+    name: New Orleans
+    state: LA
+    wikidata: Q34404
+    geofabrik: north-america/us/louisiana
+    wikivoyage: New Orleans
+    wikipedia: New Orleans
+    wikivoyage_districts: true
+
+  - slug: san-diego
+    name: San Diego
+    state: CA
+    wikidata: Q16552
+    geofabrik: north-america/us/california/socal
+    wikivoyage: San Diego
+    wikipedia: San Diego
+    wikivoyage_districts: true
+
   - slug: denver
     name: Denver
     state: CO
@@ -158,3 +84,120 @@ cities:
     wikivoyage: Denver
     wikipedia: Denver
     wikivoyage_districts: false
+
+  - slug: philadelphia
+    name: Philadelphia
+    state: PA
+    wikidata: Q1345
+    geofabrik: north-america/us/pennsylvania
+    wikivoyage: Philadelphia
+    wikipedia: Philadelphia
+    wikivoyage_districts: true
+
+  - slug: mexico-city
+    name: Mexico City
+    state: Mexico
+    wikidata: Q1489
+    geofabrik: north-america/mexico
+    wikivoyage: Mexico City
+    wikipedia: Mexico City
+    wikivoyage_districts: true
+
+  - slug: seattle
+    name: Seattle
+    state: WA
+    wikidata: Q5083
+    geofabrik: north-america/us/washington
+    wikivoyage: Seattle
+    wikipedia: Seattle
+    wikivoyage_districts: true
+
+  - slug: miami
+    name: Miami
+    state: FL
+    wikidata: Q8652
+    geofabrik: north-america/us/florida
+    wikivoyage: Miami
+    wikipedia: Miami
+    wikivoyage_districts: true
+
+  - slug: las-vegas
+    name: Las Vegas
+    state: NV
+    wikidata: Q23768
+    geofabrik: north-america/us/nevada
+    wikivoyage: Las Vegas
+    wikipedia: Las Vegas
+    wikivoyage_districts: true
+
+  - slug: washington-dc
+    name: Washington
+    state: DC
+    wikidata: Q61
+    geofabrik: north-america/us/district-of-columbia
+    wikivoyage: Washington, D.C.
+    wikipedia: Washington, D.C.
+    wikivoyage_districts: true
+
+  - slug: honolulu
+    name: Honolulu
+    state: HI
+    wikidata: Q18094
+    geofabrik: north-america/us/hawaii
+    wikivoyage: Honolulu
+    wikipedia: Honolulu
+    wikivoyage_districts: true
+
+  - slug: nashville
+    name: Nashville
+    state: TN
+    wikidata: Q23197
+    geofabrik: north-america/us/tennessee
+    wikivoyage: Nashville
+    wikipedia: Nashville, Tennessee
+    wikivoyage_districts: false
+
+  - slug: austin
+    name: Austin
+    state: TX
+    wikidata: Q16559
+    geofabrik: north-america/us/texas
+    wikivoyage: Austin
+    wikipedia: Austin, Texas
+    wikivoyage_districts: true
+
+  - slug: london
+    name: London
+    state: UK
+    wikidata: Q84
+    geofabrik: europe/united-kingdom/england/greater-london
+    wikivoyage: London
+    wikipedia: London
+    wikivoyage_districts: true
+
+  - slug: paris
+    name: Paris
+    state: France
+    wikidata: Q90
+    geofabrik: europe/france/ile-de-france
+    wikivoyage: Paris
+    wikipedia: Paris
+    wikivoyage_districts: true
+
+  - slug: berlin
+    name: Berlin
+    state: Germany
+    wikidata: Q64
+    geofabrik: europe/germany/berlin
+    wikivoyage: Berlin
+    wikipedia: Berlin
+    wikivoyage_districts: true
+
+  - slug: amsterdam
+    name: Amsterdam
+    state: Netherlands
+    wikidata: Q727
+    geofabrik: europe/netherlands/noord-holland
+    wikivoyage: Amsterdam
+    wikipedia: Amsterdam
+    wikivoyage_districts: true
