@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#24476E"/>
+      <stop offset="1" stop-color="#0E2036"/>
+    </linearGradient>
+    <clipPath id="a"><path clip-rule="evenodd" d="M402.0,800.0 L233.7,538.1 A200,200 0 1 1 570.3,538.1 Z M324,430 a78,78 0 1 0 156,0 a78,78 0 1 0 -156,0 Z"/></clipPath>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#sky)"/>
+  <ellipse cx="512" cy="812" rx="250" ry="34" fill="#000" opacity="0.25"/>
+  <path fill-rule="evenodd" fill="#FF6B5B" d="M402.0,800.0 L233.7,538.1 A200,200 0 1 1 570.3,538.1 Z M324,430 a78,78 0 1 0 156,0 a78,78 0 1 0 -156,0 Z"/>
+  <path fill-rule="evenodd" fill="#FFC94A" d="M622.0,800.0 L453.7,538.1 A200,200 0 1 1 790.3,538.1 Z M544,430 a78,78 0 1 0 156,0 a78,78 0 1 0 -156,0 Z"/>
+  <path fill-rule="evenodd" fill="#FFF3DC" clip-path="url(#a)" d="M622.0,800.0 L453.7,538.1 A200,200 0 1 1 790.3,538.1 Z M544,430 a78,78 0 1 0 156,0 a78,78 0 1 0 -156,0 Z"/>
+</svg>
