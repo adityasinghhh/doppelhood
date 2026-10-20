@@ -1,8 +1,11 @@
-"""Read current neighborhoods and points of interest from a local OpenStreetMap extract.
+"""Read current neighborhoods and points of interest from OpenStreetMap.
 
-Each city's Geofabrik extract is downloaded once into data/raw/pbf/ and cut
-down with osmium to the city's boundary, its place=neighbourhood, suburb, and
-quarter labels, and its restaurants, bars, shops, venues, and parks. Labels
+Each city's boundary, its place=neighbourhood, suburb, and quarter labels,
+and its restaurants, bars, shops, venues, and parks are saved under
+data/raw/osm/<slug>/. When the city's Geofabrik extract is already in
+data/raw/pbf/, osmium cuts them out of it; otherwise they come from the
+Overpass API, which returns only the city's area rather than a whole state
+or country. Labels
 are what mappers maintain today, so the list reflects current neighborhoods
 rather than every name the city has ever used.
 
@@ -18,12 +21,13 @@ from pathlib import Path
 
 import numpy as np
 import requests
-from shapely.geometry import Point, shape
-from shapely.ops import unary_union
+from shapely.geometry import LineString, Point, mapping, shape
+from shapely.ops import linemerge, polygonize, unary_union
 
 from doppelhood.wikivoyage import USER_AGENT
 
 GEOFABRIK = "https://download.geofabrik.de/{}-latest.osm.pbf"
+OVERPASS = "https://overpass-api.de/api/interpreter"
 PBF_DIR = Path("data/raw/pbf")
 CITY_DIR = Path("data/raw/osm")
 RADIUS_M = 500
@@ -62,7 +66,7 @@ def osmium(*args):
 
 def extract(city):
     """Return the path of the city's Geofabrik extract, downloading it if missing."""
-    path = PBF_DIR / (city["geofabrik"].rsplit("/", 1)[-1] + "-latest.osm.pbf")
+    path = extract_path(city)
     if not path.exists():
         PBF_DIR.mkdir(parents=True, exist_ok=True)
         # Download beside the target and rename at the end, so an interrupted
@@ -84,12 +88,19 @@ def features(path):
         return [json.loads(line.lstrip("\x1e")) for line in f if line.strip()]
 
 
+def extract_path(city):
+    return PBF_DIR / (city["geofabrik"].rsplit("/", 1)[-1] + "-latest.osm.pbf")
+
+
 def prepare(city):
-    """Cut the city's boundary, neighborhood labels, and POIs out of its extract."""
+    """Save the city's boundary, neighborhood labels, and POIs, from its extract
+    when one is on disk and from Overpass otherwise."""
     out = CITY_DIR / city["slug"]
     if (out / "pois.geojsonseq").exists():
         return out
     out.mkdir(parents=True, exist_ok=True)
+    if not extract_path(city).exists():
+        return prepare_overpass(city, out)
     source = str(extract(city))
 
     osmium("tags-filter", source, f"r/wikidata={city['wikidata']}", "-o", str(out / "boundary.pbf"))
@@ -104,6 +115,66 @@ def prepare(city):
     osmium("tags-filter", str(out / "city.pbf"), "nwr/amenity", "nwr/shop", "nwr/tourism", "nwr/leisure",
            "-o", str(out / "pois.pbf"))
     osmium("export", str(out / "pois.pbf"), "-f", "geojsonseq", "-o", str(out / "pois.geojsonseq"))
+    return out
+
+
+def overpass(query):
+    response = requests.post(OVERPASS, data={"data": f"[out:json][timeout:900];{query}"},
+                             headers={"User-Agent": USER_AGENT}, timeout=960)
+    response.raise_for_status()
+    return response.json()["elements"]
+
+
+def write_seq(path, features):
+    with open(path, "w") as f:
+        for feature in features:
+            f.write(json.dumps(feature) + "\n")
+
+
+def as_point_feature(element):
+    """A node, or a way or relation's center, as a GeoJSON point with its tags."""
+    where = element if element["type"] == "node" else element.get("center")
+    if not where:
+        return None
+    return {"type": "Feature", "properties": element.get("tags", {}),
+            "geometry": {"type": "Point", "coordinates": [where["lon"], where["lat"]]}}
+
+
+def boundary_polygon(relation):
+    """Assemble a relation's outer and inner member ways into one polygon."""
+    rings = {"outer": [], "inner": []}
+    for member in relation["members"]:
+        if member["type"] == "way" and member.get("geometry"):
+            role = "inner" if member.get("role") == "inner" else "outer"
+            rings[role].append(LineString([(p["lon"], p["lat"]) for p in member["geometry"]]))
+    outer = unary_union(list(polygonize(linemerge(rings["outer"]))))
+    if rings["inner"]:
+        outer = outer.difference(unary_union(list(polygonize(linemerge(rings["inner"])))))
+    return outer
+
+
+def prepare_overpass(city, out):
+    relations = [e for e in overpass(f'rel["wikidata"="{city["wikidata"]}"];out geom;')
+                 if e.get("tags", {}).get("type") in ("boundary", "multipolygon")]
+    polygons = [boundary_polygon(r) for r in relations]
+    boundary = unary_union([p for p in polygons if not p.is_empty])
+    if boundary.is_empty:
+        raise RuntimeError(f"No boundary relation in OpenStreetMap for {city['wikidata']}")
+    write_seq(out / "boundary.geojsonseq",
+              [{"type": "Feature", "properties": {}, "geometry": mapping(boundary)}])
+
+    west, south, east, north = boundary.bounds
+    bbox = f"({south},{west},{north},{east})"
+    places = overpass(f'nwr["place"~"^({"|".join(sorted(PLACE_TYPES))})$"]{bbox};out center tags;')
+    write_seq(out / "places.geojsonseq", filter(None, map(as_point_feature, places)))
+
+    # Only the tag values the feature categories count, plus every shop.
+    filters = [f'nwr["shop"]{bbox};']
+    for key in sorted({k for rules in CATEGORIES.values() for k in rules if k != "shop"}):
+        values = sorted({v for rules in CATEGORIES.values() for v in rules.get(key, ())})
+        filters.append(f'nwr["{key}"~"^({"|".join(values)})$"]{bbox};')
+    pois = overpass(f'({"".join(filters)});out center tags;')
+    write_seq(out / "pois.geojsonseq", filter(None, map(as_point_feature, pois)))
     return out
 
 
