@@ -116,3 +116,69 @@ struct StandoutBadge: View {
             .background(Color.coral.opacity(0.14), in: .circle)
     }
 }
+
+/// A Wikimedia Commons photo bundled as photo-<slug>, cropped and resized for the header.
+struct PhotoCredit {
+    let city: String
+    let title: String
+    let author: String
+    let license: String
+    let licenseURL: URL
+
+    var page: URL {
+        URL(string: "https://commons.wikimedia.org/wiki/File:" +
+            title.replacingOccurrences(of: " ", with: "_")
+                .addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)!
+    }
+}
+
+private let bySA4 = URL(string: "https://creativecommons.org/licenses/by-sa/4.0/")!
+
+let photoCredits: [PhotoCredit] = [
+    PhotoCredit(city: "san-francisco", title: "San Francisco (CA, USA), Golden Gate Bridge -- 2022 -- 3015.jpg",
+                author: "Dietmar Rabich", license: "CC BY-SA 4.0", licenseURL: bySA4),
+    PhotoCredit(city: "new-york", title: "Midtown Manhattan from Weehawken September 2021 HDR.jpg",
+                author: "King of Hearts", license: "CC BY-SA 4.0", licenseURL: bySA4),
+    PhotoCredit(city: "mexico-city", title: "Angel de la independencia170409.jpg",
+                author: "Carlos Valenzuela", license: "CC BY-SA 4.0", licenseURL: bySA4),
+    PhotoCredit(city: "new-orleans", title: "Jackson Square.jpg",
+                author: "Daniel Schwen", license: "CC BY-SA 4.0", licenseURL: bySA4),
+    PhotoCredit(city: "boston", title: "Boston skyline from Longfellow Bridge September 2017 panorama 2.jpg",
+                author: "King of Hearts", license: "CC BY-SA 4.0", licenseURL: bySA4),
+]
+
+/// The selected city's photo with its name over it, crossfading when the city changes.
+struct CityHero: View {
+    let city: City
+
+    var body: some View {
+        // The photo fills a fixed frame rather than sizing it, so wide photos stay inside the margins.
+        Color.navy
+            .frame(height: 200)
+            .frame(maxWidth: .infinity)
+            .overlay {
+                if UIImage(named: "photo-\(city.slug)") != nil {
+                    Image("photo-\(city.slug)")
+                        .resizable()
+                        .scaledToFill()
+                }
+            }
+            .overlay {
+                LinearGradient(colors: [.clear, .black.opacity(0.65)], startPoint: .center, endPoint: .bottom)
+            }
+            .overlay(alignment: .bottomLeading) {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Neighborhoods you know in")
+                        .font(.subheadline.weight(.medium))
+                        .foregroundStyle(.white.opacity(0.85))
+                    Text(city.name)
+                        .font(.largeTitle.bold())
+                        .foregroundStyle(.white)
+                }
+                .padding(16)
+            }
+            .clipShape(.rect(cornerRadius: 24))
+            .id(city.slug)
+            .transition(.opacity)
+    }
+}

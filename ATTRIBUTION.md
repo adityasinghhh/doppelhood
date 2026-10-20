@@ -16,6 +16,16 @@ Matching uses the [all-mpnet-base-v2](https://huggingface.co/sentence-transforme
 
 The app icon and the city landmark icons in `ios/icon.svg` and `ios/icons/` were drawn for Doppelhood and fall under the MIT License with the code. Neighborhood symbols are Apple's SF Symbols, used in the app under Apple's license for apps on its platforms. The maps in the iOS app come from Apple's MapKit, which displays its own attribution and legal link on every map.
 
+The iOS app's city header photos come from Wikimedia Commons. Each is cropped to 2:1 and resized to 1200 by 600 pixels, and the modified versions in `ios/Doppelhood/Assets.xcassets/photo-*.imageset/` are shared under the same license as the original:
+
+| City | Photo | Photographer | License |
+|---|---|---|---|
+| San Francisco | [Golden Gate Bridge, 2022](https://commons.wikimedia.org/wiki/File:San_Francisco_(CA,_USA),_Golden_Gate_Bridge_--_2022_--_3015.jpg) | Dietmar Rabich | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| New York | [Midtown Manhattan from Weehawken](https://commons.wikimedia.org/wiki/File:Midtown_Manhattan_from_Weehawken_September_2021_HDR.jpg) | King of Hearts | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| Mexico City | [Ángel de la Independencia](https://commons.wikimedia.org/wiki/File:Angel_de_la_independencia170409.jpg) | Carlos Valenzuela | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| New Orleans | [Jackson Square](https://commons.wikimedia.org/wiki/File:Jackson_Square.jpg) | Daniel Schwen | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| Boston | [Boston skyline from Longfellow Bridge](https://commons.wikimedia.org/wiki/File:Boston_skyline_from_Longfellow_Bridge_September_2017_panorama_2.jpg) | King of Hearts | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+
 The Wikimedia terms come from the [Wikimedia Terms of Use](https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use), and the OpenStreetMap terms from its [copyright page](https://www.openstreetmap.org/copyright) and [attribution guidelines](https://osmfoundation.org/wiki/Licence/Attribution_Guidelines).
 
 ## Share-Alike Obligations

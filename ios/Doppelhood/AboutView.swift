@@ -22,6 +22,16 @@ struct AboutView: View {
                         .foregroundStyle(.secondary)
                 }
                 .listRowBackground(Color.surface)
+                Section("City Photos") {
+                    ForEach(photoCredits, id: \.city) { credit in
+                        Link(destination: credit.page) {
+                            Text("\(credit.author), \(credit.license)")
+                        }
+                    }
+                    Text("Photos from Wikimedia Commons, cropped and resized for the app. Each links to its original page and license.")
+                        .foregroundStyle(.secondary)
+                }
+                .listRowBackground(Color.surface)
                 Section {
                     Link("Source code on GitHub",
                          destination: URL(string: "https://github.com/adityasinghhh/doppelhood")!)

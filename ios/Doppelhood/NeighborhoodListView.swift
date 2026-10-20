@@ -17,6 +17,13 @@ struct NeighborhoodListView: View {
     var body: some View {
         NavigationStack(path: $path) {
             List {
+                if query.isEmpty, let city = store.city(fromCity) {
+                    CityHero(city: city)
+                        .animation(.easeInOut(duration: 0.35), value: fromCity)
+                        .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 8, trailing: 16))
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.page)
+                }
                 Section {
                     ForEach(neighborhoods) { hood in
                         NavigationLink(value: hood) { NeighborhoodRow(neighborhood: hood) }
@@ -24,10 +31,6 @@ struct NeighborhoodListView: View {
                     }
                 } header: {
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("Neighborhoods you know in")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                            .padding(.horizontal)
                         CityChips(cities: store.cities, selection: $fromCity)
                     }
                     .textCase(nil)
