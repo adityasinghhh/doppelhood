@@ -144,9 +144,7 @@ struct TopMatchCard: View {
             }
             VStack(spacing: 8) {
                 ForEach(allParts, id: \.key) { part in
-                    if let value = match.parts[part.key] {
-                        PartBar(part: part, value: value)
-                    }
+                    PartBar(part: part, value: match.parts[part.key])
                 }
             }
         }
@@ -155,32 +153,45 @@ struct TopMatchCard: View {
     }
 }
 
-/// One signal's score as a labeled bar.
+/// One signal's score as a labeled bar, or a note when either neighborhood
+/// has no Wikivoyage listings in that section.
 struct PartBar: View {
     let part: Part
-    let value: Int
+    let value: Int?
     var onDark = true
+
+    private var muted: AnyShapeStyle {
+        onDark ? AnyShapeStyle(.white.opacity(0.4)) : AnyShapeStyle(.tertiary)
+    }
 
     var body: some View {
         HStack(spacing: 10) {
             Image(systemName: part.symbol)
                 .frame(width: 20)
-                .foregroundStyle(onDark ? Color.gold : Color.coral)
+                .foregroundStyle(value == nil ? muted : AnyShapeStyle(onDark ? Color.gold : Color.coral))
             Text(part.label)
                 .frame(width: 84, alignment: .leading)
-                .foregroundStyle(onDark ? AnyShapeStyle(.white.opacity(0.85)) : AnyShapeStyle(.secondary))
-            GeometryReader { proxy in
-                ZStack(alignment: .leading) {
-                    Capsule().fill(onDark ? AnyShapeStyle(.white.opacity(0.12)) : AnyShapeStyle(.fill.tertiary))
-                    Capsule().fill(.brand)
-                        .frame(width: proxy.size.width * CGFloat(value) / 100)
+                .foregroundStyle(value == nil ? muted
+                                 : onDark ? AnyShapeStyle(.white.opacity(0.85)) : AnyShapeStyle(.secondary))
+            if let value {
+                GeometryReader { proxy in
+                    ZStack(alignment: .leading) {
+                        Capsule().fill(onDark ? AnyShapeStyle(.white.opacity(0.12)) : AnyShapeStyle(.fill.tertiary))
+                        Capsule().fill(.brand)
+                            .frame(width: proxy.size.width * CGFloat(value) / 100)
+                    }
                 }
+                .frame(height: 6)
+                Text("\(value)")
+                    .monospacedDigit()
+                    .frame(width: 26, alignment: .trailing)
+                    .foregroundStyle(onDark ? AnyShapeStyle(.white.opacity(0.85)) : AnyShapeStyle(.secondary))
+            } else {
+                Text("No listings")
+                    .italic()
+                    .foregroundStyle(muted)
+                Spacer(minLength: 0)
             }
-            .frame(height: 6)
-            Text("\(value)")
-                .monospacedDigit()
-                .frame(width: 26, alignment: .trailing)
-                .foregroundStyle(onDark ? AnyShapeStyle(.white.opacity(0.85)) : AnyShapeStyle(.secondary))
         }
         .font(.caption.weight(.medium))
     }
@@ -215,9 +226,7 @@ struct MatchRow: View {
             if expanded {
                 VStack(spacing: 8) {
                     ForEach(allParts, id: \.key) { part in
-                        if let value = match.parts[part.key] {
-                            PartBar(part: part, value: value, onDark: false)
-                        }
+                        PartBar(part: part, value: match.parts[part.key], onDark: false)
                     }
                 }
                 NavigationLink(value: neighborhood) {
