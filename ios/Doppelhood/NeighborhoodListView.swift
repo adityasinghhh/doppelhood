@@ -20,6 +20,7 @@ struct NeighborhoodListView: View {
                 Section {
                     ForEach(neighborhoods) { hood in
                         NavigationLink(value: hood) { NeighborhoodRow(neighborhood: hood) }
+                            .listRowBackground(Color.page)
                     }
                 } header: {
                     VStack(alignment: .leading, spacing: 10) {
@@ -35,6 +36,8 @@ struct NeighborhoodListView: View {
                 }
             }
             .listStyle(.plain)
+            .scrollContentBackground(.hidden)
+            .background(Color.page)
             .searchable(text: $query, prompt: "Search neighborhoods")
             .navigationTitle("Doppelhood")
             .navigationDestination(for: Neighborhood.self) { MatchesView(neighborhood: $0) }

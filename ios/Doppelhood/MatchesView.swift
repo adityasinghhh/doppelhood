@@ -48,6 +48,7 @@ struct MatchesView: View {
             }
             .padding(.bottom, 24)
         }
+        .background(Color.page)
         .navigationTitle(neighborhood.name)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
@@ -237,7 +238,7 @@ struct MatchRow: View {
             }
         }
         .padding(14)
-        .background(.background.secondary, in: .rect(cornerRadius: 18))
+        .background(Color.surface, in: .rect(cornerRadius: 18))
         .contentShape(.rect)
         .onTapGesture { withAnimation(.snappy) { expanded.toggle() } }
     }

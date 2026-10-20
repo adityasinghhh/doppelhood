@@ -4,7 +4,20 @@ import SwiftUI
 extension Color {
     static let coral = Color(red: 1.0, green: 0.42, blue: 0.36)
     static let gold = Color(red: 1.0, green: 0.79, blue: 0.29)
-    static let navy = Color(red: 0.09, green: 0.17, blue: 0.28)
+    /// The best-match card, lifted off the page in dark mode.
+    static let navy = Color(light: 0x172B47, dark: 0x1F3350)
+    /// Screen background: the icon's cream in light mode, its navy in dark mode.
+    static let page = Color(light: 0xFBF7F2, dark: 0x0E1A2B)
+    /// Rows and unselected chips on the page.
+    static let surface = Color(light: 0xFFFFFF, dark: 0x17263B)
+
+    init(light: UInt32, dark: UInt32) {
+        func rgb(_ hex: UInt32) -> UIColor {
+            UIColor(red: CGFloat(hex >> 16 & 0xFF) / 255, green: CGFloat(hex >> 8 & 0xFF) / 255,
+                    blue: CGFloat(hex & 0xFF) / 255, alpha: 1)
+        }
+        self.init(uiColor: UIColor { $0.userInterfaceStyle == .dark ? rgb(dark) : rgb(light) })
+    }
 }
 
 extension ShapeStyle where Self == LinearGradient {
@@ -59,7 +72,7 @@ struct CityChips: View {
                             .padding(.horizontal, 14)
                             .padding(.vertical, 8)
                             .foregroundStyle(selected ? Color.white : Color.primary)
-                            .background(selected ? AnyShapeStyle(Color.coral) : AnyShapeStyle(.fill.tertiary),
+                            .background(selected ? AnyShapeStyle(Color.coral) : AnyShapeStyle(Color.surface),
                                         in: .capsule)
                         }
                         .buttonStyle(.plain)
