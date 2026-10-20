@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <g fill="#000" fill-rule="evenodd">
+    <rect x="31.2" y="2" width="1.6" height="5"/>
+    <path d="M32,6 a11,11 0 1 1 -0.01,0 Z M22,17 H42 V18.6 H22 Z M23,21.5 H41 V23 H23 Z M25,12.5 H39 V14 H25 Z"/>
+    <rect x="30.5" y="27" width="3" height="3"/>
+    <path d="M28,30 H36 L35,58 H29 Z"/>
+    <path d="M24,52 L28,40 L29,58 H24 Z"/>
+    <path d="M40,52 L36,40 L35,58 H40 Z"/>
+    <rect x="16" y="58" width="32" height="3"/>
+  </g>
+</svg>

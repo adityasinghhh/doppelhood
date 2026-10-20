@@ -149,3 +149,12 @@ cities:
     wikivoyage: Boston
     wikipedia: Boston
     wikivoyage_districts: true
+
+  - slug: denver
+    name: Denver
+    state: CO
+    wikidata: Q16554
+    geofabrik: north-america/us/colorado
+    wikivoyage: Denver
+    wikipedia: Denver
+    wikivoyage_districts: false
