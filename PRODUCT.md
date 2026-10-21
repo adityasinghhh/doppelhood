@@ -22,7 +22,7 @@ Doppelhood is a free iOS app that tells a traveler which neighborhood in a city 
 - **Street life** compares the mix of restaurants, bars, cafes, shops, venues, and parks within 500 meters of each neighborhood, counted from OpenStreetMap.
 - **Standouts** name the feature each neighborhood has most of relative to the rest of its city, such as nightlife in the Mission or hotels in the Tenderloin, or mark it as mostly residential.
 - **Any city as the starting point**, with every signal measured against the rest of its own city first, so a match means two neighborhoods play the same role in their cities.
-- **Percentile scores** report each match against every cross-city pairing, overall and per signal.
+- **Scores** rank each match against every neighborhood's best match in another city, overall and per signal, so a weak best match reads as weak.
 - **iOS app** in `ios/` opens on a photo of the chosen city and lists its neighborhoods with each one's standout and closest match elsewhere. A neighborhood's page shows it on a map, then its top five matches in another city: the best with its own map and a bar per signal, the rest with their two strongest signals and a tap to see all seven. Signals a pair cannot be scored on, for lack of Wikivoyage listings, are marked rather than hidden. The About screen credits every source and photo.
 - **Web preview** at [adityasinghhh.github.io/doppelhood](https://adityasinghhh.github.io/doppelhood/) shows the same data in a browser.
 

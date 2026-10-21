@@ -11,9 +11,11 @@ Each neighborhood is described by three kinds of signal:
 Every signal is centered within its city before comparing, so a match means
 two neighborhoods differ from the rest of their own cities in the same way.
 Each signal's similarity is converted to a percentile over all cross-city
-pairs, the percentiles are blended by WEIGHTS, and the blend is converted to a
-percentile again: a score of 90 means the pairing is more similar than 90% of
-all pairings between neighborhoods in different cities.
+pairs and the percentiles are blended by WEIGHTS. Every neighborhood's best
+match in each other city scores high on that scale, so the scores shown are
+ranked against those best matches instead: a score of 50 means the pair is as
+close as a typical best match, and a weak best match (a city with few
+neighborhoods, or none like this one) scores low.
 """
 
 import argparse
@@ -190,10 +192,11 @@ def centered(matrix, cities, present):
     return out
 
 
-def percentiles(similarity, cross):
-    """Convert a similarity matrix to percentiles over valid cross-city pairs."""
+def percentiles(similarity, cross, reference=None):
+    """Convert a similarity matrix to percentiles over valid cross-city pairs,
+    or over the reference pairs when given."""
     valid = cross & ~np.isnan(similarity)
-    pool = np.sort(similarity[valid])
+    pool = np.sort(similarity[valid & (reference if reference is not None else True)])
     out = np.full_like(similarity, np.nan)
     out[valid] = 100 * np.searchsorted(pool, similarity[valid]) / len(pool)
     return out
@@ -263,8 +266,21 @@ def score(hoods, embed):
         has = ~np.isnan(listings)
         total = np.where(has, total + WEIGHTS["listings"] * np.nan_to_num(listings), total)
         weight = np.where(has, weight + WEIGHTS["listings"], weight)
-    overall = percentiles(total / weight, cross)
+    blend = total / weight
+    best = best_pairs(blend, cities)
+    overall = percentiles(blend, cross, best)
+    parts = {k: percentiles(p, cross, best) for k, p in parts.items()}
     return overall, parts
+
+
+def best_pairs(similarity, cities):
+    """Mark each neighborhood's most similar neighborhood in every other city."""
+    best = np.zeros_like(similarity, dtype=bool)
+    for city in set(cities):
+        idx = np.where(cities == city)[0]
+        others = np.where(cities != city)[0]
+        best[others, idx[np.nanargmax(similarity[np.ix_(others, idx)], axis=1)]] = True
+    return best
 
 
 def main():

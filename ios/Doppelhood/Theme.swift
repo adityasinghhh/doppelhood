@@ -26,7 +26,7 @@ extension ShapeStyle where Self == LinearGradient {
     }
 }
 
-/// A match score as a ring filled to the percentile.
+/// A match score as a ring filled to the score.
 struct ScoreRing: View {
     let score: Int
     var size: CGFloat = 44

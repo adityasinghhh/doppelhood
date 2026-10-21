@@ -21,7 +21,7 @@ Each neighborhood is normalized within its own city, so a match means the two ne
 
 Each signal is centered within its city before comparing, so two neighborhoods match when they differ from the rest of their own cities in the same way. Text is embedded with [all-mpnet-base-v2](https://huggingface.co/sentence-transformers/all-mpnet-base-v2), and street life is compared as within-city z-scores of log counts.
 
-Every signal's similarity is converted to a percentile over all cross-city pairs, the percentiles are blended (character 40%, listings 30%, street life 30%), and the blend is converted to a percentile again. A score of 90 means the pairing is more similar than 90% of all pairings between neighborhoods in different cities.
+Every signal's similarity is converted to a percentile over all cross-city pairs, and the percentiles are blended (character 40%, listings 30%, street life 30%). Nearly every best match lands near the top of that scale, so the scores shown rank each pair against every neighborhood's best match in each other city instead. A score of 50 means the pair is as close as a typical best match, and a low score means even the closest neighborhood in that city is a stretch.
 
 ## Status
 

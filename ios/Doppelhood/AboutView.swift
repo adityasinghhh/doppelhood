@@ -7,7 +7,7 @@ struct AboutView: View {
         NavigationStack {
             List {
                 Section("How Matching Works") {
-                    Text("Scores are percentiles. A score of 90 means the pairing is more similar than 90% of all pairings between neighborhoods in different cities.")
+                    Text("Scores compare each pair with every neighborhood's best match in another city. A score of 50 means the pair is as close as a typical best match, and a low score means even the closest neighborhood in that city is a stretch.")
                     Text("Each neighborhood is compared on its Wikipedia article (character), the Wikivoyage listings located in it (food, nightlife, sights, activities, shopping), and the restaurants, bars, shops, and parks mapped in OpenStreetMap within 500 meters (street life). Every signal is measured against the rest of its own city first, so a match means two neighborhoods play the same role in their cities.")
                 }
                 .listRowBackground(Color.surface)
