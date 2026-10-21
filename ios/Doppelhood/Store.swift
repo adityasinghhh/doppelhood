@@ -78,13 +78,6 @@ final class Store {
     func matches(for neighborhood: Neighborhood, in city: String) -> [Match] {
         matches[neighborhood.id]?[city] ?? []
     }
-
-    /// The highest-scoring match in any other city.
-    func bestMatch(for neighborhood: Neighborhood) -> (match: Match, neighborhood: Neighborhood)? {
-        let best = matches[neighborhood.id]?.values.compactMap(\.first).max { $0.score < $1.score }
-        guard let best, let hood = byID[best.id] else { return nil }
-        return (best, hood)
-    }
 }
 
 /// A per-signal score's display name and symbol, in the order they are shown.

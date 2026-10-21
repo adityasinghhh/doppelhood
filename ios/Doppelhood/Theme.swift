@@ -157,14 +157,16 @@ let photoCredits: [PhotoCredit] = [
                 author: "U.S. Fish and Wildlife Service", license: "Public domain", licenseURL: URL(string: "https://creativecommons.org/publicdomain/mark/1.0/")!),
 ]
 
-/// The selected city's photo with its name over it, crossfading when the city changes.
+/// A city's photo with its name over it, crossfading when the city changes.
 struct CityHero: View {
     let city: City
+    var caption: String
+    var height: CGFloat = 200
 
     var body: some View {
         // The photo fills a fixed frame rather than sizing it, so wide photos stay inside the margins.
         Color.navy
-            .frame(height: 200)
+            .frame(height: height)
             .frame(maxWidth: .infinity)
             .overlay {
                 if UIImage(named: "photo-\(city.slug)") != nil {
@@ -174,20 +176,26 @@ struct CityHero: View {
                 }
             }
             .overlay {
-                LinearGradient(colors: [.clear, .black.opacity(0.65)], startPoint: .center, endPoint: .bottom)
+                LinearGradient(colors: [.clear, .black.opacity(0.7)], startPoint: .center, endPoint: .bottom)
             }
             .overlay(alignment: .bottomLeading) {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("Neighborhoods you know in")
-                        .font(.subheadline.weight(.medium))
+                VStack(alignment: .leading, spacing: 1) {
+                    Text(caption)
+                        .font(.caption.weight(.semibold))
                         .foregroundStyle(.white.opacity(0.85))
-                    Text(city.name)
-                        .font(.largeTitle.bold())
-                        .foregroundStyle(.white)
+                    HStack(spacing: 4) {
+                        Text(city.name)
+                            .font(.title3.bold())
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.7)
+                        Image(systemName: "chevron.up.chevron.down")
+                            .font(.caption2.weight(.bold))
+                    }
+                    .foregroundStyle(.white)
                 }
-                .padding(16)
+                .padding(12)
             }
-            .clipShape(.rect(cornerRadius: 24))
+            .clipShape(.rect(cornerRadius: 20))
             .id(city.slug)
             .transition(.opacity)
     }
