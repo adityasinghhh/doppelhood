@@ -154,8 +154,8 @@ struct TopMatchCard: View {
     }
 }
 
-/// One signal's score as a labeled bar, or a note when either neighborhood
-/// has no Wikivoyage listings in that section.
+/// One signal's score as a labeled bar, or a note when it could not be scored,
+/// as when a neighborhood has no OpenStreetMap data.
 struct PartBar: View {
     let part: Part
     let value: Int?
@@ -188,7 +188,7 @@ struct PartBar: View {
                     .frame(width: 26, alignment: .trailing)
                     .foregroundStyle(onDark ? AnyShapeStyle(.white.opacity(0.85)) : AnyShapeStyle(.secondary))
             } else {
-                Text("No listings")
+                Text("No data")
                     .italic()
                     .foregroundStyle(muted)
                 Spacer(minLength: 0)

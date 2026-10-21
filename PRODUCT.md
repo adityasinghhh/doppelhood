@@ -18,12 +18,13 @@ Doppelhood is a free iOS app that tells a traveler which neighborhood in a city 
 
 - **Current neighborhoods** come from the place labels OpenStreetMap mappers maintain inside each city's boundary, so former names such as the Barbary Coast and single streets such as Belden Place are left out. Historic-district and housing-development labels are excluded, as are labels for areas larger than a neighborhood, such as New York's boroughs.
 - **Character matching** embeds each neighborhood's Wikipedia article without its demographics, government, and transport sections, and with the neighborhood's own name removed so matches cannot hinge on words like "Beach."
-- **Visitor listings** assign every geolocated Wikivoyage Eat, Drink, See, Do, and Buy listing to its nearest neighborhood and compare those listings section by section.
+- **Visitor listings** assign every geolocated Wikivoyage Eat, Drink, See, Do, and Buy listing to its nearest neighborhood and compare those listings section by section. Where either neighborhood has no listings in a section, the section is scored from OpenStreetMap counts of its features instead, so every pair gets all seven signals.
 - **Street life** compares the mix of restaurants, bars, cafes, shops, venues, and parks within 500 meters of each neighborhood, counted from OpenStreetMap.
 - **Standouts** name the feature each neighborhood has most of relative to the rest of its city, such as nightlife in the Mission or hotels in the Tenderloin, or mark it as mostly residential.
 - **Any city as the starting point**, with every signal measured against the rest of its own city first, so a match means two neighborhoods play the same role in their cities.
 - **Scores** rank each match against every neighborhood's best match in another city, overall and per signal, so a weak best match reads as weak.
-- **iOS app** in `ios/` opens on a photo of the chosen city and lists its neighborhoods with each one's standout and closest match elsewhere. A neighborhood's page shows it on a map, then its top five matches in another city: the best with its own map and a bar per signal, the rest with their two strongest signals and a tap to see all seven. Signals a pair cannot be scored on, for lack of Wikivoyage listings, are marked rather than hidden. The About screen credits every source and photo.
+- **Validation** in `config/validation.yaml` lists comparisons travel writing commonly makes, such as the Mission and Williamsburg, and `doppelhood.validate` reports where each ranks, so a change to matching is kept only when it moves those pairs up.
+- **iOS app** in `ios/` opens on two cities side by side, the one you know and the one you are visiting, with each neighborhood in the first beside its best match in the second. A neighborhood's page shows it on a map, then its top five matches in another city: the best with its own map and a bar per signal, the rest with their two strongest signals and a tap to see all seven. The About screen credits every source and photo.
 - **Web preview** at [adityasinghhh.github.io/doppelhood](https://adityasinghhh.github.io/doppelhood/) shows the same data in a browser.
 
 ## Coverage
@@ -51,8 +52,7 @@ These come from checking matches against first-hand knowledge of San Francisco, 
 
 | Item | Why |
 |---|---|
-| Labeled validation set | A list of expected matches from people who know both cities would turn the known misses into a score that every model change can be measured against |
-| Signals for every neighborhood | Food, nightlife, sights, activities, and shopping need Wikivoyage listings in both neighborhoods, which two thirds of pairs lack; OpenStreetMap counts could fill them in |
+| Validation from locals | The validation set is editorial, and expected matches from people who know both cities would make it a firmer benchmark |
 | Areas outside city limits | The Las Vegas Strip and Miami Beach sit outside the cities they are known by, so city boundaries alone leave them out |
 | Traveler signals | Walkability, transit, late-night activity, green space, and how touristy a neighborhood is, all measurable from OpenStreetMap |
 | Safety | Reported-crime data from each city's open-data portal, shown relative to the rest of the city and kept out of the match score |

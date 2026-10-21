@@ -1,0 +1,58 @@
+# Neighborhood comparisons that travel writing and locals commonly make,
+# used to check that changes to matching move expected pairs up rather than
+# down. These are editorial judgments, not ground truth: each lists the
+# neighborhoods in the target city that would count as a good answer.
+pairs:
+  - {from: "san-francisco:Mission", to: new-york, accept: [Williamsburg, East Village, Lower East Side, Bushwick]}
+  - {from: "san-francisco:Castro District", to: new-york, accept: [Chelsea, Greenwich Village]}
+  - {from: "san-francisco:Haight-Ashbury", to: new-york, accept: [East Village, Greenwich Village]}
+  - {from: "san-francisco:North Beach", to: new-york, accept: [Little Italy, Greenwich Village]}
+  - {from: "san-francisco:Pacific Heights", to: new-york, accept: [Upper East Side]}
+  - {from: "san-francisco:Marina District", to: new-york, accept: [Upper East Side, Murray Hill]}
+  - {from: "san-francisco:Financial District", to: new-york, accept: [Financial District]}
+  - {from: "san-francisco:Chinatown", to: new-york, accept: [Chinatown]}
+  - {from: "san-francisco:Noe Valley", to: new-york, accept: [Park Slope]}
+  - {from: "san-francisco:Hayes Valley", to: new-york, accept: [SoHo, West Village]}
+  - {from: "san-francisco:South of Market", to: new-york, accept: [Flatiron District, Chelsea]}
+  - {from: "san-francisco:Union Square", to: new-york, accept: [Midtown]}
+  - {from: "san-francisco:Dogpatch", to: new-york, accept: [Red Hook, Dumbo]}
+
+  - {from: "san-francisco:Mission", to: los-angeles, accept: [Silver Lake, Echo Park, Highland Park]}
+  - {from: "san-francisco:Haight-Ashbury", to: los-angeles, accept: [Venice, Silver Lake]}
+  - {from: "san-francisco:Chinatown", to: los-angeles, accept: [Chinatown]}
+  - {from: "san-francisco:Japantown", to: los-angeles, accept: [Little Tokyo]}
+  - {from: "san-francisco:Financial District", to: los-angeles, accept: [Financial District, Downtown]}
+  - {from: "san-francisco:Pacific Heights", to: los-angeles, accept: [Hancock Park, Bel Air, Brentwood]}
+
+  - {from: "san-francisco:Mission", to: chicago, accept: [Pilsen, Wicker Park, Logan Square]}
+  - {from: "san-francisco:Castro District", to: chicago, accept: [Lakeview East]}
+  - {from: "san-francisco:Chinatown", to: chicago, accept: [Chinatown]}
+  - {from: "san-francisco:Financial District", to: chicago, accept: [The Loop]}
+  - {from: "san-francisco:Pacific Heights", to: chicago, accept: [Gold Coast, Lincoln Park]}
+  - {from: "san-francisco:Marina District", to: chicago, accept: [Lincoln Park]}
+  - {from: "san-francisco:North Beach", to: chicago, accept: [Little Italy]}
+  - {from: "san-francisco:Union Square", to: chicago, accept: [Magnificent Mile]}
+  - {from: "san-francisco:Noe Valley", to: chicago, accept: [Andersonville, Lincoln Square]}
+
+  - {from: "san-francisco:North Beach", to: boston, accept: [North End]}
+  - {from: "san-francisco:Pacific Heights", to: boston, accept: [Beacon Hill, Back Bay]}
+  - {from: "san-francisco:Russian Hill", to: boston, accept: [Beacon Hill]}
+  - {from: "san-francisco:Chinatown", to: boston, accept: [Chinatown]}
+  - {from: "san-francisco:Castro District", to: boston, accept: [South End]}
+  - {from: "san-francisco:Mission", to: boston, accept: [Jamaica Plain]}
+
+  - {from: "new-york:Williamsburg", to: chicago, accept: [Wicker Park, Logan Square, Bucktown]}
+  - {from: "new-york:Upper East Side", to: chicago, accept: [Gold Coast]}
+  - {from: "new-york:Chinatown", to: chicago, accept: [Chinatown]}
+  - {from: "new-york:Financial District", to: chicago, accept: [The Loop]}
+  - {from: "new-york:Upper West Side", to: chicago, accept: [Lincoln Park]}
+  - {from: "new-york:Williamsburg", to: los-angeles, accept: [Silver Lake, Echo Park]}
+  - {from: "new-york:Chinatown", to: los-angeles, accept: [Chinatown]}
+  - {from: "new-york:Little Italy", to: boston, accept: [North End]}
+  - {from: "new-york:Upper East Side", to: boston, accept: [Back Bay, Beacon Hill]}
+
+  - {from: "seattle:Capitol Hill", to: san-francisco, accept: [Castro District]}
+  - {from: "philadelphia:Fishtown", to: new-york, accept: [Williamsburg]}
+  - {from: "philadelphia:Society Hill", to: boston, accept: [Beacon Hill]}
+  - {from: "washington-dc:Georgetown", to: boston, accept: [Beacon Hill]}
+  - {from: "washington-dc:Dupont Circle", to: new-york, accept: [Greenwich Village, Chelsea]}

@@ -4,7 +4,8 @@ Each neighborhood is described by three kinds of signal:
 - **Character**, an embedding of its Wikipedia article without demographics,
   government, and transport sections.
 - **Visitor listings**, embeddings of the Wikivoyage Eat, Drink, See, Do, and
-  Buy listings whose coordinates fall closest to it.
+  Buy listings whose coordinates fall closest to it, or where either
+  neighborhood has none, its counts of the SECTION_FEATURES for that section.
 - **Street life**, counts of OpenStreetMap restaurants, bars, cafes, shops,
   parks, and venues within osm.RADIUS_M of its coordinate.
 
@@ -44,6 +45,15 @@ EMBED_CACHE = Path("data/cache/embeddings.npz")
 OUTPUT = Path("web/data/matches.json")
 
 LISTING_SECTIONS = ["eat", "drink", "see", "do", "buy"]
+# The OpenStreetMap features that stand in for each Wikivoyage section, so
+# neighborhoods without listings still get a score for it.
+SECTION_FEATURES = {
+    "eat": ["restaurant", "fast_food", "cafe"],
+    "drink": ["bar", "nightlife"],
+    "see": ["attraction", "culture"],
+    "do": ["park", "culture", "nightlife"],
+    "buy": ["fashion", "grocery", "other_shop"],
+}
 WEIGHTS = {"character": 0.4, "listings": 0.3, "street": 0.3}
 # A neighborhood stands out on a feature when its count is this many standard
 # deviations above its city's mean; below that it reads as residential.
@@ -241,17 +251,26 @@ def score(hoods, embed):
     v = centered(character, cities, everyone)
     parts["character"] = percentiles(v @ v.T, cross)
 
+    z = street_z(hoods)
     for section in LISTING_SECTIONS:
+        # How close two neighborhoods' counts of the section's features are,
+        # each count already measured against its own city.
+        cols = [osm.FEATURES.index(f) for f in SECTION_FEATURES[section]]
+        sz = z[:, cols]
+        mapped = percentiles(-np.linalg.norm(sz[:, None, :] - sz[None, :, :], axis=2), cross)
+
         present = np.array([bool(n["listings"][section]) for n in hoods])
         if present.sum() < 4:
+            parts[section] = mapped
             continue
         dim = character.shape[1]
         m = np.array([embed(" ".join(n["listings"][section])) if p else np.zeros(dim)
                       for n, p in zip(hoods, present)])
         v = centered(m, cities, present)
-        parts[section] = percentiles(v @ v.T, cross)
+        listed = percentiles(v @ v.T, cross)
+        # Listings say more than counts, so the map only fills in where they are missing.
+        parts[section] = np.where(np.isnan(listed), mapped, listed)
 
-    z = street_z(hoods)
     norms = np.linalg.norm(z, axis=1, keepdims=True)
     v = z / np.where(norms == 0, 1, norms)
     parts["street"] = percentiles(v @ v.T, cross)

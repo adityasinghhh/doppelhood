@@ -15,11 +15,11 @@ Each neighborhood is normalized within its own city, so a match means the two ne
 | OpenStreetMap | Current neighborhood names and locations, and the density and mix of restaurants, bars, cafes, shops, venues, and parks | Neighborhood boundaries are not mapped consistently, so each neighborhood is the area within 500 meters of its label |
 | Wikidata | Links from each OpenStreetMap label to its Wikipedia article | Some links are wrong and are checked by distance |
 | Wikipedia | Each neighborhood's character, from its article minus demographics, government, and transport | Coverage of small neighborhoods is uneven |
-| Wikivoyage | Eat, Drink, See, Do, and Buy listings with coordinates, assigned to the nearest neighborhood | Only neighborhoods visitors frequent have listings |
+| Wikivoyage | Eat, Drink, See, Do, and Buy listings with coordinates, assigned to the nearest neighborhood | Only neighborhoods visitors frequent have listings, so elsewhere each section is scored from OpenStreetMap counts of the matching features |
 
 ## Scoring
 
-Each signal is centered within its city before comparing, so two neighborhoods match when they differ from the rest of their own cities in the same way. Text is embedded with [all-mpnet-base-v2](https://huggingface.co/sentence-transformers/all-mpnet-base-v2), and street life is compared as within-city z-scores of log counts.
+Each signal is centered within its city before comparing, so two neighborhoods match when they differ from the rest of their own cities in the same way. Text is embedded with [all-mpnet-base-v2](https://huggingface.co/sentence-transformers/all-mpnet-base-v2), and street life is compared as within-city z-scores of log counts. A food, nightlife, sights, activities, or shopping score uses Wikivoyage listings when both neighborhoods have them, and otherwise the distance between their z-scores for the features that section covers, such as restaurants, fast food, and cafes for food.
 
 Every signal's similarity is converted to a percentile over all cross-city pairs, and the percentiles are blended (character 40%, listings 30%, street life 30%). Nearly every best match lands near the top of that scale, so the scores shown rank each pair against every neighborhood's best match in each other city instead. A score of 50 means the pair is as close as a typical best match, and a low score means even the closest neighborhood in that city is a stretch.
 
@@ -34,9 +34,10 @@ brew install osmium-tool xcodegen
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 .venv/bin/python -m doppelhood.match san-francisco new-york
+.venv/bin/python -m doppelhood.validate
 ```
 
-The matcher fetches each city's boundary, neighborhood labels, and points of interest from the Overpass API on first use, or cuts them from a Geofabrik extract when one is already in `data/raw/pbf/`. It caches every source under `data/raw/` and writes `web/data/matches.json`.
+The matcher fetches each city's boundary, neighborhood labels, and points of interest from the Overpass API on first use, or cuts them from a Geofabrik extract when one is already in `data/raw/pbf/`. It caches every source under `data/raw/` and writes `web/data/matches.json`. The validator scores the same cities and reports where each comparison in [config/validation.yaml](config/validation.yaml) ranks, so a change to matching can be checked against it.
 
 The iOS app bundles that file. Generate the Xcode project with `cd ios && xcodegen`, then open `Doppelhood.xcodeproj` and run it on a simulator. The web preview reads the same file: `cd web && python3 -m http.server 8765`.
 
