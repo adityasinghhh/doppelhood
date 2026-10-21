@@ -34,7 +34,13 @@ MODEL = "sentence-transformers/all-mpnet-base-v2"
 PASSAGE_CHARS = 800
 MIN_ARTICLE_CHARS = 800
 LISTING_RADIUS_M = 800
-MAIN_VERB = re.compile(r"\b(is|are|was|were)\b", re.IGNORECASE)
+PRESENT = re.compile(r"\b(is|are)\b", re.IGNORECASE)
+PAST = re.compile(r"\b(was|were)\b", re.IGNORECASE)
+# What a past-tense lead says the place was. A former neighborhood or town is
+# gone; anything else (a fort, a city gate, a fortress) is the namesake of a
+# neighborhood that exists today.
+FORMER_PLACE = re.compile(r"\b(neighbou?rhood|district|town|village|suburb|parish|borough|enclave|municipality)\b",
+                          re.IGNORECASE)
 ISLAND = re.compile(r"\bis (an?|one of the)\s+(\w+\s+)?islands?\b", re.IGNORECASE)
 LIVED_IN = re.compile(r"neighbou?rhood|residential|residents", re.IGNORECASE)
 # Searching Wikipedia label by label is slow, so cities with thousands of
@@ -60,18 +66,24 @@ WEIGHTS = {"character": 0.4, "listings": 0.3, "street": 0.3}
 STANDOUT_Z = 0.5
 
 
+def past_tense(lead):
+    """True when the lead's first sentence describes its subject only in the past
+    ("The Barbary Coast was a red-light district"), not merely mentioning the
+    past ("Mira Mesa, which was established in the 1960s, is a community")."""
+    first = wikipedia.summary(lead, sentences=1)
+    return bool(PAST.search(first)) and not PRESENT.search(first)
+
+
 def not_current(lead):
     """True for an article about a place that no longer exists or that nobody lives in.
 
-    The first sentence's main verb gives the first away ("The Barbary Coast was
-    a red-light district"), and an island that the lead never calls a
-    neighborhood is the second (the Boston Harbor Islands, but not Roosevelt
-    Island).
+    A past-tense lead about a neighborhood or town gives the first away, and an
+    island that the lead never calls a neighborhood is the second (the Boston
+    Harbor Islands, but not Roosevelt Island).
     """
     first = wikipedia.summary(lead, sentences=1)
-    verb = MAIN_VERB.search(first)
-    if verb and verb.group(1).lower() in ("was", "were"):
-        return True
+    if past_tense(lead):
+        return bool(FORMER_PLACE.search(first))
     return bool(ISLAND.search(first)) and not LIVED_IN.search(lead)
 
 
@@ -150,6 +162,9 @@ def load_city(city):
             "lon": n["lon"],
             "summary": wikipedia.summary(lead),
             "text": text,
+            # The Bastille's article is about the fortress, which says little
+            # about the neighborhood around it today.
+            "character": not past_tense(lead),
             "source_url": "https://en.wikipedia.org/wiki/" + page["title"].replace(" ", "_"),
             "revid": page["revid"],
         })
@@ -243,12 +258,11 @@ def standouts(hoods):
 def score(hoods, embed):
     cities = np.array([n["city"] for n in hoods])
     cross = cities[:, None] != cities[None, :]
-    everyone = np.ones(len(hoods), dtype=bool)
 
     parts = {}
 
     character = np.array([embed(n["text"]) for n in hoods])
-    v = centered(character, cities, everyone)
+    v = centered(character, cities, np.array([n["character"] for n in hoods]))
     parts["character"] = percentiles(v @ v.T, cross)
 
     z = street_z(hoods)
@@ -278,14 +292,17 @@ def score(hoods, embed):
     listing_parts = [parts[s] for s in LISTING_SECTIONS if s in parts]
     listings = np.nanmean(np.stack(listing_parts), axis=0) if listing_parts else None
 
-    has_street = ~np.isnan(parts["street"])
-    total = WEIGHTS["character"] * parts["character"] + WEIGHTS["street"] * np.nan_to_num(parts["street"])
-    weight = WEIGHTS["character"] + np.where(has_street, WEIGHTS["street"], 0)
+    total = np.zeros_like(parts["character"])
+    weight = np.zeros_like(parts["character"])
+    for key in ("character", "street"):
+        has = ~np.isnan(parts[key])
+        total += WEIGHTS[key] * np.nan_to_num(parts[key])
+        weight += np.where(has, WEIGHTS[key], 0)
     if listings is not None:
         has = ~np.isnan(listings)
         total = np.where(has, total + WEIGHTS["listings"] * np.nan_to_num(listings), total)
         weight = np.where(has, weight + WEIGHTS["listings"], weight)
-    blend = total / weight
+    blend = np.where(weight > 0, total / np.where(weight == 0, 1, weight), 0)
     best = best_pairs(blend, cities)
     overall = percentiles(blend, cross, best)
     parts = {k: percentiles(p, cross, best) for k, p in parts.items()}

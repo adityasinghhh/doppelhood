@@ -25,7 +25,7 @@ pairs:
   - {from: "san-francisco:Pacific Heights", to: los-angeles, accept: [Hancock Park, Bel Air, Brentwood]}
 
   - {from: "san-francisco:Mission", to: chicago, accept: [Pilsen, Wicker Park, Logan Square]}
-  - {from: "san-francisco:Castro District", to: chicago, accept: [Lakeview East]}
+  - {from: "san-francisco:Castro District", to: chicago, accept: [Northalsted, Lakeview East]}
   - {from: "san-francisco:Chinatown", to: chicago, accept: [Chinatown]}
   - {from: "san-francisco:Financial District", to: chicago, accept: [The Loop]}
   - {from: "san-francisco:Pacific Heights", to: chicago, accept: [Gold Coast, Lincoln Park]}
