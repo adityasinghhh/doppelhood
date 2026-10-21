@@ -25,7 +25,7 @@ Every signal's similarity is converted to a percentile over all cross-city pairs
 
 ## Status
 
-San Francisco, New York, Mexico City, Boston, and New Orleans are built, with 454 neighborhoods between them. [config/cities.yaml](config/cities.yaml) lists every city, including those not yet built. [PRODUCT.md](PRODUCT.md) holds the product vision, coverage, known misses, and wishlist.
+All 21 cities in [config/cities.yaml](config/cities.yaml) are built, with 1,971 neighborhoods between them. [PRODUCT.md](PRODUCT.md) holds the product vision, coverage, known misses, and wishlist.
 
 ## Running Locally
 

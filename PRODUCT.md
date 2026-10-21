@@ -33,20 +33,43 @@ Doppelhood is a free iOS app that tells a traveler which neighborhood in a city 
 |---|---|---|
 | San Francisco | 61 | |
 | New York | 265 | |
-| Mexico City | 58 | OpenStreetMap labels about 2,000 colonias, but only the better-known ones have English Wikipedia articles |
+| Los Angeles | 152 | |
+| Chicago | 158 | |
 | Boston | 44 | |
-| New Orleans | 26 | OpenStreetMap labels fewer New Orleans neighborhoods than the city's official list |
-| Other nine cities | 0 | Their OpenStreetMap extracts are not downloaded yet |
+| New Orleans | 28 | OpenStreetMap labels fewer New Orleans neighborhoods than the city's official list |
+| San Diego | 102 | |
+| Denver | 34 | |
+| Philadelphia | 102 | |
+| Mexico City | 61 | OpenStreetMap labels about 2,000 colonias, but only the better-known ones have English Wikipedia articles |
+| Seattle | 76 | |
+| Miami | 13 | Miami Beach is a separate city, so it falls outside the boundary |
+| Las Vegas | 9 | The Strip lies in unincorporated Paradise, outside the city boundary |
+| Washington | 109 | |
+| Honolulu | 15 | |
+| Nashville | 7 | Most OpenStreetMap labels in Nashville are subdivisions and apartment complexes |
+| Austin | 27 | |
+| London | 495 | |
+| Paris | 52 | |
+| Berlin | 117 | |
+| Amsterdam | 44 | |
 
-A neighborhood is included only when it has an English Wikipedia article within 3 kilometers of its label, and only when that article describes a place that exists and that people live in. An article whose first sentence is in the past tense ("Tlatelolco was a pre-Columbian altepetl") or that describes an uninhabited island is dropped. OpenStreetMap's Wikidata links are checked against that rule too, since some point at a same-named town or a railroad station. Labels with no qualifying article, such as Cow Hollow, Presidio Heights, and Gramercy, drop out for now.
+A neighborhood is included only when it has an English Wikipedia article within 3 kilometers of its label, and only when that article describes a place that exists today. An article about a former neighborhood, village, or parish ("Sloterdijk was a village in the Dutch province of North Holland") or about an uninhabited island is dropped. An article in the past tense about something else, such as the Bastille fortress or Fort Logan, keeps its neighborhood, which is then matched without character. OpenStreetMap's Wikidata links are checked against the same rule, since some point at a same-named town or a railroad station. Labels with no qualifying article, such as Cow Hollow, Presidio Heights, and Gramercy, drop out for now.
 
 ## Known Misses
 
-These come from checking matches against first-hand knowledge of San Francisco, and they are the test cases for any change to the scoring:
-- Pacific Heights matches Tremont and Kensington rather than the Upper East Side.
-- The Castro matches Civic Center and Harlem rather than Chelsea or the West Village.
-- The Haight matches the Garment District, and Noe Valley matches Cambria Heights.
-- The Mission's top New York match is Fresh Pond, ahead of Williamsburg and the East Village, which follow closely.
+[config/validation.yaml](config/validation.yaml) lists 48 comparisons that travel writing and locals commonly make, and `doppelhood.validate` reports where each one ranks. The expected match ranks first in 14 of them and in the top five in 25. The worst misses are these:
+
+| Neighborhood | Expected match | Rank | Top match |
+|---|---|---|---|
+| Fishtown | Williamsburg | 223 | Clinton Hill |
+| Pacific Heights | Upper East Side | 130 | Fordham |
+| Pacific Heights | Gold Coast or Lincoln Park | 98 | Kenwood |
+| Dogpatch | Red Hook or Dumbo | 83 | Arrochar |
+| Williamsburg | Silver Lake or Echo Park | 77 | South Park |
+| Noe Valley | Andersonville or Lincoln Square | 73 | Buena Park |
+| Noe Valley | Park Slope | 63 | Fordham |
+
+In each of these, the street counts are close but the character scores from the Wikipedia articles treat the two neighborhoods as opposites. Trying other parts of the article as input made matching worse, so a better text model is the likeliest fix.
 
 ## Wishlist
 
