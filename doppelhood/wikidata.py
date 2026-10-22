@@ -17,6 +17,24 @@ SELECT DISTINCT ?article WHERE {
   ?article schema:about ?item ; schema:isPartOf <https://en.wikipedia.org/> .
 }
 """
+# Items in the city with an English article, with every type each is an
+# instance of. Filtering by subclass of neighborhood in the query itself times
+# out, so the types are checked against NEIGHBORHOOD_TYPES afterward.
+TYPED_ITEMS = """
+SELECT ?item ?article ?coord ?type WHERE {
+  ?item wdt:P131+ wd:%s ; wdt:P625 ?coord ; wdt:P31 ?type .
+  ?article schema:about ?item ; schema:isPartOf <https://en.wikipedia.org/> .
+}
+"""
+HISTORIC_DISTRICT = "Q15243209"
+NEIGHBORHOOD_TYPES = {
+    "Q123705",    # neighborhood
+    "Q2943502",   # neighborhood of Miami
+    HISTORIC_DISTRICT,
+    "Q3055075",   # entertainment district
+    "Q17343829",  # unincorporated community, the neighborhoods of consolidated Nashville
+}
+NAME_SUFFIX = re.compile(r"\s+(historic district|neighborhood)$", re.IGNORECASE)
 # Prefixes that OpenStreetMap labels or article titles carry but the other may not.
 NAME_PREFIX = re.compile(r"^(colonia|barrio|pueblo|unidad habitacional)\s+", re.IGNORECASE)
 RAW_DIR = Path("data/raw/wikidata")
@@ -63,6 +81,48 @@ def normalize(name):
     name = unicodedata.normalize("NFKD", name.split(",")[0].split(" (")[0])
     name = "".join(c for c in name if not unicodedata.combining(c)).strip()
     return NAME_PREFIX.sub("", name).lower()
+
+
+def query(sparql, cache):
+    """Run a SPARQL query once and cache its result rows."""
+    if not cache.exists():
+        response = requests.get(SPARQL, params={"query": sparql},
+                                headers={"Accept": "application/json", "User-Agent": USER_AGENT},
+                                timeout=300)
+        response.raise_for_status()
+        # Some labels carry raw control characters that strict parsing rejects.
+        rows = json.loads(response.text, strict=False)["results"]["bindings"]
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        cache.write_text(json.dumps(rows))
+    return json.loads(cache.read_text())
+
+
+def neighborhoods(city):
+    """Neighborhoods that Wikidata places in the city, in the same shape as osm.neighborhoods.
+
+    OpenStreetMap leaves out many well-known neighborhoods in some cities,
+    such as Wynwood in Miami and the Gulch in Nashville, where most of its
+    labels are subdivisions and apartment complexes instead.
+    """
+    rows = query(TYPED_ITEMS % city["wikidata"], RAW_DIR / f"typed-{city['wikidata']}.json")
+    types, results = {}, {}
+    for row in rows:
+        qid = row["item"]["value"].rsplit("/", 1)[-1]
+        types.setdefault(qid, set()).add(row["type"]["value"].rsplit("/", 1)[-1])
+        point = re.fullmatch(r"Point\(([-\d.eE]+) ([-\d.eE]+)\)", row["coord"]["value"])
+        if qid in results or not point:
+            continue
+        lon, lat = map(float, point.groups())
+        title = requests.utils.unquote(row["article"]["value"].rsplit("/", 1)[-1]).replace("_", " ")
+        name = NAME_SUFFIX.sub("", title.split(",")[0].split(" (")[0])
+        results[qid] = {"name": name, "lat": lat, "lon": lon, "wikidata": qid, "wikipedia": f"en:{title}"}
+    hoods = []
+    for qid, n in results.items():
+        kinds = types[qid] & NEIGHBORHOOD_TYPES
+        if kinds:
+            n["wikidata_kind"] = "historic district" if kinds == {HISTORIC_DISTRICT} else "neighborhood"
+            hoods.append(n)
+    return hoods
 
 
 def local_articles(city):

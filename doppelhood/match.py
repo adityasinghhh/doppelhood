@@ -43,6 +43,17 @@ FORMER_PLACE = re.compile(r"\b(neighbou?rhood|district|town|village|suburb|paris
                           re.IGNORECASE)
 ISLAND = re.compile(r"\bis (an?|one of the)\s+(\w+\s+)?islands?\b", re.IGNORECASE)
 LIVED_IN = re.compile(r"neighbou?rhood|residential|residents", re.IGNORECASE)
+# Wikidata's neighborhoods include parks, campuses, and streets, so one found
+# there must be a place by its article's own first sentence ("Music Row is a
+# historic district", but not "Broadway is a major thoroughfare"). Most
+# historic districts are a block or a single building complex, so those must
+# call themselves neighborhoods ("Edgefield Historic District is a historic
+# neighborhood").
+CALLED_A_PLACE = {
+    "neighborhood": re.compile(r"\b(is|are) (an?|the) ([\w-]+\s+){0,3}(neighbou?rhood|district|community|suburb)\b",
+                               re.IGNORECASE),
+    "historic district": re.compile(r"\b(is|are) (an?|the) ([\w-]+\s+){0,3}neighbou?rhood\b", re.IGNORECASE),
+}
 # Searching Wikipedia label by label is slow, so cities with thousands of
 # labels (Mexico City's colonias) rely on Wikidata matches alone.
 SEARCH_LABEL_LIMIT = 600
@@ -120,13 +131,26 @@ def passages(text):
     return chunks
 
 
+def covered(name, known):
+    """True when a normalized name equals or extends one already known."""
+    return any(name == k or name.startswith(k + " ") for k in known)
+
+
 def load_city(city):
     """Current neighborhoods for one city with article text, listings, and OSM counts.
+
+    Neighborhoods come from OpenStreetMap labels, plus Wikidata items that no
+    label covers.
 
     Neighborhoods without an English Wikipedia article are dropped, since the
     article supplies both the character signal and the summary shown in the app.
     """
     labels = osm.neighborhoods(city)
+    qids = {n["wikidata"] for n in labels}
+    known = {wikidata.normalize(n["name"]) for n in labels}
+    # "Wynwood Art District" is part of the Wynwood that a label already covers.
+    labels += [n for n in osm.inside(city, wikidata.neighborhoods(city))
+               if n["wikidata"] not in qids and not covered(wikidata.normalize(n["name"]), known)]
     titles = wikidata.sitelinks([n["wikidata"] for n in labels])
     local = wikidata.local_articles(city)
     names = [n["name"] for n in labels]
@@ -146,13 +170,16 @@ def load_city(city):
         lead, text = wikipedia.character(page["wikitext"])
         if len(text) < MIN_ARTICLE_CHARS:
             continue
+        kind = n.get("wikidata_kind")
+        if kind and not CALLED_A_PLACE[kind].search(wikipedia.summary(lead, sentences=1)):
+            continue
         if not_current(lead):
             print(f"  skipped {n['name']}: {wikipedia.summary(lead, sentences=1)[:90]}")
             continue
         name = n["name"] if names.count(n["name"]) == 1 else wikidata.display_name(page["title"], city)
         # A neighborhood's own name would otherwise match on words like
         # "Beach" or "Heights" rather than on what the place is like.
-        for alias in {n["name"], page["title"].split(",")[0].split(" (")[0]}:
+        for alias in sorted({n["name"], page["title"].split(",")[0].split(" (")[0]}, key=len, reverse=True):
             text = re.sub(re.escape(alias), "the neighborhood", text, flags=re.IGNORECASE)
         hoods.append({
             "id": f"{city['slug']}:{n['name']}",
@@ -207,7 +234,7 @@ def load_city(city):
 def centered(matrix, cities, present):
     """Subtract each city's mean row and renormalize; rows not present stay NaN."""
     out = np.full_like(matrix, np.nan)
-    for city in set(cities):
+    for city in sorted(set(cities)):
         rows = (cities == city) & present
         if rows.sum() < 2:
             continue
@@ -234,7 +261,7 @@ def street_z(hoods):
     counts = np.log1p(np.array([[n["osm"][f] for f in osm.FEATURES] if n["osm"] else
                                 [0] * len(osm.FEATURES) for n in hoods], dtype=float))
     z = np.full_like(counts, np.nan)
-    for city in set(cities):
+    for city in sorted(set(cities)):
         rows = (cities == city) & has_osm
         if rows.any():
             sd = counts[rows].std(axis=0)
@@ -312,7 +339,7 @@ def score(hoods, embed):
 def best_pairs(similarity, cities):
     """Mark each neighborhood's most similar neighborhood in every other city."""
     best = np.zeros_like(similarity, dtype=bool)
-    for city in set(cities):
+    for city in sorted(set(cities)):
         idx = np.where(cities == city)[0]
         others = np.where(cities != city)[0]
         best[others, idx[np.nanargmax(similarity[np.ix_(others, idx)], axis=1)]] = True

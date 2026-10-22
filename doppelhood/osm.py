@@ -276,6 +276,12 @@ def neighborhoods(city):
     return results
 
 
+def inside(city, hoods):
+    """Keep the neighborhoods whose coordinates fall within the city boundary."""
+    boundary = city_boundary(prepare(city))
+    return [n for n in hoods if boundary.contains(Point(n["lon"], n["lat"]))]
+
+
 def distances_m(lat, lon, coords):
     """Equirectangular distance in meters, accurate at neighborhood scale."""
     dy = (coords[:, 0] - lat) * 110_540

@@ -16,7 +16,7 @@ struct AboutView: View {
                          destination: URL(string: "https://creativecommons.org/licenses/by-sa/4.0/")!)
                     Link("Map data © OpenStreetMap contributors, ODbL",
                          destination: URL(string: "https://www.openstreetmap.org/copyright")!)
-                    Link("Links from neighborhoods to articles via Wikidata, CC0",
+                    Link("Neighborhoods and article links from Wikidata, CC0",
                          destination: URL(string: "https://www.wikidata.org/")!)
                     Text("Each neighborhood links to its Wikipedia article, whose history page credits its authors.")
                         .foregroundStyle(.secondary)

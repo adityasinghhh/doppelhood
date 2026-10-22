@@ -13,7 +13,7 @@ Each neighborhood is normalized within its own city, so a match means the two ne
 | Source | Signal | Limitation |
 |---|---|---|
 | OpenStreetMap | Current neighborhood names and locations, and the density and mix of restaurants, bars, cafes, shops, venues, and parks | Neighborhood boundaries are not mapped consistently, so each neighborhood is the area within 500 meters of its label |
-| Wikidata | Links from each OpenStreetMap label to its Wikipedia article | Some links are wrong and are checked by distance |
+| Wikidata | Links from each OpenStreetMap label to its Wikipedia article, and neighborhoods that OpenStreetMap does not label | Some links are wrong and are checked by distance |
 | Wikipedia | Each neighborhood's character, from its article minus demographics, government, and transport | Coverage of small neighborhoods is uneven |
 | Wikivoyage | Eat, Drink, See, Do, and Buy listings with coordinates, assigned to the nearest neighborhood | Only neighborhoods visitors frequent have listings, so elsewhere each section is scored from OpenStreetMap counts of the matching features |
 
@@ -25,7 +25,7 @@ Every signal's similarity is converted to a percentile over all cross-city pairs
 
 ## Status
 
-All 21 cities in [config/cities.yaml](config/cities.yaml) are built, with 1,971 neighborhoods between them. [PRODUCT.md](PRODUCT.md) holds the product vision, coverage, known misses, and wishlist.
+All 21 cities in [config/cities.yaml](config/cities.yaml) are built, with 2,188 neighborhoods between them. [PRODUCT.md](PRODUCT.md) holds the product vision, coverage, known misses, and wishlist.
 
 ## Running Locally
 

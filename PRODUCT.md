@@ -31,43 +31,43 @@ Doppelhood is a free iOS app that tells a traveler which neighborhood in a city 
 
 | City | Neighborhoods | Notes |
 |---|---|---|
-| San Francisco | 61 | |
-| New York | 265 | |
-| Los Angeles | 152 | |
-| Chicago | 158 | |
-| Boston | 44 | |
-| New Orleans | 28 | OpenStreetMap labels fewer New Orleans neighborhoods than the city's official list |
-| San Diego | 102 | |
-| Denver | 34 | |
-| Philadelphia | 102 | |
-| Mexico City | 61 | OpenStreetMap labels about 2,000 colonias, but only the better-known ones have English Wikipedia articles |
-| Seattle | 76 | |
-| Miami | 13 | Miami Beach is a separate city, so it falls outside the boundary |
-| Las Vegas | 9 | The Strip lies in unincorporated Paradise, outside the city boundary |
-| Washington | 109 | |
+| San Francisco | 70 | |
+| New York | 307 | |
+| Los Angeles | 180 | |
+| Chicago | 163 | |
+| Boston | 49 | |
+| New Orleans | 59 | |
+| San Diego | 114 | |
+| Denver | 44 | |
+| Philadelphia | 128 | |
+| Mexico City | 62 | OpenStreetMap labels about 2,000 colonias, but only the better-known ones have English Wikipedia articles |
+| Seattle | 85 | |
+| Miami | 23 | Miami Beach is a separate city, so it falls outside the boundary |
+| Las Vegas | 10 | The Strip lies in unincorporated Paradise, outside the city boundary |
+| Washington | 114 | |
 | Honolulu | 15 | |
-| Nashville | 7 | Most OpenStreetMap labels in Nashville are subdivisions and apartment complexes |
-| Austin | 27 | |
+| Nashville | 23 | Most OpenStreetMap labels in Nashville are subdivisions and apartment complexes, so its neighborhoods come mainly from Wikidata |
+| Austin | 33 | |
 | London | 495 | |
-| Paris | 52 | |
+| Paris | 53 | |
 | Berlin | 117 | |
 | Amsterdam | 44 | |
 
-A neighborhood is included only when it has an English Wikipedia article within 3 kilometers of its label, and only when that article describes a place that exists today. An article about a former neighborhood, village, or parish ("Sloterdijk was a village in the Dutch province of North Holland") or about an uninhabited island is dropped. An article in the past tense about something else, such as the Bastille fortress or Fort Logan, keeps its neighborhood, which is then matched without character. OpenStreetMap's Wikidata links are checked against the same rule, since some point at a same-named town or a railroad station. Labels with no qualifying article, such as Cow Hollow, Presidio Heights, and Gramercy, drop out for now.
+Neighborhoods come from OpenStreetMap labels, plus Wikidata items in the city that no label covers, such as Wynwood in Miami and the Irish Channel in New Orleans. A Wikidata item counts only when its article's first sentence calls it a neighborhood, district, or community, and a historic district must call itself a neighborhood, since most are a single block or building complex. A neighborhood is included only when it has an English Wikipedia article within 3 kilometers of its location, and only when that article describes a place that exists today. An article about a former neighborhood, village, or parish ("Sloterdijk was a village in the Dutch province of North Holland") or about an uninhabited island is dropped. An article in the past tense about something else, such as the Bastille fortress or Fort Logan, keeps its neighborhood, which is then matched without character. OpenStreetMap's Wikidata links are checked against the same rule, since some point at a same-named town or a railroad station. Labels with no qualifying article, such as Cow Hollow, Presidio Heights, and Gramercy, drop out for now.
 
 ## Known Misses
 
-[config/validation.yaml](config/validation.yaml) lists 48 comparisons that travel writing and locals commonly make, and `doppelhood.validate` reports where each one ranks. The expected match ranks first in 14 of them and in the top five in 25. The worst misses are these:
+[config/validation.yaml](config/validation.yaml) lists 48 comparisons that travel writing and locals commonly make, and `doppelhood.validate` reports where each one ranks. The expected match ranks first in 15 of them and in the top five in 25. The worst misses are these:
 
 | Neighborhood | Expected match | Rank | Top match |
 |---|---|---|---|
-| Fishtown | Williamsburg | 223 | Clinton Hill |
-| Pacific Heights | Upper East Side | 130 | Fordham |
-| Pacific Heights | Gold Coast or Lincoln Park | 98 | Kenwood |
-| Dogpatch | Red Hook or Dumbo | 83 | Arrochar |
-| Williamsburg | Silver Lake or Echo Park | 77 | South Park |
-| Noe Valley | Andersonville or Lincoln Square | 73 | Buena Park |
-| Noe Valley | Park Slope | 63 | Fordham |
+| Fishtown | Williamsburg | 250 | Clinton Hill |
+| Pacific Heights | Upper East Side | 143 | West Midwood |
+| Dogpatch | Red Hook or Dumbo | 101 | Arrochar |
+| Pacific Heights | Gold Coast or Lincoln Park | 90 | Kenwood |
+| Noe Valley | Park Slope | 86 | Brighton Beach |
+| Williamsburg | Silver Lake or Echo Park | 83 | South Park |
+| Noe Valley | Andersonville or Lincoln Square | 71 | Buena Park |
 
 In each of these, the street counts are close but the character scores from the Wikipedia articles treat the two neighborhoods as opposites. Trying other parts of the article as input made matching worse, so a better text model is the likeliest fix.
 
